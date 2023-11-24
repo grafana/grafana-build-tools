@@ -1,0 +1,69 @@
+#!/bin/sh
+# This script is used to test that all the expected components are present in
+# the image and they are able to run.
+
+set -eu
+
+echo '=== Go'
+go version
+if test "$(go env GOTOOLCHAIN)" != "local" ; then
+	echo "E: unexpected value for GOTOOLCHAIN."
+	exit 1
+fi
+
+echo '=== jsonnet'
+jsonnet --version
+jsonnetfmt --version
+jsonnet-deps --version
+jsonnet-lint --version
+
+echo '=== k6'
+# Note that we _know_ xk6 works because it was used to build the k6 binary.
+# That said, there doesn't seem to be an equivalent of `k6 version` for xk6,
+# so we just check that the binary exists.
+command -v xk6
+k6 version
+
+echo '=== wire'
+wire help
+
+echo '=== bingo'
+bingo version
+
+echo '=== enumer'
+enumer -help
+
+echo '=== proto-gen-go'
+protoc-gen-go --version
+
+echo '=== protoc-gen-go-grpc'
+protoc-gen-go-grpc --version
+
+echo '=== buf'
+buf --version
+
+echo '=== mage'
+mage -version
+
+echo '=== nilaway'
+nilaway -help
+
+echo '=== golangci-lint'
+golangci-lint version
+
+echo '=== shellcheck'
+shellcheck --version
+
+echo '=== gcc'
+gcc --version
+
+echo '=== file'
+file --version
+# Make sure we have the magic file database
+file "$(command -v file)"
+
+echo '=== git'
+git version
+
+echo '=== pkg-config'
+pkg-config --help

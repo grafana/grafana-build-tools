@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+set -eu
+
+machine=$(uname --machine)
+
+case "${machine}" in
+	x86_64)
+		echo amd64
+		;;
+	aarch64)
+		echo arm64
+		;;
+	*)
+		echo "${machine}"
+		;;
+esac

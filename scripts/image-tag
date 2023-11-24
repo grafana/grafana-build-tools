@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -eu
+
+# Are we building locally?
+suffix=
+if test -z "${CI:-}" ; then
+  suffix=-local
+fi
+
+version="$(git describe --tags --dirty)"
+
+tag="${version}${suffix}"
+
+printf '%s' "${tag}"
