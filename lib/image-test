@@ -57,6 +57,9 @@ shellcheck --version
 echo '=== git-chglog'
 git-chglog --help
 
+echo '=== gotestsum'
+gotestsum --version
+
 echo '=== gcc'
 gcc --version
 
