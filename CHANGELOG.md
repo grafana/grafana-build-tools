@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v0.1.1"></a>
+## [v0.1.1] - 2023-12-05
+### Bug Fixes
+- remove fetch-tags from publish workflow
+
+
 <a name="v0.1.0"></a>
 ## [v0.1.0] - 2023-12-05
 ### Features
@@ -11,5 +17,6 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v0.1.1...HEAD
+[v0.1.1]: https://github.com/grafana/grafana-build-tools/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/grafana/grafana-build-tools/compare/v0.0.0...v0.1.0
