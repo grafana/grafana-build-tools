@@ -69,4 +69,4 @@ echo '=== git'
 git version
 
 echo '=== pkg-config'
-pkg-config --help
+pkg-config --version
