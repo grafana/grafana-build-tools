@@ -54,6 +54,9 @@ golangci-lint version
 echo '=== shellcheck'
 shellcheck --version
 
+echo '=== git-chglog'
+git-chglog --help
+
 echo '=== gcc'
 gcc --version
 

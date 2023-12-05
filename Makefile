@@ -5,10 +5,11 @@ S := @
 ROOTDIR      := $(abspath $(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 IMAGE_REPO   := ghcr.io/grafana
-IMAGE_NAME   := build-tools
+IMAGE_NAME   := grafana-build-tools
 IMAGE_TAG    ?= $(shell $(ROOTDIR)/scripts/image-tag)
 IMAGE        := $(IMAGE_REPO)/$(IMAGE_NAME):$(IMAGE_TAG)
 LATEST_IMAGE := $(IMAGE_REPO)/$(IMAGE_NAME):latest
+LOCAL_IMAGE  := $(IMAGE_REPO)/$(IMAGE_NAME):local
 
 LOCAL_ARCH   := $(strip $(shell $(ROOTDIR)/scripts/local-machine))
 
@@ -35,6 +36,12 @@ BUILD_TARGETS += build-$(1)
 endef
 
 $(foreach BUILD_ARCH,$(PUSH_ARCHES),$(eval $(call build-target,$(BUILD_ARCH))))
+
+.PHONY: build-local
+build-local:
+	docker build . -f Dockerfile -t "$(LOCAL_IMAGE)"
+
+BUILD_TARGETS += build-local
 
 .PHONY: build
 build: $(BUILD_TARGETS)

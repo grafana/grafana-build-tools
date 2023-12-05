@@ -1,0 +1,43 @@
+style: github
+template: CHANGELOG.tpl.md
+info:
+  title: CHANGELOG
+  repository_url: https://github.com/grafana/grafana-build-tools
+options:
+  tag_filter_pattern: '^v'
+  sort: "date"
+
+  header:
+    # The format for the subject line: `<Type>: <Subject>`
+    # The list of recognized types is specified below.
+    pattern: "^(\\w*)\\:\\s(.*)$"
+    pattern_maps:
+      - Type
+      - Subject
+
+  commits:
+    filters:
+      Type: # types to include in changelog, anything else is not added
+        - feat
+        - fix
+        - perf
+
+  commit_groups:
+    group_by: Type
+    title_maps: # How to present types in the changelog
+      feat: Features
+      fix: Bug Fixes
+      perf: Performance Improvements
+
+  issues:
+    prefix:
+      - '#'
+
+  refs:
+    actions:
+      - Closes
+      - Fixes
+
+  notes:
+    keywords:
+      - BREAKING CHANGE
