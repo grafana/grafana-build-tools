@@ -1,0 +1,140 @@
+#!/bin/sh
+
+set -e
+set -u
+
+gbt_image=ghcr.io/grafana/grafana-build-tools:local
+
+for req in git docker ; do
+	if ! command -v "${req}" > /dev/null 2>&1 ; then
+		echo "E: '${req}' is needed to run this script. Abort."
+		exit 1
+	fi
+done
+
+next_version=${1:-}
+
+cd "$(git rev-parse --show-toplevel)" || exit 2
+
+if test ! -e CHANGELOG.md ; then
+	echo "E: Expecting a CHANGELOG.md file in $PWD, none found. Abort."
+	exit 3
+fi
+
+current_version() {
+	git describe --tags HEAD | cut -d- -f1 | tr -d v
+}
+
+next_version_patch() {
+	parts=$(current_version)
+	major=$(echo "${parts}" | cut -d. -f1)
+	minor=$(echo "${parts}" | cut -d. -f2)
+	patch=$(echo "${parts}" | cut -d. -f3)
+	echo "${major}.${minor}.$((patch+1))"
+}
+
+next_version_minor() {
+	parts=$(current_version)
+	major=$(echo "${parts}" | cut -d. -f1)
+	minor=$(echo "${parts}" | cut -d. -f2)
+	echo "${major}.$((minor+1)).0"
+}
+
+next_version_major() {
+	parts=$(current_version)
+	major=$(echo "${parts}" | cut -d. -f1)
+	echo "$((major+1)).0.0"
+}
+
+# Does the most recent commit look like a release?
+head_is_release=false
+git log --format=%s --max-count=1 | grep -q -E "^Release v[0-9]+\.[0-9]+\.[0-9]+( \(#[0-9]+\))?\$" && head_is_release=true
+
+if test "${head_is_release}" = false -a -z "${next_version}" ; then
+	cv=$(current_version)
+	next_patch=$(next_version_patch)
+	next_minor=$(next_version_minor)
+	next_major=$(next_version_major)
+	cat <<-EOT
+	I: Current version: v${cv}
+	I: Next fix: v${next_patch}
+	I: Next feature: v${next_minor}
+	I: Next breaking change: v${next_major}
+
+	I: Changes since current version:
+
+	EOT
+
+	git --no-pager log --pretty=tformat:'    %C(auto)%h %d %s' "v${cv}...HEAD"
+
+	cat <<-EOT
+
+	E: Next version argument required. Abort.
+	EOT
+	exit 4
+fi
+
+commit_msg=$(mktemp)
+
+cleanup() {
+	rm -f "${commit_msg}"
+}
+
+trap cleanup EXIT
+
+if ${head_is_release} ; then
+	# We have a release, tag it.
+
+	# First extract the version from the most recent commit. We know we
+	# have this because we tested for it above.
+	next_version=$(git log --format=%s --max-count=1 | sed -e 's,^Release \(\S\+\).*,\1,')
+
+	if test -z "${next_version}" ; then
+		echo 'E: Unexpected condition looking for the next version. Abort.'
+		exit 127
+	fi
+
+	# Then extract the commit message from the most recent commit.
+	git show --pretty=format:"%B" --no-patch > "${commit_msg}"
+
+	# Then create a tag with the next version.
+	git tag --annotate --file="${commit_msg}" "${next_version}"
+
+	cat <<-EOT
+	An annotated tag has been created for version ${next_version}.
+
+	You must push this tag to the remote repository in order to trigger the
+	release process.
+	EOT
+else
+	# Need to create release notes.
+	cur_version=$(git describe --tags | cut -d- -f1)
+
+	if ! docker image inspect "${gbt_image}" > /dev/null 2>&1 ; then
+		make build-local
+	fi
+
+	docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" --workdir /work "${gbt_image}" \
+		git chglog --next-tag "${next_version}" > CHANGELOG.md
+
+	git add CHANGELOG.md
+
+	git switch --create "release-${next_version}"
+
+	cat > "${commit_msg}" <<-EOT
+	Release ${next_version}
+
+	$(git log --oneline --reverse "${cur_version}".. | cut -d' ' -f2- | sed -e 's,^,* ,')
+	EOT
+
+	git commit --signoff --file="${commit_msg}"
+
+	cat <<-EOT
+
+	A commit has been created to update the CHANGELOG.md file and prepare a
+	release for version ${next_version}.
+
+	Please open a PR and once that is merged, run this script again with the
+	same version number as argument.
+	EOT
+fi

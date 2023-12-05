@@ -50,6 +50,9 @@ FROM registry.hub.docker.com/library/golang:1.21.3 as go-build
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.9.0 /bin/shellcheck /build
 
+    # Add git-chglog
+    RUN env GOBIN=/build go install github.com/git-chglog/git-chglog/cmd/git-chglog@v0.15.4
+
 FROM registry.hub.docker.com/library/debian:stable-slim as build
 
     COPY --from=go-build /usr/local/go /usr/local/go
