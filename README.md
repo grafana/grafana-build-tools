@@ -13,7 +13,7 @@ First you need to confirm that the image is building and that the changes are pr
 
 Once you confirmed the build passes and the changes are as expected do the following:
 
-1. create a commit with `Makefile`, `Dockerfile` and `image-test` changes.
+1. create a commit with `Makefile`, `Dockerfile` and `lib/image-test` changes.
 2. push the changes and create a new pull request.
 
 After the PR gets reviewed you need to check all the different places where `grafana-build-tools` is used and update accordingly. Here [`git grep`](http://git-scm.com/docs/git-grep) is your friend:

@@ -1,6 +1,6 @@
 FROM registry.hub.docker.com/library/golang:1.21.3 as go-build
 
-    COPY go.env /usr/local/go
+    COPY lib/go.env /usr/local/go
 
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet@v0.20.0
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnetfmt@v0.20.0
@@ -93,4 +93,4 @@ FROM registry.hub.docker.com/library/debian:stable-slim
     # what comes from the image vs stuff coming from the base image.
     COPY --from=go-build /build/* /usr/local/bin/
 
-    COPY image-test /usr/local/bin
+    COPY lib/image-test /usr/local/bin
