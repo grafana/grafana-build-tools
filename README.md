@@ -20,3 +20,14 @@ After the PR gets reviewed you need to check all the different places where `gra
 
 * `git grep grafana-build-tools` will list all places where `grafana-build-tools` is used.
 * `git grep grafana-build-tools:$OLDVERSION` same as before, but more restrictive.
+
+## Versioning
+
+_Assuming_ sane versioning schemas for the tools this container uses, the following guidelines apply:
+
+* If a tool updates its major number, this repo should update its major number
+* If a tool updates its minor number, this repo should update its minor number
+* If a tool updates its patch number, this repo should update its patch number
+* If a tool is removed, this repo should update its major number
+* If a feature for the logic _within_ this repo is implemented, this repo should update its minor number
+* If a fix for the logic _within_ this repo is implemented, this repo should update its patch number
