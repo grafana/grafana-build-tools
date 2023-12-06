@@ -36,6 +36,13 @@ FROM go as tools
     # This hasn't been released yet, so pin it to a specific version for reproducibility
     RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20231117175943-a267567c6fff
 
+    # Add grizzly
+    # The last released version of grizzly doesn't build (uses replace
+    # directives); we need to pin this to a commit until a new release is
+    # available.
+    RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@5f301fd6c773
+    # RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@v0.2.1
+
     # Add golangci-lint
     COPY --from=registry.hub.docker.com/golangci/golangci-lint:v1.55.2 /usr/bin/golangci-lint /build
 
