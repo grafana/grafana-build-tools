@@ -48,6 +48,9 @@ mage -version
 echo '=== nilaway'
 nilaway -help
 
+echo '=== grr'
+grr --version
+
 echo '=== golangci-lint'
 golangci-lint version
 
