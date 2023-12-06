@@ -73,3 +73,6 @@ git version
 
 echo '=== pkg-config'
 pkg-config --version
+
+echo '=== skopeo'
+skopeo --version
