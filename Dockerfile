@@ -1,21 +1,13 @@
-FROM registry.hub.docker.com/library/golang:1.21.5 as go-build
+FROM registry.hub.docker.com/library/golang:1.21.5 as go
 
     COPY lib/go.env /usr/local/go
+
+FROM go as tools
 
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet@v0.20.0
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnetfmt@v0.20.0
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-deps@v0.20.0
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-lint@v0.20.0
-
-    # The grafana/xk6 image only exists for amd64, so we need to build it for
-    # the target architecture.
-    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.9.2
-
-    # The grafana/k6 image only exists for amd64, so we need to build it for
-    # the architecture we are targeting. The simplest way to build k6 is to
-    # (ab)use xk6 to build a binary without any extensions. In the future, if
-    # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build v0.46.0 --output /build/k6
 
     # Add wire
     RUN env GOBIN=/build go install github.com/google/wire/cmd/wire@v0.5.0
@@ -56,9 +48,20 @@ FROM registry.hub.docker.com/library/golang:1.21.5 as go-build
     # Add gotestsum
     RUN env GOBIN=/build go install gotest.tools/gotestsum@v1.11.0
 
-FROM registry.hub.docker.com/library/debian:stable-slim as build
+FROM go AS k6
+    # The grafana/xk6 image only exists for amd64, so we need to build it for
+    # the target architecture.
+    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.9.2
 
-    COPY --from=go-build /usr/local/go /usr/local/go
+    # The grafana/k6 image only exists for amd64, so we need to build it for
+    # the architecture we are targeting. The simplest way to build k6 is to
+    # (ab)use xk6 to build a binary without any extensions. In the future, if
+    # we wanted additional extensions, this is the place to add them.
+    RUN /build/xk6 build v0.46.0 --output /build/k6
+
+FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
+
+    COPY --from=go /usr/local/go /usr/local/go
 
     ENV PATH="/usr/local/go/bin:${PATH}"
 
@@ -79,7 +82,7 @@ FROM registry.hub.docker.com/library/debian:stable-slim as build
         mkdir -p /build && \
         cp bin/skopeo /build/
 
-FROM registry.hub.docker.com/library/debian:stable-slim
+FROM registry.hub.docker.com/library/debian:stable-slim AS final
 
     RUN apt-get update && \
         apt-get install -y \
@@ -92,11 +95,15 @@ FROM registry.hub.docker.com/library/debian:stable-slim
             && \
         rm -rf /var/lib/apt/lists
 
-    COPY --from=go-build /usr/local/go /usr/local/go
+    COPY --from=go /usr/local/go /usr/local/go
     ENV PATH="/usr/local/go/bin:${PATH}"
 
     # Keep tools in /usr/local/bin. That makes it a little bit easier to see
     # what comes from the image vs stuff coming from the base image.
-    COPY --from=go-build /build/* /usr/local/bin/
+    COPY --from=tools /build/* /usr/local/bin/
+
+    COPY --from=k6 /build/* /usr/local/bin/
+
+    COPY --from=skopeo /build/* /usr/local/bin/
 
     COPY lib/image-test /usr/local/bin
