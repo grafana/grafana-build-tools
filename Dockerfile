@@ -43,6 +43,9 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@5f301fd6c773
     # RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@v0.2.1
 
+    # Add semversort
+    RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
+
     # Add golangci-lint
     COPY --from=registry.hub.docker.com/golangci/golangci-lint:v1.55.2 /usr/bin/golangci-lint /build
 
@@ -54,6 +57,9 @@ FROM go as tools
 
     # Add gotestsum
     RUN env GOBIN=/build go install gotest.tools/gotestsum@v1.11.0
+
+    # Add jq
+    COPY --from=ghcr.io/jqlang/jq:1.7 /jq /build
 
 FROM go AS k6
     # The grafana/xk6 image only exists for amd64, so we need to build it for
@@ -114,3 +120,5 @@ FROM registry.hub.docker.com/library/debian:stable-slim AS final
     COPY --from=skopeo /build/* /usr/local/bin/
 
     COPY lib/image-test /usr/local/bin
+
+    COPY lib/get-latest-gbt-version /usr/local/bin

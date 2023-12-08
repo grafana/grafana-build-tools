@@ -1,0 +1,6 @@
+#!/bin/sh
+
+skopeo list-tags docker://ghcr.io/grafana/grafana-build-tools |
+	jq -r '.Tags[] | select(. | startswith("v"))' |
+	semversort |
+	tail -1

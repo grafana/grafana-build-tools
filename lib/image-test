@@ -48,6 +48,9 @@ mage -version
 echo '=== nilaway'
 nilaway -help
 
+echo '=== semversort'
+semversort < /dev/null
+
 echo '=== grr'
 grr --version
 
@@ -62,6 +65,9 @@ git-chglog --help
 
 echo '=== gotestsum'
 gotestsum --version
+
+echo '=== jq'
+jq --version
 
 echo '=== gcc'
 gcc --version
@@ -79,3 +85,6 @@ pkg-config --version
 
 echo '=== skopeo'
 skopeo --version
+
+echo '=== get-latest-gbt-version'
+command -v get-latest-gbt-version
