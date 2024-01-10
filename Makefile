@@ -93,6 +93,10 @@ push-manifest:
 		docker manifest push $$tag ; \
 	done
 
+Dockerfile: Dockerfile.tmpl versions.yaml
+	$(S) docker run -i -v '/$(CURDIR)/versions.yaml:/data/versions.yaml' \
+		hairyhenderson/gomplate --context 'data=file:///data/versions.yaml?type=application/yaml' < Dockerfile.tmpl > "$@"
+
 ##@ Helpers
 
 .PHONY: image-prefix
