@@ -16,7 +16,7 @@ git-chglog:
   type: go
 go:
   repo: registry.hub.docker.com/library/golang
-  version: 1.21.5
+  version: 1.21.6
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
