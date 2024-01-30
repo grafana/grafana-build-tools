@@ -1,24 +1,31 @@
 bingo:
   repo: github.com/bwplotka/bingo
   version: v0.8.0
+  type: go
 buf:
   repo: github.com/bufbuild/buf
   version: v1.26.1
+  type: go
 enumer:
   repo: github.com/dmarkham/enumer
   version: v1.5.7
+  type: go
 git-chglog:
   repo: github.com/git-chglog/git-chglog
   version: v0.15.4
+  type: go
 go:
   repo: registry.hub.docker.com/library/golang
   version: 1.21.5
+  type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
   version: v1.55.2
+  type: go
 gotestsum:
   repo: gotest.tools/gotestsum
   version: v1.11.0
+  type: go
 grizzly:
   repo: github.com/grafana/grizzly
   # The last released version of grizzly doesn't build (uses replace
@@ -26,38 +33,53 @@ grizzly:
   # available.
   # version: v0.2.1
   version: 5f301fd6c773
+  type: go
 grpc:
   repo: google.golang.org/grpc
   version: v1.3.0
+  type: go
 jq:
   repo: ghcr.io/jqlang/jq
   version: 1.7
+  type: docker
 jsonnet:
   repo: github.com/google/go-jsonnet
   version: v0.20.0
+  type: go
 k6:
+  repo: github.com/grafana/k6
   version: v0.46.0
+  type: go
 mage:
   repo: github.com/magefile/mage
   version: v1.15.0
+  type: go
 nilaway:
   repo: go.uber.org/nilaway
   # This hasn't been released yet, so pin it to a specific version for reproducibility
   version: v0.0.0-20231117175943-a267567c6fff
+  type: go
 protobuf:
   repo: google.golang.org/protobuf
   version: v1.31.0
+  type: go
 semversort:
   repo: github.com/whereswaldon/semversort
   version: v0.0.6
+  type: go
 shellcheck:
   repo: registry.hub.docker.com/koalaman/shellcheck
   version: v0.9.0
+  type: docker
 skopeo:
   repo: github.com/containers/skopeo
+  version: v1.14.0
+  type: go
 wire:
   repo: github.com/google/wire
   version: v0.5.0
+  type: go
 xk6:
   repo: go.k6.io/xk6
   version: v0.9.2
+  type: go
