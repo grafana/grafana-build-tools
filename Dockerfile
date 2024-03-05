@@ -10,22 +10,22 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-lint@v0.20.0
 
     # Add wire
-    RUN env GOBIN=/build go install github.com/google/wire/cmd/wire@v0.5.0
+    RUN env GOBIN=/build go install github.com/google/wire/cmd/wire@v0.6.0
 
     # Add bingo
     RUN env GOBIN=/build go install github.com/bwplotka/bingo@v0.8.0
 
     # Add enumer
-    RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.7
+    RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.9
 
     # Add protoc-gen-go
-    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.31.0
+    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.32.0
 
     # Add protoc-gen-go-grpc
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.26.1
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.29.0
 
     # Add mage
     RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
@@ -33,7 +33,7 @@ FROM go as tools
         env GOBIN=/build go run bootstrap.go
 
     # Add nilaway
-    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20231117175943-a267567c6fff
+    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240224031343-67945fb5199f
 
     # Add grizzly
     RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@5f301fd6c773
@@ -42,7 +42,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.55.2
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.2
 
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.9.0 /bin/shellcheck /build
@@ -54,12 +54,12 @@ FROM go as tools
     RUN env GOBIN=/build go install gotest.tools/gotestsum@v1.11.0
 
     # Add jq
-    COPY --from=ghcr.io/jqlang/jq:1.7 /jq /build
+    COPY --from=ghcr.io/jqlang/jq:1.7.1 /jq /build
 
 FROM go AS k6
     # The grafana/xk6 image only exists for amd64, so we need to build it for
     # the target architecture.
-    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.10.0
+    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.11.0
 
     # The grafana/k6 image only exists for amd64, so we need to build it for
     # the architecture we are targeting. The simplest way to build k6 is to

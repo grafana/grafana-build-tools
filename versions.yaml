@@ -4,11 +4,11 @@ bingo:
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.26.1
+  version: v1.29.0
   type: go
 enumer:
   repo: github.com/dmarkham/enumer
-  version: v1.5.7
+  version: v1.5.9
   type: go
 git-chglog:
   repo: github.com/git-chglog/git-chglog
@@ -20,7 +20,7 @@ go:
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
-  version: v1.55.2
+  version: v1.56.2
   type: go
 gotestsum:
   repo: gotest.tools/gotestsum
@@ -40,7 +40,7 @@ grpc:
   type: go
 jq:
   repo: ghcr.io/jqlang/jq
-  version: 1.7
+  version: 1.7.1
   type: docker
 jsonnet:
   repo: github.com/google/go-jsonnet
@@ -57,11 +57,11 @@ mage:
 nilaway:
   repo: go.uber.org/nilaway
   # This hasn't been released yet, so pin it to a specific version for reproducibility
-  version: v0.0.0-20231117175943-a267567c6fff
+  version: v0.0.0-20240224031343-67945fb5199f
   type: go
 protobuf:
   repo: google.golang.org/protobuf
-  version: v1.31.0
+  version: v1.32.0
   type: go
 semversort:
   repo: github.com/whereswaldon/semversort
@@ -77,9 +77,9 @@ skopeo:
   type: go
 wire:
   repo: github.com/google/wire
-  version: v0.5.0
+  version: v0.6.0
   type: go
 xk6:
   repo: go.k6.io/xk6
-  version: v0.10.0
+  version: v0.11.0
   type: go
