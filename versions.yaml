@@ -1,10 +1,10 @@
 bingo:
   repo: github.com/bwplotka/bingo
-  version: v0.8.0
+  version: v0.9.0
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.29.0
+  version: v1.30.0
   type: go
 enumer:
   repo: github.com/dmarkham/enumer
@@ -27,15 +27,16 @@ gotestsum:
   version: v1.11.0
   type: go
 grizzly:
+  comment: |
+    The last released version of grizzly doesn't build (uses replace
+    directives); we need to pin this to a commit until a new release is
+    available.
+    version: v0.2.1
   repo: github.com/grafana/grizzly
-  # The last released version of grizzly doesn't build (uses replace
-  # directives); we need to pin this to a commit until a new release is
-  # available.
-  # version: v0.2.1
   version: 5f301fd6c773
   type: go
 grpc:
-  repo: google.golang.org/grpc
+  repo: google.golang.org/grpc/cmd/protoc-gen-go-grpc
   version: v1.3.0
   type: go
 jq:
@@ -55,13 +56,14 @@ mage:
   version: v1.15.0
   type: go
 nilaway:
+  comment: |
+    This hasn't been released yet, so pin it to a specific version for reproducibility
   repo: go.uber.org/nilaway
-  # This hasn't been released yet, so pin it to a specific version for reproducibility
   version: v0.0.0-20240224031343-67945fb5199f
   type: go
 protobuf:
   repo: google.golang.org/protobuf
-  version: v1.32.0
+  version: v1.33.0
   type: go
 semversort:
   repo: github.com/whereswaldon/semversort
@@ -69,7 +71,7 @@ semversort:
   type: go
 shellcheck:
   repo: registry.hub.docker.com/koalaman/shellcheck
-  version: v0.9.0
+  version: v0.10.0
   type: docker
 skopeo:
   repo: github.com/containers/skopeo

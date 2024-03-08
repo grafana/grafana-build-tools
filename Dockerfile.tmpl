@@ -22,7 +22,7 @@ FROM go as tools
     RUN env GOBIN=/build go install {{ .data.protobuf.repo }}/cmd/protoc-gen-go@{{ .data.protobuf.version }}
 
     # Add protoc-gen-go-grpc
-    RUN env GOBIN=/build go install {{ .data.grpc.repo }}/cmd/protoc-gen-go-grpc@{{ .data.grpc.version }}
+    RUN env GOBIN=/build go install {{ .data.grpc.repo }}@{{ .data.grpc.version }}
 
     # Add buf
     RUN env GOBIN=/build go install {{ .data.buf.repo }}/cmd/buf@{{ .data.buf.version }}
