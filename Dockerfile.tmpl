@@ -15,6 +15,11 @@ FROM go as tools
     # Add bingo
     RUN env GOBIN=/build go install {{ .data.bingo.repo }}@{{ .data.bingo.version }}
 
+    # Add dockerfile-json
+    RUN git clone --depth 1 --branch {{ index .data "dockerfile-json" "version" }} https://{{ index .data "dockerfile-json" "repo" }} dockerfile-json && \
+        cd dockerfile-json && \
+        env GOBIN=/build go install .
+
     # Add enumer
     RUN env GOBIN=/build go install {{ .data.enumer.repo }}@{{ .data.enumer.version }}
 

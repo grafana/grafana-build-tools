@@ -6,6 +6,10 @@ buf:
   repo: github.com/bufbuild/buf
   version: v1.30.0
   type: go
+dockerfile-json:
+  repo: github.com/keilerkonzept/dockerfile-json
+  version: 1.0.8
+  type: go
 enumer:
   repo: github.com/dmarkham/enumer
   version: v1.5.9

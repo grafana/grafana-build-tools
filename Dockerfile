@@ -15,6 +15,11 @@ FROM go as tools
     # Add bingo
     RUN env GOBIN=/build go install github.com/bwplotka/bingo@v0.9.0
 
+    # Add dockerfile-json
+    RUN git clone --depth 1 --branch 1.0.8 https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
+        cd dockerfile-json && \
+        env GOBIN=/build go install .
+
     # Add enumer
     RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.9
 
