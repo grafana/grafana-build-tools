@@ -30,6 +30,9 @@ wire help
 echo '=== bingo'
 bingo version
 
+echo '=== dockerfile-json'
+dockerfile-json -help
+
 echo '=== enumer'
 enumer -help
 
