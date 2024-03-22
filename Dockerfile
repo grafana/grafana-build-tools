@@ -47,7 +47,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.2
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.57.1
 
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build

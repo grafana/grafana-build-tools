@@ -24,7 +24,7 @@ go:
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
-  version: v1.56.2
+  version: v1.57.1
   type: go
 gotestsum:
   repo: gotest.tools/gotestsum
@@ -79,7 +79,7 @@ shellcheck:
   type: docker
 skopeo:
   repo: github.com/containers/skopeo
-  version: v1.14.2
+  version: v1.15.0
   type: go
 wire:
   repo: github.com/google/wire
