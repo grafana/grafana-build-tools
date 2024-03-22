@@ -30,7 +30,7 @@ FROM go as tools
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.30.0
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.30.1
 
     # Add mage
     RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
@@ -47,7 +47,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.2
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.57.2
 
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build
@@ -70,7 +70,7 @@ FROM go AS k6
     # the architecture we are targeting. The simplest way to build k6 is to
     # (ab)use xk6 to build a binary without any extensions. In the future, if
     # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build v0.49.0 --output /build/k6
+    RUN /build/xk6 build v0.50.0 --output /build/k6
 
 FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
 
@@ -91,6 +91,7 @@ FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
     # inspect the available versions without pulling the repos.
     RUN git clone https://github.com/containers/skopeo && \
         cd skopeo && \
+        git checkout "v1.15.0" && \
         make GOBIN=/build DISABLE_DOCS=1 bin/skopeo && \
         mkdir -p /build && \
         cp bin/skopeo /build/
