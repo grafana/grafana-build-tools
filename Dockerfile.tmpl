@@ -91,6 +91,7 @@ FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
     # inspect the available versions without pulling the repos.
     RUN git clone https://{{ .data.skopeo.repo }} && \
         cd skopeo && \
+        git checkout "{{ .data.skopeo.version }}" && \
         make GOBIN=/build DISABLE_DOCS=1 bin/skopeo && \
         mkdir -p /build && \
         cp bin/skopeo /build/
