@@ -1,4 +1,4 @@
-FROM registry.hub.docker.com/library/golang:1.22.1 as go
+FROM registry.hub.docker.com/library/golang:1.22.2 as go
 
     COPY lib/go.env /usr/local/go
 
