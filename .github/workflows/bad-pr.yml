@@ -1,0 +1,25 @@
+name: "Verify generated files"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - versions.yaml
+      - Dockerfile.tmpl
+
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate pull request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify generated files
+        run: |
+          # Generate Dockerfile
+          make Dockerfile
+          # Check if the generated Dockerfile is different from the one in the repository
+          git diff --no-ext-diff --quiet
