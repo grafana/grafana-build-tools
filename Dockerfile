@@ -24,7 +24,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.9
 
     # Add protoc-gen-go
-    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.33.0
+    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.1
 
     # Add protoc-gen-go-grpc
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
@@ -47,7 +47,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.57.2
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.1
 
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build
@@ -70,7 +70,7 @@ FROM go AS k6
     # the architecture we are targeting. The simplest way to build k6 is to
     # (ab)use xk6 to build a binary without any extensions. In the future, if
     # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build v0.50.0 --output /build/k6
+    RUN /build/xk6 build v0.51.0 --output /build/k6
 
 FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
 
