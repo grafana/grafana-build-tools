@@ -24,7 +24,7 @@ go:
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
-  version: v1.57.2
+  version: v1.58.1
   type: go
 gotestsum:
   repo: gotest.tools/gotestsum
@@ -53,7 +53,7 @@ jsonnet:
   type: go
 k6:
   repo: github.com/grafana/k6
-  version: v0.50.0
+  version: v0.51.0
   type: go
 mage:
   repo: github.com/magefile/mage
@@ -67,7 +67,7 @@ nilaway:
   type: go
 protobuf:
   repo: google.golang.org/protobuf
-  version: v1.33.0
+  version: v1.34.1
   type: go
 semversort:
   repo: github.com/whereswaldon/semversort
