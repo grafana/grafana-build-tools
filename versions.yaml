@@ -4,7 +4,7 @@ bingo:
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.30.1
+  version: v1.32.2
   type: go
 dockerfile-json:
   repo: github.com/keilerkonzept/dockerfile-json
@@ -24,11 +24,11 @@ go:
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
-  version: v1.58.1
+  version: v1.59.0
   type: go
 gotestsum:
   repo: gotest.tools/gotestsum
-  version: v1.11.0
+  version: v1.12.0
   type: go
 grizzly:
   comment: |
@@ -79,7 +79,7 @@ shellcheck:
   type: docker
 skopeo:
   repo: github.com/containers/skopeo
-  version: v1.15.0
+  version: v1.15.1
   type: go
 wire:
   repo: github.com/google/wire
