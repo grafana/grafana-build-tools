@@ -1,4 +1,4 @@
-FROM registry.hub.docker.com/library/golang:1.22.3 as go
+FROM registry.hub.docker.com/library/golang:1.22.4 as go
 
     COPY lib/go.env /usr/local/go
 
@@ -27,7 +27,7 @@ FROM go as tools
     RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.1
 
     # Add protoc-gen-go-grpc
-    RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
+    RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.4.0
 
     # Add buf
     RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.32.2
