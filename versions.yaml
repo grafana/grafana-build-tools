@@ -20,7 +20,7 @@ git-chglog:
   type: go
 go:
   repo: registry.hub.docker.com/library/golang
-  version: 1.22.3
+  version: 1.22.4
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
@@ -41,7 +41,7 @@ grizzly:
   type: go
 grpc:
   repo: google.golang.org/grpc/cmd/protoc-gen-go-grpc
-  version: v1.3.0
+  version: v1.4.0
   type: go
 jq:
   repo: ghcr.io/jqlang/jq
