@@ -4,7 +4,7 @@ bingo:
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.32.2
+  version: v1.33.0
   type: go
 dockerfile-json:
   repo: github.com/keilerkonzept/dockerfile-json
@@ -12,7 +12,7 @@ dockerfile-json:
   type: go
 enumer:
   repo: github.com/dmarkham/enumer
-  version: v1.5.9
+  version: v1.5.10
   type: go
 git-chglog:
   repo: github.com/git-chglog/git-chglog
@@ -24,7 +24,7 @@ go:
   type: docker
 golangci-lint:
   repo: github.com/golangci/golangci-lint
-  version: v1.59.0
+  version: v1.59.1
   type: go
 gotestsum:
   repo: gotest.tools/gotestsum
@@ -63,11 +63,11 @@ nilaway:
   comment: |
     This hasn't been released yet, so pin it to a specific version for reproducibility
   repo: go.uber.org/nilaway
-  version: v0.0.0-20240224031343-67945fb5199f
+  version: v0.0.0-20240606130242-e90288479601
   type: go
 protobuf:
   repo: google.golang.org/protobuf
-  version: v1.34.1
+  version: v1.34.2
   type: go
 semversort:
   repo: github.com/whereswaldon/semversort

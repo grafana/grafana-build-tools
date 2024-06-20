@@ -21,16 +21,16 @@ FROM go as tools
         env GOBIN=/build go install .
 
     # Add enumer
-    RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.9
+    RUN env GOBIN=/build go install github.com/dmarkham/enumer@v1.5.10
 
     # Add protoc-gen-go
-    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.1
+    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.2
 
     # Add protoc-gen-go-grpc
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.4.0
 
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.32.2
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.33.0
 
     # Add mage
     RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
@@ -38,7 +38,7 @@ FROM go as tools
         env GOBIN=/build go run bootstrap.go
 
     # Add nilaway
-    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240224031343-67945fb5199f
+    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240606130242-e90288479601
 
     # Add grizzly
     RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@5f301fd6c773
@@ -47,7 +47,7 @@ FROM go as tools
     RUN env GOBIN=/build go install github.com/whereswaldon/semversort@v0.0.6
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.59.0
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.59.1
 
     # Add shellcheck
     COPY --from=registry.hub.docker.com/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build
