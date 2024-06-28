@@ -28,6 +28,7 @@ BUILD_TARGETS :=
 
 define build-target
 .PHONY: build-$(1)
+build-$(1): Dockerfile
 build-$(1):
 	@set -e
 	docker build . -f Dockerfile -t "$(IMAGE)-$(1)"
@@ -38,6 +39,7 @@ endef
 $(foreach BUILD_ARCH,$(PUSH_ARCHES),$(eval $(call build-target,$(BUILD_ARCH))))
 
 .PHONY: build-local
+build-local: Dockerfile
 build-local:
 	docker build . -f Dockerfile -t "$(LOCAL_IMAGE)"
 
