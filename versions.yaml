@@ -4,7 +4,7 @@ bingo:
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.33.0
+  version: v1.34.0
   type: go
 dockerfile-json:
   repo: github.com/keilerkonzept/dockerfile-json
@@ -53,7 +53,7 @@ jsonnet:
   type: go
 k6:
   repo: github.com/grafana/k6
-  version: v0.51.0
+  version: v0.52.0
   type: go
 mage:
   repo: github.com/magefile/mage

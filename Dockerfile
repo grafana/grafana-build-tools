@@ -30,7 +30,7 @@ FROM go as tools
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.4.0
 
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.33.0
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.34.0
 
     # Add mage
     RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
@@ -70,7 +70,7 @@ FROM go AS k6
     # the architecture we are targeting. The simplest way to build k6 is to
     # (ab)use xk6 to build a binary without any extensions. In the future, if
     # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build v0.51.0 --output /build/k6
+    RUN /build/xk6 build v0.52.0 --output /build/k6
 
 FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
 
