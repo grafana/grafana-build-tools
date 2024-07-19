@@ -64,7 +64,7 @@ FROM go as tools
 FROM go AS k6
     # The grafana/xk6 image only exists for amd64, so we need to build it for
     # the target architecture.
-    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.11.0
+    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@v0.12.1
 
     # The grafana/k6 image only exists for amd64, so we need to build it for
     # the architecture we are targeting. The simplest way to build k6 is to
