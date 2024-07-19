@@ -79,7 +79,7 @@ shellcheck:
   type: docker
 skopeo:
   repo: github.com/containers/skopeo
-  version: v1.15.1
+  version: v1.15.2
   type: go
 wire:
   repo: github.com/google/wire
