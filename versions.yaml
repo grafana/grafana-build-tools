@@ -63,7 +63,7 @@ nilaway:
   comment: |
     This hasn't been released yet, so pin it to a specific version for reproducibility
   repo: go.uber.org/nilaway
-  version: v0.0.0-20240606130242-e90288479601
+  version: v0.0.0-20240719152558-28b542b82e69
   type: go
 protobuf:
   repo: google.golang.org/protobuf
