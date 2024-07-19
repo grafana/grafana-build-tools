@@ -38,7 +38,7 @@ FROM go as tools
         env GOBIN=/build go run bootstrap.go
 
     # Add nilaway
-    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240606130242-e90288479601
+    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240719152558-28b542b82e69
 
     # Add grizzly
     RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@5f301fd6c773
