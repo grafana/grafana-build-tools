@@ -87,5 +87,5 @@ wire:
   type: go
 xk6:
   repo: go.k6.io/xk6
-  version: v0.12.1
+  version: v0.12.2
   type: go
