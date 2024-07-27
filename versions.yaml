@@ -4,7 +4,7 @@ bingo:
   type: go
 buf:
   repo: github.com/bufbuild/buf
-  version: v1.34.0
+  version: v1.35.1
   type: go
 dockerfile-json:
   repo: github.com/keilerkonzept/dockerfile-json
