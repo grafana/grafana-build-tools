@@ -30,7 +30,7 @@ FROM go as tools
     RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.4.0
 
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.34.0
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@v1.35.1
 
     # Add mage
     RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
