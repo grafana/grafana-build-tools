@@ -1,79 +1,77 @@
-FROM {{ .data.go.repo }}:{{ .data.go.version }} as go
+FROM registry.hub.docker.com/library/golang:{{ .data.go }} as go
 
     COPY lib/go.env /usr/local/go
 
 FROM go as tools
-
-    RUN env GOBIN=/build go install {{ .data.jsonnet.repo }}/cmd/jsonnet@{{ .data.jsonnet.version }}
-    RUN env GOBIN=/build go install {{ .data.jsonnet.repo }}/cmd/jsonnetfmt@{{ .data.jsonnet.version }}
-    RUN env GOBIN=/build go install {{ .data.jsonnet.repo }}/cmd/jsonnet-deps@{{ .data.jsonnet.version }}
-    RUN env GOBIN=/build go install {{ .data.jsonnet.repo }}/cmd/jsonnet-lint@{{ .data.jsonnet.version }}
+    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnetfmt@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-deps@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-lint@{{ .data.go_jsonnet }}
 
     # Add wire
-    RUN env GOBIN=/build go install {{ .data.wire.repo }}/cmd/wire@{{ .data.wire.version }}
+    RUN env GOBIN=/build go install github.com/google/wire/cmd/wire@{{ .data.wire }}
 
     # Add bingo
-    RUN env GOBIN=/build go install {{ .data.bingo.repo }}@{{ .data.bingo.version }}
+    RUN env GOBIN=/build go install github.com/bwplotka/bingo@{{ .data.bingo }}
 
     # Add dockerfile-json
-    RUN git clone --depth 1 --branch {{ index .data "dockerfile-json" "version" }} https://{{ index .data "dockerfile-json" "repo" }} dockerfile-json && \
+    RUN git clone --depth 1 --branch {{ .data.dockerfile_json }} https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
         cd dockerfile-json && \
         env GOBIN=/build go install .
 
     # Add enumer
-    RUN env GOBIN=/build go install {{ .data.enumer.repo }}@{{ .data.enumer.version }}
+    RUN env GOBIN=/build go install github.com/dmarkham/enumer@{{ .data.enumer }}
 
     # Add protoc-gen-go
-    RUN env GOBIN=/build go install {{ .data.protobuf.repo }}/cmd/protoc-gen-go@{{ .data.protobuf.version }}
+    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@{{ .data.protoc_gen_go }}
 
     # Add protoc-gen-go-grpc
-    RUN env GOBIN=/build go install {{ .data.grpc.repo }}@{{ .data.grpc.version }}
+    RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@{{ .data.protoc_gen_go_grpc }}
 
     # Add buf
-    RUN env GOBIN=/build go install {{ .data.buf.repo }}/cmd/buf@{{ .data.buf.version }}
+    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@{{ .data.buf }}
 
     # Add mage
-    RUN git clone --depth 1 --branch {{ .data.mage.version }} https://{{ .data.mage.repo }} mage && \
+    RUN git clone --depth 1 --branch {{ .data.mage }} https://github.com/magefile/mage mage && \
         cd mage && \
         env GOBIN=/build go run bootstrap.go
 
     # Add nilaway
-    RUN env GOBIN=/build go install {{ .data.nilaway.repo }}/cmd/nilaway@{{ .data.nilaway.version }}
+    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@{{ .data.nilaway }}
 
     # Add grizzly
-    RUN env GOBIN=/build go install {{ .data.grizzly.repo }}/cmd/grr@{{ .data.grizzly.version }}
+    RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@{{ .data.grizzly }}
 
     # Add semversort
-    RUN env GOBIN=/build go install {{ .data.semversort.repo }}@{{ .data.semversort.version }}
+    RUN env GOBIN=/build go install github.com/whereswaldon/semversort@{{ .data.semversort }}
 
     # Add golangci-lint
-    RUN env GOBIN=/build go install {{ (index .data "golangci-lint").repo }}/cmd/golangci-lint@{{ (index .data "golangci-lint").version }}
+    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@{{ .data.golangci_lint }}
 
     # Add shellcheck
-    COPY --from={{ .data.shellcheck.repo }}:{{ .data.shellcheck.version }} /bin/shellcheck /build
+    COPY --from=registry.hub.docker.com/koalaman/shellcheck:{{ .data.shellcheck }} /bin/shellcheck /build
 
     # Add git-chglog
-    RUN env GOBIN=/build go install {{ (index .data "git-chglog").repo }}/cmd/git-chglog@{{ (index .data "git-chglog").version }}
+    RUN env GOBIN=/build go install github.com/git-chglog/git-chglog/cmd/git-chglog@{{ .data.git_chglog }}
 
     # Add gotestsum
-    RUN env GOBIN=/build go install {{ .data.gotestsum.repo }}@{{ .data.gotestsum.version }}
+    RUN env GOBIN=/build go install gotest.tools/gotestsum@{{ .data.gotestsum }}
 
     # Add jq
-    COPY --from={{ .data.jq.repo }}:{{ .data.jq.version }} /jq /build
+    COPY --from=ghcr.io/jqlang/jq:{{ .data.jq }} /jq /build
 
 FROM go AS k6
     # The grafana/xk6 image only exists for amd64, so we need to build it for
     # the target architecture.
-    RUN env GOBIN=/build go install {{ .data.xk6.repo }}/cmd/xk6@{{ .data.xk6.version }}
+    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@{{ .data.xk6 }}
 
     # The grafana/k6 image only exists for amd64, so we need to build it for
     # the architecture we are targeting. The simplest way to build k6 is to
     # (ab)use xk6 to build a binary without any extensions. In the future, if
     # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build {{ .data.k6.version }} --output /build/k6
+    RUN /build/xk6 build {{ .data.k6 }} --output /build/k6
 
 FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
-
     COPY --from=go /usr/local/go /usr/local/go
 
     ENV PATH="/usr/local/go/bin:${PATH}"
@@ -89,9 +87,9 @@ FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
 
     # skopeo is used to inspect container registries. This can be used to
     # inspect the available versions without pulling the repos.
-    RUN git clone https://{{ .data.skopeo.repo }} && \
+    RUN git clone https://github.com/containers/skopeo && \
         cd skopeo && \
-        git checkout "{{ .data.skopeo.version }}" && \
+        git checkout "{{ .data.skopeo }}" && \
         make GOBIN=/build DISABLE_DOCS=1 bin/skopeo && \
         mkdir -p /build && \
         cp bin/skopeo /build/

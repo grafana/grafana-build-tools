@@ -58,6 +58,9 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Dockerfile
+        run: make Dockerfile
+
       - # This will only build the container image, not publish it
         name: Build container image and export to Docker
         uses: docker/build-push-action@v5

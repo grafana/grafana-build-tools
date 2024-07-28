@@ -1,0 +1,35 @@
+name: Renovate
+on:
+  # Uncomment once this has been validated to work.
+  #
+  # schedule:
+  #   - cron:  '0 */4 * * *'
+  workflow_dispatch:
+jobs:
+  renovate:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a #v2.1.0
+        with:
+          revoke: true
+          app_id: ${{ secrets.RENOVATEGRAFANA_ID }}
+          private_key: ${{ secrets.RENOVATEGRAFANA_PEM }}
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
+        with:
+          renovate-version: 37.420.1@sha256:528f003c9aa77f6e916e3f9f5cc2fb9ae16fcf285af66f412a34325124f4a00e
+          configurationFile: .github/renovate-app.json
+          token: '${{ steps.generate-token.outputs.token }}'
+        env:
+          GITHUB_COM_TOKEN: ${{ secrets.GRAFANABOT_PAT }}
+          LOG_LEVEL: debug
+          RENOVATE_PLATFORM: github
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_USERNAME: GrafanaRenovateBot
