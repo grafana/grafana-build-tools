@@ -5,11 +5,12 @@ on:
     branches:
       - main
     paths:
-      - Makefile
-      - Dockerfile
-      - lib/**
-      - scripts/**
+      - Dockerfile.tmpl
       - .github/workflows/**
+      - lib/**
+      - Makefile
+      - scripts/**
+      - versions.yaml
 
   workflow_dispatch:
 
