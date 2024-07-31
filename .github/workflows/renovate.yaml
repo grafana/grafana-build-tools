@@ -1,9 +1,7 @@
 name: Renovate
 on:
-  # Uncomment once this has been validated to work.
-  #
-  # schedule:
-  #   - cron:  '0 */4 * * *'
+  schedule:
+    - cron:  '41 */6 * * *'
   workflow_dispatch:
 jobs:
   renovate:
