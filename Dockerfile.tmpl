@@ -1,77 +1,95 @@
-FROM registry.hub.docker.com/library/golang:{{ .data.go }} as go
+FROM docker.io/library/golang:{{ .data.go }} as go
+    COPY lib/go.env /usr/local/go/
+    RUN mkdir -p /build/bin
 
-    COPY lib/go.env /usr/local/go
+FROM go as go_jsonnet
+    RUN env GOBIN=/build/bin go install github.com/google/go-jsonnet/cmd/jsonnet@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build/bin go install github.com/google/go-jsonnet/cmd/jsonnetfmt@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build/bin go install github.com/google/go-jsonnet/cmd/jsonnet-deps@{{ .data.go_jsonnet }}
+    RUN env GOBIN=/build/bin go install github.com/google/go-jsonnet/cmd/jsonnet-lint@{{ .data.go_jsonnet }}
 
-FROM go as tools
-    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet@{{ .data.go_jsonnet }}
-    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnetfmt@{{ .data.go_jsonnet }}
-    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-deps@{{ .data.go_jsonnet }}
-    RUN env GOBIN=/build go install github.com/google/go-jsonnet/cmd/jsonnet-lint@{{ .data.go_jsonnet }}
-
+FROM go as wire
     # Add wire
-    RUN env GOBIN=/build go install github.com/google/wire/cmd/wire@{{ .data.wire }}
+    RUN env GOBIN=/build/bin go install github.com/google/wire/cmd/wire@{{ .data.wire }}
 
+FROM go as bingo
     # Add bingo
-    RUN env GOBIN=/build go install github.com/bwplotka/bingo@{{ .data.bingo }}
+    RUN env GOBIN=/build/bin go install github.com/bwplotka/bingo@{{ .data.bingo }}
 
+FROM go as dockerfile_json
     # Add dockerfile-json
     RUN git clone --depth 1 --branch {{ .data.dockerfile_json }} https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
         cd dockerfile-json && \
-        env GOBIN=/build go install .
+        env GOBIN=/build/bin go install .
 
+FROM go as enumer
     # Add enumer
-    RUN env GOBIN=/build go install github.com/dmarkham/enumer@{{ .data.enumer }}
+    RUN env GOBIN=/build/bin go install github.com/dmarkham/enumer@{{ .data.enumer }}
 
+FROM go as protoc_gen_go
     # Add protoc-gen-go
-    RUN env GOBIN=/build go install google.golang.org/protobuf/cmd/protoc-gen-go@{{ .data.protoc_gen_go }}
+    RUN env GOBIN=/build/bin go install google.golang.org/protobuf/cmd/protoc-gen-go@{{ .data.protoc_gen_go }}
 
+FROM go as protoc_gen_go_grpc
     # Add protoc-gen-go-grpc
-    RUN env GOBIN=/build go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@{{ .data.protoc_gen_go_grpc }}
+    RUN env GOBIN=/build/bin go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@{{ .data.protoc_gen_go_grpc }}
 
+FROM go as buf
     # Add buf
-    RUN env GOBIN=/build go install github.com/bufbuild/buf/cmd/buf@{{ .data.buf }}
+    RUN env GOBIN=/build/bin go install github.com/bufbuild/buf/cmd/buf@{{ .data.buf }}
 
+FROM go as mage
     # Add mage
     RUN git clone --depth 1 --branch {{ .data.mage }} https://github.com/magefile/mage mage && \
         cd mage && \
-        env GOBIN=/build go run bootstrap.go
+        mkdir -p /build/bin && \
+        env GOBIN=/build/bin go run bootstrap.go
 
+FROM go as nilaway
     # Add nilaway
-    RUN env GOBIN=/build go install go.uber.org/nilaway/cmd/nilaway@{{ .data.nilaway }}
+    RUN env GOBIN=/build/bin go install go.uber.org/nilaway/cmd/nilaway@{{ .data.nilaway }}
 
+FROM go as grizzly
     # Add grizzly
-    RUN env GOBIN=/build go install github.com/grafana/grizzly/cmd/grr@{{ .data.grizzly }}
+    RUN env GOBIN=/build/bin go install github.com/grafana/grizzly/cmd/grr@{{ .data.grizzly }}
 
+FROM go as semversort
     # Add semversort
-    RUN env GOBIN=/build go install github.com/whereswaldon/semversort@{{ .data.semversort }}
+    RUN env GOBIN=/build/bin go install github.com/whereswaldon/semversort@{{ .data.semversort }}
 
+FROM go as golangci_lint
     # Add golangci-lint
-    RUN env GOBIN=/build go install github.com/golangci/golangci-lint/cmd/golangci-lint@{{ .data.golangci_lint }}
+    RUN env GOBIN=/build/bin go install github.com/golangci/golangci-lint/cmd/golangci-lint@{{ .data.golangci_lint }}
 
+FROM go as shellcheck
     # Add shellcheck
-    COPY --from=registry.hub.docker.com/koalaman/shellcheck:{{ .data.shellcheck }} /bin/shellcheck /build
+    COPY --from=docker.io/koalaman/shellcheck:{{ .data.shellcheck }} /bin/shellcheck /build/bin/
 
+FROM go as git_chglog
     # Add git-chglog
-    RUN env GOBIN=/build go install github.com/git-chglog/git-chglog/cmd/git-chglog@{{ .data.git_chglog }}
+    RUN env GOBIN=/build/bin go install github.com/git-chglog/git-chglog/cmd/git-chglog@{{ .data.git_chglog }}
 
+FROM go as gotestsum
     # Add gotestsum
-    RUN env GOBIN=/build go install gotest.tools/gotestsum@{{ .data.gotestsum }}
+    RUN env GOBIN=/build/bin go install gotest.tools/gotestsum@{{ .data.gotestsum }}
 
+FROM go as jq
     # Add jq
-    COPY --from=ghcr.io/jqlang/jq:{{ .data.jq }} /jq /build
+    COPY --from=ghcr.io/jqlang/jq:{{ .data.jq }} /jq /build/bin/
 
-FROM go AS k6
+FROM go AS xk6
     # The grafana/xk6 image only exists for amd64, so we need to build it for
     # the target architecture.
-    RUN env GOBIN=/build go install go.k6.io/xk6/cmd/xk6@{{ .data.xk6 }}
+    RUN env GOBIN=/build/bin go install go.k6.io/xk6/cmd/xk6@{{ .data.xk6 }}
 
+FROM xk6 AS k6
     # The grafana/k6 image only exists for amd64, so we need to build it for
     # the architecture we are targeting. The simplest way to build k6 is to
     # (ab)use xk6 to build a binary without any extensions. In the future, if
     # we wanted additional extensions, this is the place to add them.
-    RUN /build/xk6 build {{ .data.k6 }} --output /build/k6
+    RUN /build/bin/xk6 build {{ .data.k6 }} --output /build/bin/k6
 
-FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
+FROM docker.io/library/debian:stable-slim as skopeo
     COPY --from=go /usr/local/go /usr/local/go
 
     ENV PATH="/usr/local/go/bin:${PATH}"
@@ -90,11 +108,11 @@ FROM registry.hub.docker.com/library/debian:stable-slim as skopeo
     RUN git clone https://github.com/containers/skopeo && \
         cd skopeo && \
         git checkout "{{ .data.skopeo }}" && \
-        make GOBIN=/build DISABLE_DOCS=1 bin/skopeo && \
-        mkdir -p /build && \
-        cp bin/skopeo /build/
+        make GOBIN=/build/bin DISABLE_DOCS=1 bin/skopeo && \
+        mkdir -p /build/bin && \
+        cp bin/skopeo /build/bin/
 
-FROM registry.hub.docker.com/library/debian:stable-slim AS final
+FROM docker.io/library/debian:stable-slim AS final
 
     RUN apt-get update && \
         apt-get install -y \
@@ -105,19 +123,17 @@ FROM registry.hub.docker.com/library/debian:stable-slim AS final
             pkg-config \
             libgpgme11 \
             && \
-        rm -rf /var/lib/apt/lists
-
-    COPY --from=go /usr/local/go /usr/local/go
-    ENV PATH="/usr/local/go/bin:${PATH}"
-
-    # Keep tools in /usr/local/bin. That makes it a little bit easier to see
-    # what comes from the image vs stuff coming from the base image.
-    COPY --from=tools /build/* /usr/local/bin/
-
-    COPY --from=k6 /build/* /usr/local/bin/
-
-    COPY --from=skopeo /build/* /usr/local/bin/
+        rm -rf /var/cache/apt /var/lib/apt && \
+        mkdir -p /var/cache/apt /var/lib/apt
 
     COPY lib/image-test /usr/local/bin
 
     COPY lib/get-latest-gbt-version /usr/local/bin
+
+    COPY --from=go /usr/local/go /usr/local/go
+
+    ENV PATH="/usr/local/go/bin:${PATH}"
+
+    {{ range $pkg, $info := .data }}
+    COPY --from={{ $pkg }} /build/bin/* /usr/local/bin/
+    {{ end }}
