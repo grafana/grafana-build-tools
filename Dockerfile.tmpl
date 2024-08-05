@@ -16,6 +16,10 @@ FROM go as bingo
     # Add bingo
     RUN env GOBIN=/build/bin go install github.com/bwplotka/bingo@{{ .data.bingo }}
 
+FROM go as lefthook
+    # Add lefthook
+    RUN env GOBIN=/build/bin go install github.com/evilmartians/lefthook@{{ .data.lefthook }}
+
 FROM go as dockerfile_json
     # Add dockerfile-json
     RUN git clone --depth 1 --branch {{ .data.dockerfile_json }} https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
