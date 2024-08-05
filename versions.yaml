@@ -39,11 +39,7 @@ golangci_lint: v1.59.1
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.0
 
-# The last released version of grizzly doesn't build (uses replace
-# directives); we need to pin this to a commit until a new release is
-# available.
-# v0.2.1
-grizzly: 5f301fd6c773
+grizzly: v0.4.3
 
 # renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
 jq: 1.7.1
