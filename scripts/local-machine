@@ -2,16 +2,29 @@
 
 set -eu
 
-machine=$(uname --machine)
+kernel=$(uname -s)
+
+case "${kernel}" in
+	Linux)
+		kernel=linux
+		;;
+	FreeBSD)
+		kernel=freebsd
+		;;
+	Darwin)
+		kernel=darwin
+		;;
+esac
+
+machine=$(uname -m)
 
 case "${machine}" in
 	x86_64)
-		echo amd64
+		machine=amd64
 		;;
 	aarch64)
-		echo arm64
-		;;
-	*)
-		echo "${machine}"
+		machine=arm64
 		;;
 esac
+
+echo "${kernel}-${machine}"
