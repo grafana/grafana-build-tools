@@ -20,28 +20,28 @@ export DOCKER_BUILDKIT
 # locally. Be aware if you drop an arch then the "latest" tag won't include it,
 # so you will break users who are running that arch. Probably just don't push if
 # you're running locally.
-PUSH_ARCHES ?= $(LOCAL_ARCH)
+TARGET_ARCHES ?= $(LOCAL_ARCH)
 
 ##@ Development
 
 BUILD_TARGETS :=
 
 define build-target
-.PHONY: build-$(1)
-build-$(1): Dockerfile
-build-$(1):
-	@set -e
-	docker build . -f Dockerfile -t "$(IMAGE)-$(1)"
+.PHONY: build-$(1)-$(2)
+build-$(1)-$(2): Dockerfile
+build-$(1)-$(2):
+	scripts/build-os-arch --image build:$(1)-$(2) $(1) $(2)
 
-BUILD_TARGETS += build-$(1)
+BUILD_TARGETS += build-$(1)-$(2)
 endef
 
-$(foreach BUILD_ARCH,$(PUSH_ARCHES),$(eval $(call build-target,$(BUILD_ARCH))))
+split = $(word $(2),$(subst $(1), ,$(3)))
+
+$(foreach BUILD_ARCH,$(TARGET_ARCHES),$(eval $(call build-target,$(call split,-,1,$(BUILD_ARCH)),$(call split,-,2,$(BUILD_ARCH)))))
 
 .PHONY: build-local
-build-local: Dockerfile
-build-local:
-	docker build . -f Dockerfile -t "$(LOCAL_IMAGE)"
+build-local: build-$(LOCAL_ARCH)
+	@true
 
 BUILD_TARGETS += build-local
 
@@ -50,12 +50,22 @@ build: $(BUILD_TARGETS)
 build: ## build the image
 	@true
 
-.PHONY: test
-test: build-$(LOCAL_ARCH)
-test: ## test the image
-	$(S) docker run --rm $(IMAGE)-$(LOCAL_ARCH) image-test
+.PHONY: image-$(LOCAL_ARCH)
+image-$(LOCAL_ARCH) : build-$(LOCAL_ARCH)
+image-$(LOCAL_ARCH) :
+	$(S) docker build -t $(LOCAL_IMAGE) -f Dockerfile --platform $(call split,-,1,$(LOCAL_ARCH))/$(call split,-,2,$(LOCAL_ARCH))  .
 
-# Run the image from the first of the PUSH_ARCHES, assuming it'll run on this
+.PHONY: image-local
+image-local: image-$(LOCAL_ARCH)
+image-local: ## build the image for the local arch
+	@true
+
+.PHONY: test
+test: image-$(LOCAL_ARCH)
+test: ## test the image
+	$(S) docker run --rm $(LOCAL_IMAGE) image-test
+
+# Run the image from the first of the TARGET_ARCHES, assuming it'll run on this
 # machine since it was built here (this target depends on 'build')
 .PHONY: shell
 shell: build-$(LOCAL_ARCH)
@@ -67,7 +77,7 @@ shell: ## run the image in a container
 .PHONY: push-dev
 push-dev: build test
 push-dev: ## push the image to the registry
-	$(S) for arch in $(PUSH_ARCHES); do \
+	$(S) for arch in $(TARGET_ARCHES); do \
 		set -xe ; \
 		docker push $(IMAGE)-$$arch ; \
 	done
@@ -75,7 +85,7 @@ push-dev: ## push the image to the registry
 .PHONY: push
 push: build test push-dev
 push: ## tag latest and push the to the registry
-	$(S) for arch in $(PUSH_ARCHES); do \
+	$(S) for arch in $(TARGET_ARCHES); do \
 		set -xe ; \
 		docker tag $(IMAGE)-$$arch $(LATEST_IMAGE)-$$arch ; \
 		docker push $(LATEST_IMAGE)-$$arch ; \
@@ -90,14 +100,14 @@ push-manifest:
 	$(S) for tag in "$(LATEST_IMAGE)" "$(IMAGE)"; do \
 		set -xe ; \
 		echo "Building manifest for $$tag" ; \
-		docker manifest create --amend $$tag $(foreach arch,$(PUSH_ARCHES),$$tag-$(arch)) ; \
+		docker manifest create --amend $$tag $(foreach arch,$(TARGET_ARCHES),$$tag-$(arch)) ; \
 		docker manifest inspect $$tag ; \
 		docker manifest push $$tag ; \
 	done
 
-Dockerfile: Dockerfile.tmpl versions.yaml
+Dockerfile Dockerfile.build : % : %.tmpl versions.yaml
 	$(S) docker run -i -v '/$(CURDIR)/versions.yaml:/data/versions.yaml' \
-		hairyhenderson/gomplate --context 'data=file:///data/versions.yaml?type=application/yaml' < Dockerfile.tmpl > "$@"
+		hairyhenderson/gomplate --context 'data=file:///data/versions.yaml?type=application/yaml' < $< > "$@"
 
 ##@ Helpers
 
@@ -117,7 +127,7 @@ tag: ## print out the tag
 	$(S) if [ -z $(MULTI_ARCH) ] || [ $(N_ARCHES) -gt 1 ]; then \
 		echo $(IMAGE_TAG) ;\
 	else \
-		echo $(IMAGE_TAG)-$(PUSH_ARCHES) ;\
+		echo $(IMAGE_TAG)-$(TARGET_ARCHES) ;\
 	fi
 
 .PHONY: help

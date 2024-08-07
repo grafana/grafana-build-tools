@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - Dockerfile.tmpl
+      - Dockerfile.build.tmpl
       - .github/workflows/**
       - lib/**
       - Makefile
@@ -60,10 +61,27 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Dockerfile
-        run: make Dockerfile
+        run: make Dockerfile Dockerfile.build
 
-      - # This will only build the container image, not publish it
-        name: Build container image and export to Docker
+      - name: Build auxiliary image and export to docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile.build
+          push: false
+          load: true
+          tags: binaries:local
+          build-args: |
+            TARGET_GOOS=linux
+            TARGET_GOARCH=amd64
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Capture binaries
+        run: |
+          ./scripts/build-os-arch --image binaries:local --no-build linux amd64
+
+      - name: Build container image and export to Docker
         uses: docker/build-push-action@v5
         with:
           context: .
