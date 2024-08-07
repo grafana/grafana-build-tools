@@ -19,7 +19,7 @@ bingo: v0.9.0
 lefthook: v1.7.11
 
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
-buf: v1.35.1
+buf: v1.36.0
 
 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 dockerfile_json: 1.0.8
