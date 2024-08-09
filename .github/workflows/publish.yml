@@ -120,8 +120,8 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          config: .github/workflows/buildkitd.toml
+        # with:
+        #   config: .github/workflows/buildkitd.toml
 
       - name: Login to GitHub Package Registry
         uses: docker/login-action@v3
@@ -160,6 +160,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
