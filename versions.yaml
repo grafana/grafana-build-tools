@@ -16,7 +16,7 @@
 bingo: v0.9.0
 
 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
-lefthook: v1.7.11
+lefthook: v1.7.12
 
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 buf: v1.36.0
