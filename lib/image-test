@@ -27,6 +27,9 @@ k6 version
 echo '=== wire'
 wire help
 
+echo '=== actionlint'
+actionlint --version
+
 echo '=== bingo'
 bingo version
 
