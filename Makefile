@@ -29,6 +29,7 @@ BUILD_TARGETS :=
 define build-target
 .PHONY: build-$(1)-$(2)
 build-$(1)-$(2): Dockerfile
+build-$(1)-$(2): Dockerfile.build
 build-$(1)-$(2):
 	scripts/build-os-arch --image build:$(1)-$(2) $(1) $(2)
 
