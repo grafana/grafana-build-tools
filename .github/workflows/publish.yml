@@ -21,7 +21,7 @@ jobs:
       #   fetch-tags: true
 
       - name: Unshallow
-        run: git fetch --prune --tags --unshallow
+        run: git fetch --force --prune --tags --unshallow
 
       - name: Describe the current state
         run: git describe --tags --always
