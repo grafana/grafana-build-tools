@@ -92,5 +92,8 @@ pkg-config --version
 echo '=== skopeo'
 skopeo --version
 
+echo '=== yq'
+yq --version
+
 echo '=== get-latest-gbt-version'
 command -v get-latest-gbt-version

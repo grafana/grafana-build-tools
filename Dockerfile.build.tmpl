@@ -127,6 +127,12 @@ FROM xk6 AS k6
 	# we wanted additional extensions, this is the place to add them.
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} /host/bin/xk6 build {{ .data.k6 }} --output /build/bin/${TARGET_GOOS}-${TARGET_GOARCH}/k6
 
+FROM go AS yq
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/mikefarah/yq/v4@{{ .data.yq }}
+
 FROM docker.io/library/debian:stable-slim AS skopeo
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -193,3 +199,5 @@ FROM docker.io/library/debian:stable-slim AS final
 	COPY --from=wire /build/bin/* /dist/
 	
 	COPY --from=xk6 /build/bin/* /dist/
+
+	COPY --from=yq /build/bin/* /dist/
