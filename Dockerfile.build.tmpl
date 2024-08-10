@@ -17,6 +17,12 @@ FROM go AS wire
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/wire/cmd/wire@{{ .data.wire }}
 
+FROM go AS actionlint
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/rhysd/actionlint/cmd/actionlint@{{ .data.actionlint }}
+
 FROM go AS bingo
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -162,6 +168,8 @@ FROM docker.io/library/debian:stable-slim AS skopeo
 FROM docker.io/library/debian:stable-slim AS final
 	RUN mkdir -p /dist
 	
+	COPY --from=actionlint /build/bin/* /dist/
+
 	COPY --from=bingo /build/bin/* /dist/
 	
 	COPY --from=buf /build/bin/* /dist/

@@ -59,6 +59,8 @@ jobs:
           build-args: |
             TARGET_GOOS=linux
             TARGET_GOARCH=amd64
+          cache-from: type=gha,scope=build-linux-amd64
+          cache-to: type=gha,mode=max,scope=build-linux-amd64
 
       - name: Build auxiliary image and export to docker (linux/arm64)
         uses: docker/build-push-action@v5
@@ -71,6 +73,8 @@ jobs:
           build-args: |
             TARGET_GOOS=linux
             TARGET_GOARCH=arm64
+          cache-from: type=gha,scope=build-linux-amd64
+          cache-to: type=gha,mode=max,scope=build-linux-arm64
 
       - name: Capture binaries
         run: |
@@ -137,7 +141,7 @@ jobs:
 
       - name: Load binaries
         run: |
-          find -type f -print0 | xargs -0r ls -ld
+          find . -type f -print0 | xargs -0r ls -ld
           tar -xzf binaries.tar.gz
 
       - name: Build image (linux/amd64)
@@ -149,6 +153,7 @@ jobs:
           load: true
           platforms: linux/amd64
           tags: test:local
+          cache-from: type=gha,scope=final
 
       - name: Test image
         run: |
@@ -163,3 +168,5 @@ jobs:
           push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha,scope=final
+          cache-to: type=gha,mode=max,scope=final

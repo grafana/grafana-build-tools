@@ -12,6 +12,9 @@
 # image. The makefile is written in a way so that make will notice the change
 # and rebuild the Dockerfile before rebuilding the image.
 
+# renovate: datasource=github-releases depName=actionlint packageName=rhysd/actionlint
+actionlint: v1.7.1
+
 # renovate: datasource=github-releases depName=bingo packageName=bwplotka/bingo
 bingo: v0.9.0
 
