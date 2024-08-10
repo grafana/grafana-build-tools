@@ -1,4 +1,4 @@
-FROM docker.io/library/golang:1.22.6 AS go
+FROM docker.io/library/golang:{{ .data.go }} AS go
 	COPY lib/go.env /usr/local/go/
 	RUN mkdir -p /build/bin
 
@@ -6,34 +6,34 @@ FROM go AS go_jsonnet
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet@v0.20.0
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnetfmt@v0.20.0
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet-deps@v0.20.0
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet-lint@v0.20.0
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet@{{ .data.go_jsonnet }}
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnetfmt@{{ .data.go_jsonnet }}
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet-deps@{{ .data.go_jsonnet }}
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/go-jsonnet/cmd/jsonnet-lint@{{ .data.go_jsonnet }}
 
 FROM go AS wire
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/wire/cmd/wire@v0.6.0
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/google/wire/cmd/wire@{{ .data.wire }}
 
 FROM go AS bingo
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/bwplotka/bingo@v0.9.0
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/bwplotka/bingo@{{ .data.bingo }}
 
 FROM go AS lefthook
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/evilmartians/lefthook@v1.7.11
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/evilmartians/lefthook@{{ .data.lefthook }}
 
 FROM go AS dockerfile_json
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN git clone --depth 1 --branch 1.0.8 https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
+	RUN git clone --depth 1 --branch {{ .data.dockerfile_json }} https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
 		cd dockerfile-json && \
 		env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install .
 
@@ -41,31 +41,31 @@ FROM go AS enumer
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/dmarkham/enumer@v1.5.10
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/dmarkham/enumer@{{ .data.enumer }}
 
 FROM go AS protoc_gen_go
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.2
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install google.golang.org/protobuf/cmd/protoc-gen-go@{{ .data.protoc_gen_go }}
 
 FROM go AS protoc_gen_go_grpc
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@{{ .data.protoc_gen_go_grpc }}
 
 FROM go AS buf
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/bufbuild/buf/cmd/buf@v1.35.1
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/bufbuild/buf/cmd/buf@{{ .data.buf }}
 
 FROM go AS mage
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN git clone --depth 1 --branch v1.15.0 https://github.com/magefile/mage mage && \
+	RUN git clone --depth 1 --branch {{ .data.mage }} https://github.com/magefile/mage mage && \
 		cd mage && \
 		mkdir -p /host/bin /build/bin/${TARGET_GOOS}-${TARGET_GOARCH} && \
 		env GOPATH=/host go run bootstrap.go && \
@@ -75,37 +75,37 @@ FROM go AS nilaway
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install go.uber.org/nilaway/cmd/nilaway@v0.0.0-20240719152558-28b542b82e69
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install go.uber.org/nilaway/cmd/nilaway@{{ .data.nilaway }}
 
 FROM go AS grizzly
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/grafana/grizzly/cmd/grr@v0.4.3
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/grafana/grizzly/cmd/grr@{{ .data.grizzly }}
 
 FROM go AS semversort
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/whereswaldon/semversort@v0.0.6
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/whereswaldon/semversort@{{ .data.semversort }}
 
 FROM go AS golangci_lint
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.59.1
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/golangci/golangci-lint/cmd/golangci-lint@{{ .data.golangci_lint }}
 
 FROM go AS git_chglog
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/git-chglog/git-chglog/cmd/git-chglog@v0.15.4
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/git-chglog/git-chglog/cmd/git-chglog@{{ .data.git_chglog }}
 
 FROM go AS gotestsum
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install gotest.tools/gotestsum@v1.12.0
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install gotest.tools/gotestsum@{{ .data.gotestsum }}
 
 FROM go AS xk6
 	ARG TARGET_GOOS
@@ -114,8 +114,8 @@ FROM go AS xk6
 	# The grafana/xk6 image only exists for amd64, so we need to build it for
 	# the target architecture.
 	RUN mkdir -p /host/bin /build/bin/${TARGET_GOOS}-${TARGET_GOARCH} && \
-		env GOPATH=/host go install go.k6.io/xk6/cmd/xk6@v0.12.2 && \
-		env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install go.k6.io/xk6/cmd/xk6@v0.12.2
+		env GOPATH=/host go install go.k6.io/xk6/cmd/xk6@{{ .data.xk6 }} && \
+		env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install go.k6.io/xk6/cmd/xk6@{{ .data.xk6 }}
 
 FROM xk6 AS k6
 	ARG TARGET_GOOS
@@ -125,7 +125,7 @@ FROM xk6 AS k6
 	# the architecture we are targeting. The simplest way to build k6 is to
 	# (ab)use xk6 to build a binary without any extensions. In the future, if
 	# we wanted additional extensions, this is the place to add them.
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} /host/bin/xk6 build v0.52.0 --output /build/bin/${TARGET_GOOS}-${TARGET_GOARCH}/k6
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} /host/bin/xk6 build {{ .data.k6 }} --output /build/bin/${TARGET_GOOS}-${TARGET_GOARCH}/k6
 
 FROM docker.io/library/debian:stable-slim AS skopeo
 	ARG TARGET_GOOS
@@ -148,7 +148,7 @@ FROM docker.io/library/debian:stable-slim AS skopeo
 	# inspect the available versions without pulling the repos.
 	RUN git clone https://github.com/containers/skopeo && \
 	    cd skopeo && \
-	    git checkout "v1.16.0" && \
+	    git checkout "{{ .data.skopeo }}" && \
 	    make GOPATH=/build DISABLE_DOCS=1 bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} && \
 	    mkdir -p /build/bin && \
 	    cp bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} /build/bin/skopeo
