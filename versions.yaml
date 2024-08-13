@@ -51,7 +51,7 @@ jq: 1.7.1
 go_jsonnet: v0.20.0
 
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
-k6: v0.52.0
+k6: v0.53.0
 
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
