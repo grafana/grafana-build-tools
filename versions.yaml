@@ -34,7 +34,7 @@ enumer: v1.5.10
 git_chglog: v0.15.4
 
 # renovate: datasource=docker depName=go packageName=golang
-go: 1.22.6
+go: 1.23.0
 
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.60.1
