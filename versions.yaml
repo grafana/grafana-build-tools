@@ -72,7 +72,7 @@ semversort: v0.0.6
 shellcheck: v0.10.0
 
 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
-skopeo: v1.16.0
+skopeo: v1.16.1
 
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
