@@ -35,8 +35,7 @@ git_chglog: v0.15.4
 go: 1.23.0
 
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
-golangci_lint: v1.60.2
-
+golangci_lint: v1.60.3
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.0
 
