@@ -14,67 +14,48 @@
 
 # renovate: datasource=github-releases depName=actionlint packageName=rhysd/actionlint
 actionlint: v1.7.1
-
 # renovate: datasource=github-releases depName=bingo packageName=bwplotka/bingo
 bingo: v0.9.0
-
 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
-lefthook: v1.7.14
+lefthook: v1.7.15
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 buf: v1.40.0
 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 dockerfile_json: 1.0.8
-
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 enumer: v1.5.10
-
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
-
 # renovate: datasource=docker depName=go packageName=golang
 go: 1.23.1
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.60.3
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.0
-
 grizzly: v0.4.3
-
 # renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
 jq: 1.7.1
-
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 go_jsonnet: v0.20.0
-
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 k6: v0.53.0
-
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
-
 # This hasn't been released yet, so pin it to a specific version for reproducibility
 nilaway: v0.0.0-20240719152558-28b542b82e69
-
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
 protoc_gen_go: v1.34.2
-
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 protoc_gen_go_grpc: v1.5.1
-
 # renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
 semversort: v0.0.6
-
 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
 shellcheck: v0.10.0
-
 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
 skopeo: v1.16.1
-
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
-
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 xk6: v0.12.2
-
 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
 yq: v4.44.3
