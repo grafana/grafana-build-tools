@@ -6,8 +6,7 @@
   ],
 
   "branchPrefix": "grafanarenovatebot/",
-  "gitAuthor": "GrafanaRenovateBot <renovategrafana@grafana.com>",
-  "platformCommit": true,
+  "platformCommit": "enabled",
   "dependencyDashboard": false,
   "forkProcessing": "enabled",
   "rebaseWhen": "behind-base-branch",
