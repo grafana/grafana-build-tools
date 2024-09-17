@@ -4,28 +4,28 @@
     "config:best-practices",
     ":semanticCommitsDisabled"
   ],
-
   "branchPrefix": "grafanarenovatebot/",
-  "platformCommit": true,
+  "platformCommit": "enabled",
   "dependencyDashboard": false,
   "forkProcessing": "enabled",
   "rebaseWhen": "behind-base-branch",
-
-  "enabledManagers": ["custom.regex", "gomod"],
-
+  "enabledManagers": [
+    "custom.regex",
+    "gomod"
+  ],
   "gomod": {
     "enabled": true
   },
-
   "postUpdateOptions": [
     "gomodTidyE"
   ],
-
   "customManagers": [
     {
       "customType": "regex",
       "description": "update versions found in versions.yaml",
-      "fileMatch": [ "^versions\\.yaml$" ],
+      "fileMatch": [
+        "^versions\\.yaml$"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
       ]
