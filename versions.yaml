@@ -27,7 +27,7 @@ enumer: v1.5.10
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
 # renovate: datasource=docker depName=go packageName=golang
-go: 1.23.1
+go: 1.23.2
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.60.3
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
