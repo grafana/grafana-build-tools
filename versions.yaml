@@ -44,7 +44,7 @@ mage: v1.15.0
 # This hasn't been released yet, so pin it to a specific version for reproducibility
 nilaway: v0.0.0-20240719152558-28b542b82e69
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
-protoc_gen_go: v1.34.2
+protoc_gen_go: v1.35.1
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 protoc_gen_go_grpc: v1.5.1
 # renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
