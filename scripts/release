@@ -111,7 +111,7 @@ else
 	cur_version=$(git describe --tags | cut -d- -f1)
 
 	if ! docker image inspect "${gbt_image}" > /dev/null 2>&1 ; then
-		make build-local
+		make image-local
 	fi
 
 	docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" --workdir /work "${gbt_image}" \
