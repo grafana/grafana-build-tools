@@ -21,7 +21,7 @@ lefthook: v1.7.15
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 buf: v1.40.0
 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
-dockerfile_json: 1.0.8
+dockerfile_json: v1.1.1
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 enumer: v1.5.10
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
