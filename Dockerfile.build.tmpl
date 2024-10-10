@@ -41,7 +41,7 @@ FROM go AS dockerfile_json
 
 	RUN git clone --depth 1 --branch {{ .data.dockerfile_json }} https://github.com/keilerkonzept/dockerfile-json dockerfile-json && \
 		cd dockerfile-json && \
-		env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install .
+		env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 go install -tags=dfrunsecurity .
 
 FROM go AS enumer
 	ARG TARGET_GOOS
