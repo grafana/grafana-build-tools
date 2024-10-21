@@ -77,6 +77,12 @@ FROM go AS mage
 		env GOPATH=/host go run bootstrap.go && \
 		env /host/bin/mage -compile /build/bin/${TARGET_GOOS}-${TARGET_GOARCH}/mage -goos ${TARGET_GOOS} -goarch ${TARGET_GOARCH}
 
+FROM go AS nfpm
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 go install github.com/goreleaser/nfpm/v2/cmd/nfpm@{{ .data.nfpm }}
+
 FROM go AS nilaway
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -194,6 +200,8 @@ FROM docker.io/library/debian:stable-slim AS final
 	
 	COPY --from=mage /build/bin/* /dist/
 	
+	COPY --from=nfpm /build/bin/* /dist/
+
 	COPY --from=nilaway /build/bin/* /dist/
 	
 	COPY --from=protoc_gen_go /build/bin/* /dist/

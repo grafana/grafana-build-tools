@@ -54,6 +54,9 @@ buf --version
 echo '=== mage'
 mage -version
 
+echo '=== nfpm'
+nfpm --version
+
 echo '=== nilaway'
 nilaway -help
 
