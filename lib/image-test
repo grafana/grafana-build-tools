@@ -60,6 +60,9 @@ nfpm --version
 echo '=== nilaway'
 nilaway -help
 
+echo '=== reviewdog'
+reviewdog --version
+
 echo '=== semversort'
 semversort < /dev/null
 
