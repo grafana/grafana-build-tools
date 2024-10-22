@@ -33,6 +33,9 @@ actionlint --version
 echo '=== bingo'
 bingo version
 
+echo '=== chglog'
+chglog version
+
 echo '=== lefthook'
 lefthook version
 

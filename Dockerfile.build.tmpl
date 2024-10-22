@@ -29,6 +29,12 @@ FROM go AS bingo
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/bwplotka/bingo@{{ .data.bingo }}
 
+FROM go AS chglog
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 go install github.com/goreleaser/chglog/cmd/chglog@{{ .data.chglog }}
+
 FROM go AS lefthook
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -186,6 +192,8 @@ FROM docker.io/library/debian:stable-slim AS final
 	
 	COPY --from=buf /build/bin/* /dist/
 	
+	COPY --from=chglog /build/bin/* /dist/
+
 	COPY --from=dockerfile_json /build/bin/* /dist/
 	
 	COPY --from=enumer /build/bin/* /dist/
