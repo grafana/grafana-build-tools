@@ -2,8 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    ":semanticCommitsDisabled",
-    "default:pinDigestsDisabled"
+    ":semanticCommitsDisabled"
   ],
 
   "branchPrefix": "grafanarenovatebot/",
@@ -21,14 +20,6 @@
 
   "gomod": {
     "enabled": true
-  },
-
-  "docker": {
-    "pinDigests": false
-  },
-
-  "regex": {
-    "pinDigests": false
   },
 
   "postUpdateOptions": [
@@ -54,10 +45,10 @@
       "description": "update docker versions found in versions.yaml",
       "fileMatch": [ "^versions\\.yaml$" ],
       "datasourceTemplate": "docker",
-      "autoReplaceStringTemplate": "# renovate: datasource=docker packageName={{packageName}} versioning={{versioning}}\\n{{depName}}: {{currentValue}} # sha256:{{currentDigest}}",
       "matchStrings": [
-        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)(?: # sha256:(?<currentDigest>[a-f0-9]+))?"
-      ]
+        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)\\s"
+      ],
+      "pinDigests": false
     },
     {
       "customType": "regex",
@@ -65,7 +56,8 @@
       "fileMatch": [ "^versions\\.yaml$" ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
-      ]
+      ],
+      "pinDigests": false
     }
   ]
 }
