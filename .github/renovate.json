@@ -15,7 +15,7 @@
   "prConcurrentLimit": 10,
   "branchConcurrentLimit": 10,
 
-  "enabledManagers": ["custom.regex", "gomod", "docker"],
+  "enabledManagers": ["custom.regex", "gomod"],
 
   "labels": ["dependencies"],
 
