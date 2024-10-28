@@ -28,14 +28,14 @@ dockerfile_json: v1.1.1
 enumer: v1.5.10
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
-# renovate: datasource=docker depName=go packageName=golang
+# renovate: datasource=docker packageName=golang
 go: 1.23.2
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.60.3
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.0
 grizzly: v0.4.3
-# renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
+# renovate: datasource=docker packageName=ghcr.io/jqlang/jq
 jq: 1.7.1
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 go_jsonnet: v0.20.0

@@ -43,10 +43,20 @@
   "customManagers": [
     {
       "customType": "regex",
+      "description": "update docker versions found in versions.yaml",
+      "fileMatch": [ "^versions\\.yaml$" ],
+      "datasourceTemplate": "docker",
+      "autoReplaceStringTemplate": "# renovate: datasource=docker packageName={{packageName}} versioning={{versioning}}\\n{{depName}}: {{currentValue}} # sha256:{{currentDigest}}",
+      "matchStrings": [
+        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)(?: # sha256:(?<currentDigest>[a-f0-9]+))?"
+      ]
+    },
+    {
+      "customType": "regex",
       "description": "update versions found in versions.yaml",
       "fileMatch": [ "^versions\\.yaml$" ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
+        "# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
       ]
     }
   ]
