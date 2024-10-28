@@ -5,7 +5,6 @@
     ":semanticCommitsDisabled",
     "default:pinDigestsDisabled"
   ],
-
   "branchPrefix": "grafanarenovatebot/",
   "platformCommit": true,
   "dependencyDashboard": false,
@@ -14,45 +13,53 @@
   "prHourlyLimit": 0,
   "prConcurrentLimit": 10,
   "branchConcurrentLimit": 10,
-
-  "enabledManagers": ["custom.regex", "gomod"],
-
-  "labels": ["dependencies"],
-
+  "enabledManagers": [
+    "custom.regex",
+    "gomod"
+  ],
+  "labels": [
+    "dependencies"
+  ],
   "gomod": {
     "enabled": true
   },
-
-  "docker": {
-    "pinDigests": false
-  },
-
   "regex": {
     "pinDigests": false
   },
-
   "postUpdateOptions": [
     "gomodTidyE"
   ],
-
   "packageRules": [
     {
-      "matchManagers": ["gomod"],
-      "matchUpdateTypes": ["digest"],
+      "matchCategories": [
+        "docker"
+      ],
+      "pinDigests": false
+    },
+    {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
       "schedule": "before 8am on monday every 2 weeks"
     },
     {
-      "matchManagers": ["gomod"],
+      "matchManagers": [
+        "gomod"
+      ],
       "matchPackageNames": "github.com/prometheus/*",
       "groupName": "prometheus-go"
     }
   ],
-
   "customManagers": [
     {
       "customType": "regex",
       "description": "update docker versions found in versions.yaml",
-      "fileMatch": [ "^versions\\.yaml$" ],
+      "fileMatch": [
+        "^versions\\.yaml$"
+      ],
       "datasourceTemplate": "docker",
       "autoReplaceStringTemplate": "# renovate: datasource=docker packageName={{packageName}} versioning={{versioning}}\\n{{depName}}: {{currentValue}} # sha256:{{currentDigest}}",
       "matchStrings": [
@@ -62,7 +69,9 @@
     {
       "customType": "regex",
       "description": "update versions found in versions.yaml",
-      "fileMatch": [ "^versions\\.yaml$" ],
+      "fileMatch": [
+        "^versions\\.yaml$"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
       ]
