@@ -15,12 +15,20 @@
   "prConcurrentLimit": 10,
   "branchConcurrentLimit": 10,
 
-  "enabledManagers": ["custom.regex", "gomod"],
+  "enabledManagers": ["custom.regex", "gomod", "docker"],
 
   "labels": ["dependencies"],
 
   "gomod": {
     "enabled": true
+  },
+
+  "docker": {
+    "pinDigests": false
+  },
+
+  "regex": {
+    "pinDigests": false
   },
 
   "postUpdateOptions": [
