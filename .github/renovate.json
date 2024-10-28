@@ -10,8 +10,13 @@
   "dependencyDashboard": false,
   "forkProcessing": "enabled",
   "rebaseWhen": "behind-base-branch",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10,
+  "branchConcurrentLimit": 10,
 
   "enabledManagers": ["custom.regex", "gomod"],
+
+  "labels": ["dependencies"],
 
   "gomod": {
     "enabled": true
@@ -19,6 +24,19 @@
 
   "postUpdateOptions": [
     "gomodTidyE"
+  ],
+
+  "packageRules": [
+    {
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["digest"],
+      "schedule": "before 8am on monday every 2 weeks"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "matchPackageNames": "github.com/prometheus/*",
+      "groupName": "prometheus-go"
+    }
   ],
 
   "customManagers": [
