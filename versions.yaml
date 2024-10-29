@@ -21,7 +21,7 @@ chglog: v0.6.1
 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 lefthook: v1.8.1
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
-buf: v1.40.0
+buf: v1.45.0
 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 dockerfile_json: v1.1.1
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
