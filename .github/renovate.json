@@ -26,6 +26,10 @@
     "gomodTidyE"
   ],
 
+  "regex": {
+    "pinDigests": false
+  },
+
   "packageRules": [
     {
       "matchManagers": ["gomod"],
@@ -36,6 +40,10 @@
       "matchManagers": ["gomod"],
       "matchPackageNames": "github.com/prometheus/*",
       "groupName": "prometheus-go"
+    },
+    {
+      "matchCategories": ["docker"],
+      "pinDigests": false
     }
   ],
 
@@ -47,8 +55,7 @@
       "datasourceTemplate": "docker",
       "matchStrings": [
         "# renovate: datasource=docker packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)\\s"
-      ],
-      "pinDigests": false
+      ]
     },
     {
       "customType": "regex",
@@ -56,8 +63,7 @@
       "fileMatch": [ "^versions\\.yaml$" ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
-      ],
-      "pinDigests": false
+      ]
     }
   ]
 }
