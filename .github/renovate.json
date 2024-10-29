@@ -53,8 +53,9 @@
       "description": "update docker versions found in versions.yaml",
       "fileMatch": [ "^versions\\.yaml$" ],
       "datasourceTemplate": "docker",
+      "autoReplaceStringTemplate": "# renovate: datasource=docker packageName={{packageName}}{{{versioningStr}}}\n{{depName}}: {{newValue}} # {{newDigest}}\n",
       "matchStrings": [
-        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)\\s"
+        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?<versioningStr> versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)( # (?<currentDigest>sha256:[a-f0-9]+))?\\s"
       ]
     },
     {
