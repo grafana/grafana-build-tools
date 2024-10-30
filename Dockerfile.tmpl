@@ -17,6 +17,8 @@ FROM docker.io/library/debian:stable-slim AS final
             git \
             pkg-config \
             libgpgme11 \
+            curl \
+            ca-certificates \
             && \
         rm -rf /var/cache/apt /var/lib/apt && \
         mkdir -p /var/cache/apt /var/lib/apt
