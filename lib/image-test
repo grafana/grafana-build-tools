@@ -112,3 +112,6 @@ yq --version
 
 echo '=== get-latest-gbt-version'
 command -v get-latest-gbt-version
+
+echo '=== curl'
+curl --version
