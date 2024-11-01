@@ -75,6 +75,9 @@ grr --version
 echo '=== golangci-lint'
 golangci-lint version
 
+echo '=== gomplate'
+gomplate --version
+
 echo '=== shellcheck'
 shellcheck --version
 
