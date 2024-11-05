@@ -55,6 +55,12 @@ FROM go AS enumer
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/dmarkham/enumer@{{ .data.enumer }}
 
+FROM go AS oapi_codegen
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@{{ .data.oapi_codegen }}
+
 FROM go AS protoc_gen_go
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -225,6 +231,8 @@ FROM docker.io/library/debian:stable-slim AS final
 	COPY --from=nfpm /build/bin/* /dist/
 
 	COPY --from=nilaway /build/bin/* /dist/
+	
+	COPY --from=oapi_codegen /build/bin/* /dist/
 	
 	COPY --from=protoc_gen_go /build/bin/* /dist/
 	

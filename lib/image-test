@@ -63,6 +63,9 @@ nfpm --version
 echo '=== nilaway'
 nilaway -help
 
+echo '=== oapi-codegen'
+oapi-codegen --version
+
 echo '=== reviewdog'
 reviewdog --version
 
