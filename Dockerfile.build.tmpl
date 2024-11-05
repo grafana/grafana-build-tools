@@ -125,6 +125,14 @@ FROM go AS gomplate
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/hairyhenderson/gomplate/v4/cmd/gomplate@{{ .data.gomplate }}
 
+FROM go AS gh
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN git clone --depth 1 --branch {{ .data.gh }} https://github.com/cli/cli gh && \
+		cd gh && \
+		env GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 make install prefix=/build
+
 FROM go AS git_chglog
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -203,6 +211,8 @@ FROM docker.io/library/debian:stable-slim AS final
 	COPY --from=dockerfile_json /build/bin/* /dist/
 	
 	COPY --from=enumer /build/bin/* /dist/
+	
+	COPY --from=gh /build/bin/* /dist/
 	
 	COPY --from=git_chglog /build/bin/* /dist/
 	

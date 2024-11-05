@@ -26,6 +26,8 @@ buf: v1.46.0
 dockerfile_json: v1.1.1
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 enumer: v1.5.10
+# renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
+gh: v2.60.1
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
 # renovate: datasource=docker packageName=golang
