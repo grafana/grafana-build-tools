@@ -81,6 +81,9 @@ gomplate --version
 echo '=== shellcheck'
 shellcheck --version
 
+echo '=== gh'
+gh --version
+
 echo '=== git-chglog'
 git-chglog --help
 
