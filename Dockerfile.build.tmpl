@@ -137,7 +137,10 @@ FROM go AS gh
 
 	RUN git clone --depth 1 --branch {{ .data.gh }} https://github.com/cli/cli gh && \
 		cd gh && \
-		env GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 make install prefix=/build
+		make script/build && \
+		env GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} CGO_ENABLED=0 script/build bin/gh && \
+		mkdir -p /build/bin && \
+		cp bin/gh /build/bin/gh
 
 FROM go AS git_chglog
 	ARG TARGET_GOOS
