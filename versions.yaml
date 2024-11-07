@@ -31,7 +31,7 @@ gh: v2.60.1
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
 # renovate: datasource=docker packageName=golang
-go: 1.23.2 # sha256:ad5c126b5cf501a8caef751a243bb717ec204ab1aa56dc41dc11be089fafcb4f
+go: 1.23.3 # sha256:d56c3e08fe5b27729ee3834854ae8f7015af48fd651cd25d1e3bcf3c19830174
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.61.0
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
