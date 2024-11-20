@@ -35,9 +35,9 @@ jobs:
           private-key: ${{ env.GRAFANA_RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@e02bf7b1c996027e55e910400653576a8293246c # 41.0.3
+        uses: renovatebot/github-action@v41.0.3
         with:
-          renovate-version: 39.23.0@sha256:fa947a83c46a80677b459e0285f95231ba9eebd5
+          renovate-version: 39.23.0
           configurationFile: .github/renovate-app.json
           token: '${{ steps.app-token.outputs.token }}'
           docker-cmd-file: .github/renovate-entrypoint
