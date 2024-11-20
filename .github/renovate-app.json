@@ -1,5 +1,4 @@
 {
-  "enabled": true,
   "customEnvVariables": {
     "GOPRIVATE": "github.com/grafana",
     "GONOSUMDB": "github.com/grafana",
