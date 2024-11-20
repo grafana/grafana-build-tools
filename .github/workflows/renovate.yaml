@@ -40,6 +40,7 @@ jobs:
           renovate-version: 37.420.1@sha256:528f003c9aa77f6e916e3f9f5cc2fb9ae16fcf285af66f412a34325124f4a00e
           configurationFile: .github/renovate-app.json
           token: '${{ steps.app-token.outputs.token }}'
+          docker-cmd-file: .github/renovate-entrypoint
         env:
           LOG_LEVEL: debug
           RENOVATE_PLATFORM: github
