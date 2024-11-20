@@ -5,6 +5,8 @@
     ":semanticCommitsDisabled"
   ],
 
+  "enabled": false,
+
   "branchPrefix": "grafanarenovatebot/",
   "platformCommit": true,
   "dependencyDashboard": false,
