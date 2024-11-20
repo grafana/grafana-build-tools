@@ -68,6 +68,6 @@ skopeo: v1.16.1
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
-xk6: v0.13.0
+xk6: v0.13.3
 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
 yq: v4.44.5
