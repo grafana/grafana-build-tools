@@ -8,7 +8,7 @@
   "enabled": false,
 
   "branchPrefix": "grafanarenovatebot/",
-  "platformCommit": "enabled",,
+  "platformCommit": "enabled",
   "dependencyDashboard": false,
   "forkProcessing": "enabled",
   "rebaseWhen": "behind-base-branch",
