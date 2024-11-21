@@ -1,9 +1,3 @@
 #!/bin/sh
 
-echo ====== Args
-echo "$@"
-
-echo ====== Env
-env
-
 renovate --enabled --force-cli
