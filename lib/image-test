@@ -57,6 +57,9 @@ buf --version
 echo '=== mage'
 mage -version
 
+echo '=== migrate'
+migrate -version
+
 echo '=== nfpm'
 nfpm --version
 
