@@ -119,6 +119,12 @@ FROM go AS semversort
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/whereswaldon/semversort@{{ .data.semversort }}
 
+FROM go AS sqlc
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/sqlc-dev/sqlc/cmd/sqlc@{{ .data.sqlc }}
+
 FROM go AS golangci_lint
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -255,6 +261,8 @@ FROM docker.io/library/debian:stable-slim AS final
 	
 	COPY --from=semversort /build/bin/* /dist/
 	
+	COPY --from=sqlc /build/bin/* /dist/
+
 	COPY --from=skopeo /build/bin/* /dist/
 	
 	COPY --from=wire /build/bin/* /dist/

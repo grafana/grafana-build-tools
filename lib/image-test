@@ -72,6 +72,9 @@ reviewdog --version
 echo '=== semversort'
 semversort < /dev/null
 
+echo '=== sqlc'
+sqlc version
+
 echo '=== grr'
 grr --version
 

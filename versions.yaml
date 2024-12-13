@@ -63,6 +63,8 @@ reviewdog: v0.20.3
 semversort: v0.0.6
 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
 shellcheck: v0.10.0
+# renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
+sqlc: v1.27.0
 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
 skopeo: v1.17.0
 # renovate: datasource=github-releases depName=wire packageName=google/wire
