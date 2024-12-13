@@ -47,6 +47,8 @@ go_jsonnet: v0.20.0
 k6: v0.55.0
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
+# renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
+migrate: v4.18.1
 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
 nfpm: v2.41.1
 # This hasn't been released yet, so pin it to a specific version for reproducibility
