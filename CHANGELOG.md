@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="v0.40.1"></a>
+## [v0.40.1] - 2025-02-18
+
 <a name="v0.40.0"></a>
 ## [v0.40.0] - 2025-02-13
 
@@ -219,7 +222,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v0.40.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v0.40.1...HEAD
+[v0.40.1]: https://github.com/grafana/grafana-build-tools/compare/v0.40.0...v0.40.1
 [v0.40.0]: https://github.com/grafana/grafana-build-tools/compare/v0.39.1...v0.40.0
 [v0.39.1]: https://github.com/grafana/grafana-build-tools/compare/v0.39.0...v0.39.1
 [v0.39.0]: https://github.com/grafana/grafana-build-tools/compare/v0.38.1...v0.39.0
