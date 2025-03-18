@@ -59,8 +59,6 @@ oapi_codegen: v2.4.1
 protoc_gen_go: v1.36.5
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 protoc_gen_go_grpc: v1.5.1
-# renovate: datasource=github-releases depName=reviewdog packageName=reviewdog/reviewdog
-reviewdog: v0.20.3
 # renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
 semversort: v0.0.6
 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
