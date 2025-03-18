@@ -113,12 +113,6 @@ FROM go AS grizzly
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/grafana/grizzly/cmd/grr@{{ .data.grizzly }}
 
-FROM go AS reviewdog
-	ARG TARGET_GOOS
-	ARG TARGET_GOARCH
-
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/reviewdog/reviewdog/cmd/reviewdog@{{ .data.reviewdog }}
-
 FROM go AS semversort
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -265,8 +259,6 @@ FROM docker.io/library/debian:stable-slim AS final
 	
 	COPY --from=protoc_gen_go_grpc /build/bin/* /dist/
 
-	COPY --from=reviewdog /build/bin/* /dist/
-	
 	COPY --from=semversort /build/bin/* /dist/
 	
 	COPY --from=sqlc /build/bin/* /dist/
