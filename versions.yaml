@@ -35,7 +35,7 @@ go: 1.24.1 # sha256:c5adecdb7b3f8c5ca3c88648a861882849cc8b02fed68ece31e25de88ad1
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.64.6
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
-gomplate: v4.3.0
+gomplate: v4.3.1
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.0
 grizzly: v0.4.3
