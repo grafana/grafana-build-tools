@@ -44,7 +44,7 @@ jq: 1.7.1 # sha256:096b83865ad59b5b02841f103f83f45c51318394331bf1995e187ea3be937
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 go_jsonnet: v0.20.0
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
-k6: v0.57.0
+k6: v0.58.0
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
