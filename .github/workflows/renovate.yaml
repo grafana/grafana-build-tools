@@ -5,6 +5,10 @@ on:
     - cron:  '41 */6 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: none
+  packages: none
+
 jobs:
   renovate:
     permissions:
@@ -31,13 +35,13 @@ jobs:
         # Beware that the token generated here has elevated permissions wrt to
         # the ones set in the action. In particular, it will be able to write
         # to the repository (e.g. create branches) and create pull requests.
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1.12.0
         with:
           app-id: ${{ env.GRAFANA_RENOVATE_APP_ID }}
           private-key: ${{ env.GRAFANA_RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v41.0.3
+        uses: renovatebot/github-action@e02bf7b1c996027e55e910400653576a8293246c # v41.0.3
         with:
           renovate-version: 39.23.0
           configurationFile: .github/renovate-app.json
