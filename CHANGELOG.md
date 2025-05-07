@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.5.0"></a>
+## [v1.5.0] - 2025-05-07
+### Bug Fixes
+- Resolve issues reported by zizmor ([#311](https://github.com/grafana/grafana-build-tools/issues/311))
+
+
 <a name="v1.4.0"></a>
-## [v1.4.0] - 2025-04-27
+## [v1.4.0] - 2025-04-26
 
 <a name="v1.3.1"></a>
 ## [v1.3.1] - 2025-04-26
@@ -246,7 +252,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.5.0...HEAD
+[v1.5.0]: https://github.com/grafana/grafana-build-tools/compare/v1.4.0...v1.5.0
 [v1.4.0]: https://github.com/grafana/grafana-build-tools/compare/v1.3.1...v1.4.0
 [v1.3.1]: https://github.com/grafana/grafana-build-tools/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/grafana/grafana-build-tools/compare/v1.2.0...v1.3.0
