@@ -56,7 +56,7 @@ jobs:
         run: make Dockerfile Dockerfile.build
 
       - name: Build auxiliary image and export to docker (linux/amd64)
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
         with:
           context: .
           file: ./Dockerfile.build
@@ -70,7 +70,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=build-linux-amd64
 
       - name: Build auxiliary image and export to docker (linux/arm64)
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
         with:
           context: .
           file: ./Dockerfile.build
@@ -156,7 +156,7 @@ jobs:
           tar -xzf binaries.tar.gz
 
       - name: Build image (linux/amd64)
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
         with:
           context: .
           file: ./Dockerfile
@@ -171,7 +171,7 @@ jobs:
           docker run --rm test:local image-test
 
       - name: Build and push image
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
         with:
           context: .
           file: ./Dockerfile
