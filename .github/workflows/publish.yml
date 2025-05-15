@@ -101,6 +101,9 @@ jobs:
     runs-on: ubuntu-latest-8-cores
     permissions:
       contents: read
+      packages: write
+      id-token: write
+      attestations: write
     needs: build
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -171,6 +174,7 @@ jobs:
           docker run --rm test:local image-test
 
       - name: Build and push image
+        id: push
         uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
         with:
           context: .
@@ -181,3 +185,11 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           cache-from: type=gha,scope=final
           cache-to: type=gha,mode=max,scope=final
+
+      - name: Write attestations
+        uses: actions/attest-build-provenance@db473fddc028af60658334401dc6fa3ffd8669fd # v2.3.0
+        id: attest
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
