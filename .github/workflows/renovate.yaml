@@ -18,13 +18,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout Code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
       - name: retrieve secrets
         id: get-secrets
-        uses: grafana/shared-workflows/actions/get-vault-secrets@7d18a46aafb8b875ed76a0bc98852d74b91e7f91  # v1.0.0
+        uses: grafana/shared-workflows/actions/get-vault-secrets@0532a73863dc08e0a6206e97be6ad0b53d28ce87  # validate-policy-bot-config-v1.1.0
         with:
           common_secrets: |
             GRAFANA_RENOVATE_APP_ID=grafana-renovate-app:app-id
@@ -35,13 +35,13 @@ jobs:
         # Beware that the token generated here has elevated permissions wrt to
         # the ones set in the action. In particular, it will be able to write
         # to the repository (e.g. create branches) and create pull requests.
-        uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1.12.0
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
         with:
           app-id: ${{ env.GRAFANA_RENOVATE_APP_ID }}
           private-key: ${{ env.GRAFANA_RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@e02bf7b1c996027e55e910400653576a8293246c # v41.0.3
+        uses: renovatebot/github-action@f5c3383cb7cbf7711d8b66b809375b2d5f4e2d1d # v42.0.2
         with:
           renovate-version: 39.23.0
           configurationFile: .github/renovate-app.json
