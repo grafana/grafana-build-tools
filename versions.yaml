@@ -42,7 +42,7 @@ grizzly: v0.4.3
 # renovate: datasource=docker packageName=ghcr.io/jqlang/jq
 jq: 1.7.1 # sha256:096b83865ad59b5b02841f103f83f45c51318394331bf1995e187ea3be937432
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
-go_jsonnet: v0.20.0
+go_jsonnet: v0.21.0
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 k6: v0.59.0
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
