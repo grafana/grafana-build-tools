@@ -50,7 +50,7 @@ mage: v1.15.0
 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
 migrate: v4.18.3
 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
-nfpm: v2.42.0
+nfpm: v2.42.1
 # This hasn't been released yet, so pin it to a specific version for reproducibility
 nilaway: v0.0.0-20240719152558-28b542b82e69
 # renovate: datasource=github-releases depName=oapi-codegen packageName=github.com/oapi-codegen/oapi-codegen
