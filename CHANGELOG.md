@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="v1.6.0"></a>
+## [v1.6.0] - 2025-05-20
+
 <a name="v1.5.6"></a>
 ## [v1.5.6] - 2025-05-22
 ### Bug Fixes
@@ -273,7 +276,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.5.6...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.6.0...HEAD
+[v1.6.0]: https://github.com/grafana/grafana-build-tools/compare/v1.5.6...v1.6.0
 [v1.5.6]: https://github.com/grafana/grafana-build-tools/compare/v1.5.5...v1.5.6
 [v1.5.5]: https://github.com/grafana/grafana-build-tools/compare/v1.5.4...v1.5.5
 [v1.5.4]: https://github.com/grafana/grafana-build-tools/compare/v1.5.3...v1.5.4
