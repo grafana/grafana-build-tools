@@ -33,7 +33,7 @@ git_chglog: v0.15.4
 # renovate: datasource=docker depName=go packageName=golang
 go: 1.24.3 # sha256:39d9e7d9c5d9c9e4baf0d8fff579f06d5032c0f4425cdec9e86732e8e4e374dc
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
-golangci_lint: v1.64.8
+golangci_lint: v2.1.6
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 gomplate: v4.3.2
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
