@@ -66,7 +66,7 @@ shellcheck: v0.10.0
 # renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
 sqlc: v1.29.0
 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
-skopeo: v1.18.0
+skopeo: v1.19.0
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
