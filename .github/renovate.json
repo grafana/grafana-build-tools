@@ -32,6 +32,16 @@
     "pinDigests": false
   },
 
+  "automerge": true,
+  "assignAutomerge": true,
+  "assigneesFromCodeOwners": true,
+  "automergeStrategy": "squash",
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "pruneBranchAfterAutomerge": true,
+
+  "commitMessagePrefix": "chore:",
+
   "packageRules": [
     {
       "matchManagers": ["gomod"],
