@@ -40,7 +40,7 @@ gomplate: v4.3.2
 gotestsum: v1.12.2
 grizzly: v0.4.3
 # renovate: datasource=docker packageName=ghcr.io/jqlang/jq
-jq: 1.7.1 # sha256:096b83865ad59b5b02841f103f83f45c51318394331bf1995e187ea3be937432
+jq: 1.8.0 # sha256:a186dcd84a1e28bb48cdf3d7768b890d08621a87bb651fadb7db6815a6bf5ad5
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 go_jsonnet: v0.21.0
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
