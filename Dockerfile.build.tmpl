@@ -135,8 +135,8 @@ FROM go AS golangci_lint_v2
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
-	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@{{ .data.golangci_lint_v2 }} && \
-		mv /build/bin/golangci-lint /build/bin/golangci-lint-v2
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install -v github.com/golangci/golangci-lint/v2/cmd/golangci-lint@{{ .data.golangci_lint_v2 }}
+	RUN mv /build/bin/golangci-lint /build/bin/golangci-lint-v2
 
 FROM go AS gomplate
 	ARG TARGET_GOOS
