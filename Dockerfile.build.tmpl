@@ -136,7 +136,14 @@ FROM go AS golangci_lint_v2
 	ARG TARGET_GOARCH
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install -v github.com/golangci/golangci-lint/v2/cmd/golangci-lint@{{ .data.golangci_lint_v2 }}
-	RUN mv /build/bin/golangci-lint /build/bin/golangci-lint-v2
+
+	# For native builds, the binary is found in build/bin/golangci-lint,
+	# but for cross builds, it is found in
+	# build/bin/${TARGET_GOOS}-${TARGET_GOARCH}/golangci-lint.
+	#
+	# Play some games with find and xargs to rename the binary to
+	# golangci-lint-v2 regardless of the architecture.
+	RUN find build/bin/ -name golangci-lint -print0 | xargs -I{} -r0 mv -v '{}' '{}-v2'
 
 FROM go AS gomplate
 	ARG TARGET_GOOS
