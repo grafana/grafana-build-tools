@@ -32,8 +32,9 @@ gh: v2.60.1
 git_chglog: v0.15.4
 # renovate: datasource=docker depName=go packageName=golang
 go: 1.24.4 # sha256:db5d0afbfb4ab648af2393b92e87eaae9ad5e01132803d80caef91b5752d289c
-# renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint: v1.64.8
+# renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
+golangci_lint_v2: v2.1.6
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 gomplate: v4.3.2
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum

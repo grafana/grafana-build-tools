@@ -131,6 +131,13 @@ FROM go AS golangci_lint
 
 	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/golangci/golangci-lint/cmd/golangci-lint@{{ .data.golangci_lint }}
 
+FROM go AS golangci_lint_v2
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	RUN env GOPATH=/build GOOS=${TARGET_GOOS} GOARCH=${TARGET_GOARCH} go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@{{ .data.golangci_lint_v2 }} && \
+		mv /build/bin/golangci-lint /build/bin/golangci-lint-v2
+
 FROM go AS gomplate
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
@@ -234,7 +241,9 @@ FROM docker.io/library/debian:stable-slim AS final
 	COPY --from=go_jsonnet /build/bin/* /dist/
 	
 	COPY --from=golangci_lint /build/bin/* /dist/
-	
+
+	COPY --from=golangci_lint_v2 /build/bin/* /dist/
+
 	COPY --from=gomplate /build/bin/* /dist/
 
 	COPY --from=gotestsum /build/bin/* /dist/
