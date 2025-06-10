@@ -2,8 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v1.7.0"></a>
+## [v1.7.0] - 2025-06-10
+### Bug Fixes
+- Add automerge settings to renovate configuration
+
+### Features
+- Add golangci-lint-v2
+- Update Go to 1.24.4
+
+
 <a name="v1.6.0"></a>
-## [v1.6.0] - 2025-05-20
+## [v1.6.0] - 2025-05-23
 
 <a name="v1.5.6"></a>
 ## [v1.5.6] - 2025-05-22
@@ -276,7 +286,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.7.0...HEAD
+[v1.7.0]: https://github.com/grafana/grafana-build-tools/compare/v1.6.0...v1.7.0
 [v1.6.0]: https://github.com/grafana/grafana-build-tools/compare/v1.5.6...v1.6.0
 [v1.5.6]: https://github.com/grafana/grafana-build-tools/compare/v1.5.5...v1.5.6
 [v1.5.5]: https://github.com/grafana/grafana-build-tools/compare/v1.5.4...v1.5.5
