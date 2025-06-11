@@ -143,7 +143,7 @@ FROM go AS golangci_lint_v2
 	#
 	# Play some games with find and xargs to rename the binary to
 	# golangci-lint-v2 regardless of the architecture.
-	RUN find build/bin/ -name golangci-lint -print0 | xargs -I{} -r0 mv -v '{}' '{}-v2'
+	RUN find /build/bin/ -name golangci-lint -print0 | xargs -I{} -r0 mv -v '{}' '{}-v2'
 
 FROM go AS gomplate
 	ARG TARGET_GOOS
