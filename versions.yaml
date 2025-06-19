@@ -38,7 +38,7 @@ golangci_lint_v2: v2.1.6
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 gomplate: v4.3.2
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
-gotestsum: v1.12.2
+gotestsum: v1.12.3
 grizzly: v0.4.3
 # renovate: datasource=docker packageName=ghcr.io/jqlang/jq
 jq: 1.8.0 # sha256:a186dcd84a1e28bb48cdf3d7768b890d08621a87bb651fadb7db6815a6bf5ad5
