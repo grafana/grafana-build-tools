@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="v1.8.0"></a>
+## [v1.8.0] - 2025-07-04
+
 <a name="v1.7.3"></a>
 ## [v1.7.3] - 2025-06-11
 ### Bug Fixes
@@ -304,7 +307,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.7.3...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.8.0...HEAD
+[v1.8.0]: https://github.com/grafana/grafana-build-tools/compare/v1.7.3...v1.8.0
 [v1.7.3]: https://github.com/grafana/grafana-build-tools/compare/v1.7.2...v1.7.3
 [v1.7.2]: https://github.com/grafana/grafana-build-tools/compare/v1.7.1...v1.7.2
 [v1.7.1]: https://github.com/grafana/grafana-build-tools/compare/v1.7.0...v1.7.1
