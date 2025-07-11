@@ -127,3 +127,7 @@ command -v get-latest-gbt-version
 
 echo '=== curl'
 curl --version
+
+echo '=== 7zz'
+# "i" outputs the list of supported codecs.
+7zz i
