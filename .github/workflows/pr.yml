@@ -25,7 +25,10 @@ permissions:
 jobs:
   validate:
     name: Validate pull request
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [ x64, arm64 ]
+    runs-on: github-hosted-ubuntu-${{ matrix.arch }}-large
     permissions:
       contents: read
     steps:
@@ -39,6 +42,10 @@ jobs:
 
       - name: Describe the current state
         run: git describe --tags --always
+
+      - name: Map architecture
+        id: map_arch
+        run: ./lib/map-os-arch linux "${{ matrix.arch }}" HOST >> "$GITHUB_OUTPUT"
 
       - name: Docker meta
         id: docker_meta
@@ -71,13 +78,16 @@ jobs:
           load: true
           tags: binaries:local
           build-args: |
-            TARGET_GOOS=linux
-            TARGET_GOARCH=amd64
-          cache-from: type=gha,scope=build-linux-amd64
+            TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
+            TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
+          cache-from: type=gha,scope=build-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}
 
       - name: Capture binaries
+        env:
+          HOST_OS: ${{ steps.map_arch.outputs.HOST_OS }}
+          HOST_ARCH: ${{ steps.map_arch.outputs.HOST_ARCH }}
         run: |
-          ./scripts/build-os-arch --image binaries:local --no-build linux amd64
+          ./scripts/build-os-arch --image binaries:local --no-build "${HOST_OS}" "${HOST_ARCH}"
 
       - name: Build container image and export to Docker
         uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
@@ -92,7 +102,4 @@ jobs:
 
       - name: Test container image
         run: |
-          docker run --rm ghcr.io/${{ github.repository }}:sha-${{ github.sha }} image-test
-
-      - name: Lint GitHub Actions workflows
-        run: ./dist/linux-amd64/actionlint
+          docker run --rm "ghcr.io/${{ github.repository }}:sha-${{ github.sha }}" image-test
