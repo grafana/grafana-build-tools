@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# map-os-arch - normalize OS+arch pairs for Go
+#
+# Usage: map-arch <os> <arch> [<prefix>]
+#
+# This script normalizes the provided OS+architecture pair to the
+# OS+architecture as understood by Go.
+#
+# It outputs a pair of strings that can be used as environment variables. By
+# default, it uses the prefix "HOST", but this can be overridden by providing a
+# third argument.
+
+set -e
+set -u
+
+os=${1:-}
+arch=${2:-}
+prefix="${3:-HOST}"
+
+if [ -z "${os}" ] || [ -z "${arch}" ]; then
+	echo "Usage: $0 <os> <arch> [<type>]" 1>&2
+	exit 1
+fi
+
+case "${arch}" in
+	x64)
+		arch=amd64
+		;;
+esac
+
+echo "${prefix}_OS=${os}"
+echo "${prefix}_ARCH=${arch}"
