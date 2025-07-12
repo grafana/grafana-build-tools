@@ -58,7 +58,7 @@ echo '=== mage'
 mage -version
 
 echo '=== migrate'
-migrate -version
+migrate -help
 
 echo '=== nfpm'
 nfpm --version

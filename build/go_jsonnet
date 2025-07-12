@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+set -u
+
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/google/go-jsonnet/cmd/jsonnet@${1}"
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/google/go-jsonnet/cmd/jsonnetfmt@${1}"
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/google/go-jsonnet/cmd/jsonnet-deps@${1}"
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/google/go-jsonnet/cmd/jsonnet-lint@${1}"

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -u
+
+# The grafana/k6 image only exists for amd64, so we need to build it for
+# the architecture we are targeting. The simplest way to build k6 is to
+# (ab)use xk6 to build a binary without any extensions. In the future, if
+# we wanted additional extensions, this is the place to add them.
+env GOPATH=/build "GOOS=${2}" "GOARCH=${3}" /host/bin/xk6 build "${1}" --output "/build/bin/${2}-${3}/k6"

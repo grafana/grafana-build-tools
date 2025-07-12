@@ -1,6 +1,54 @@
-FROM docker.io/library/golang:{{ .data.go }} as go
-    COPY lib/go.env /usr/local/go/
-    RUN mkdir -p /build/bin
+FROM docker.io/library/golang:{{ .data.go }} AS go
+	COPY lib/go.env /usr/local/go/
+	RUN mkdir -p /build/bin
+
+{{- $skip := dict "go" true "k6" true "skopeo" true "shellcheck" true "jq" true -}}
+
+{{ range $pkg, $info := .data }}
+{{ if not (index $skip $pkg) }}
+FROM go AS {{ $pkg }}
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	COPY build/{{ $pkg }} /tmp/build
+
+	RUN "/tmp/build" "{{ $info }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
+{{- end }}
+{{- end }}
+
+FROM xk6 AS k6
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	COPY build/k6 /tmp/build
+
+	RUN "/tmp/build" "{{ .data.k6 }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
+
+FROM docker.io/library/debian:stable-slim AS skopeo
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	COPY --from=go /usr/local/go /usr/local/go
+	
+	ENV PATH="/usr/local/go/bin:${PATH}"
+	
+	RUN apt-get update && \
+	    apt-get install -y \
+	    build-essential \
+	    libgpgme-dev \
+	    libassuan-dev \
+	    libdevmapper-dev \
+	    pkg-config \
+	    git
+	
+	# skopeo is used to inspect container registries. This can be used to
+	# inspect the available versions without pulling the repos.
+	RUN git clone https://github.com/containers/skopeo && \
+	    cd skopeo && \
+	    git checkout "{{ .data.skopeo }}" && \
+	    make GOPATH=/build DISABLE_DOCS=1 bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} && \
+	    mkdir -p /build/bin && \
+	    cp bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} /build/bin/skopeo
 
 FROM scratch AS shellcheck
 	COPY --from=docker.io/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build/bin/
@@ -30,17 +78,8 @@ FROM docker.io/library/debian:stable-slim AS final
 
     COPY --from=go /usr/local/go /usr/local/go
 
-    ARG TARGETOS
-    ARG TARGETARCH
-
-    ADD dist/${TARGETOS}-${TARGETARCH}/* /usr/local/bin/
-
-    COPY --from=shellcheck /build/bin/* /usr/local/bin/
-
-    COPY --from=jq /build/bin/* /usr/local/bin/
+    {{ range $pkg, $info := .data }}
+    COPY --from={{ $pkg }} /build/bin/* /usr/local/bin/
+    {{ end }}
 
     ENV PATH="/usr/local/go/bin:${PATH}"
-
-    {{ range $pkg, $info := .data }}
-    ### COPY --from={{ $pkg }} /build/bin/* /usr/local/bin/
-    {{ end }}

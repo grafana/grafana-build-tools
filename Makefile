@@ -24,37 +24,24 @@ TARGET_ARCHES ?= $(LOCAL_ARCH)
 
 ##@ Development
 
-BUILD_TARGETS :=
-
-define build-target
-.PHONY: build-$(1)-$(2)
-build-$(1)-$(2): Dockerfile
-build-$(1)-$(2): Dockerfile.build
-build-$(1)-$(2):
-	scripts/build-os-arch --image build:$(1)-$(2) $(1) $(2)
-
-BUILD_TARGETS += build-$(1)-$(2)
-endef
-
 split = $(word $(2),$(subst $(1), ,$(3)))
 
-$(foreach BUILD_ARCH,$(TARGET_ARCHES),$(eval $(call build-target,$(call split,-,1,$(BUILD_ARCH)),$(call split,-,2,$(BUILD_ARCH)))))
-
-.PHONY: build-local
-build-local: build-$(LOCAL_ARCH)
-	@true
-
-BUILD_TARGETS += build-local
-
 .PHONY: build
-build: $(BUILD_TARGETS)
+build: image-$(LOCAL_ARCH)
 build: ## build the image
 	@true
 
 .PHONY: image-$(LOCAL_ARCH)
-image-$(LOCAL_ARCH) : build-$(LOCAL_ARCH)
+# image-$(LOCAL_ARCH) : build-$(LOCAL_ARCH)
+image-$(LOCAL_ARCH) : Dockerfile
 image-$(LOCAL_ARCH) :
-	$(S) docker build -t $(LOCAL_IMAGE) -f Dockerfile --platform $(call split,-,1,$(LOCAL_ARCH))/$(call split,-,2,$(LOCAL_ARCH))  .
+	$(S) docker build \
+		-t $(LOCAL_IMAGE) \
+		-f Dockerfile \
+		--platform $(call split,-,1,$(LOCAL_ARCH))/$(call split,-,2,$(LOCAL_ARCH)) \
+		--build-arg TARGET_GOOS=$(call split,-,1,$(LOCAL_ARCH)) \
+		--build-arg TARGET_GOARCH=$(call split,-,2,$(LOCAL_ARCH)) \
+		.
 
 .PHONY: image-local
 image-local: image-$(LOCAL_ARCH)
@@ -106,7 +93,7 @@ push-manifest:
 		docker manifest push $$tag ; \
 	done
 
-Dockerfile Dockerfile.build : % : %.tmpl versions.yaml
+Dockerfile : % : %.tmpl versions.yaml
 	$(S) docker run -i -v '/$(CURDIR)/versions.yaml:/data/versions.yaml' \
 		hairyhenderson/gomplate --context 'data=file:///data/versions.yaml?type=application/yaml' < $< > "$@"
 

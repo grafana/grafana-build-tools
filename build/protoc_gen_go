@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+set -u
+
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "google.golang.org/protobuf/cmd/protoc-gen-go@${1}"

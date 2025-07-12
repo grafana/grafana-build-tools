@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+set -u
+
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" CGO_ENABLED=1 go install -tags sqlite,sqlite3,postgres,mysql,file "github.com/golang-migrate/migrate/v4/cmd/migrate@${1}"
