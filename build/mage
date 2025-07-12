@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -u
+
+git clone --depth 1 --branch "${1}" https://github.com/magefile/mage mage
+cd mage
+mkdir -p /host/bin "/build/bin/${2}-${3}"
+env GOPATH=/host go run bootstrap.go
+env /host/bin/mage -compile "/build/bin/${2}-${3}/mage" -goos "${2}" -goarch "${3}"

@@ -14,63 +14,93 @@
 
 # renovate: datasource=github-releases depName=actionlint packageName=rhysd/actionlint
 actionlint: v1.7.7
+
 # renovate: datasource=github-releases depName=bingo packageName=bwplotka/bingo
 bingo: v0.9.0
+
 # renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
 chglog: v0.7.3
+
 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 lefthook: v1.12.2
+
 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 buf: v1.55.1
+
 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 dockerfile_json: v1.2.2
+
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 enumer: v1.5.11
+
 # renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
 gh: v2.60.1
+
 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 git_chglog: v0.15.4
+
 # renovate: datasource=docker depName=go packageName=golang
 go: 1.24.5 # sha256:a9219eb99cd2951b042985dbec09d508b3ddc20c4da52a3a55b275b3779e4a05
+
 golangci_lint: v1.64.8
+
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint_v2: v2.3.0
+
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 gomplate: v4.3.3
+
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.3
 grizzly: v0.4.3
+
 # renovate: datasource=docker packageName=ghcr.io/jqlang/jq
 jq: 1.8.1 # sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91
+
 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 go_jsonnet: v0.21.0
+
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 k6: v1.1.0
+
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
+
 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
 migrate: v4.18.3
+
 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
 nfpm: v2.43.0
+
 # This hasn't been released yet, so pin it to a specific version for reproducibility
-nilaway: v0.0.0-20240719152558-28b542b82e69
+nilaway: v0.0.0-20250722134535-afb472521551
+
 # renovate: datasource=github-releases depName=oapi-codegen packageName=github.com/oapi-codegen/oapi-codegen
 oapi_codegen: v2.4.1
+
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
 protoc_gen_go: v1.36.6
+
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 protoc_gen_go_grpc: v1.5.1
+
 # renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
 semversort: v0.0.6
+
 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
 shellcheck: v0.10.0
+
 # renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
 sqlc: v1.29.0
+
 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
 skopeo: v1.19.0
+
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
+
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 xk6: v1.1.2
+
 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
 yq: v4.47.1

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+set -u
+
+git clone --depth 1 --branch "${1}" https://github.com/cli/cli gh
+cd gh
+make script/build
+env GOOS="${2}" GOARCH="${3}" CGO_ENABLED=0 script/build bin/gh
+mkdir -p /build/bin
+cp bin/gh /build/bin/gh
