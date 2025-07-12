@@ -1,0 +1,205 @@
+name: "Publish container image (test)"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - Dockerfile.tmpl
+      - Dockerfile.build.tmpl
+      - .github/workflows/**
+      - lib/**
+      - Makefile
+      - scripts/**
+      - versions.yaml
+
+permissions:
+  contents: none
+  packages: none
+
+jobs:
+  build:
+    name: Build binaries
+    strategy:
+      matrix:
+        arch: [ x64, arm64 ]
+    runs-on: github-hosted-ubuntu-${{ matrix.arch }}-large
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # fetch-tags: true
+          persist-credentials: false
+
+      - name: Unshallow
+        run: git fetch --force --prune --tags --unshallow
+
+      - name: Describe the current state
+        run: git describe --tags --always
+
+      - name: Map architecture
+        id: map_arch
+        run: ./lib/map-os-arch linux "${{ matrix.arch }}" HOST >> "$GITHUB_OUTPUT"
+
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=sha-${{ github.sha }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Dockerfile
+        run: make Dockerfile Dockerfile.build
+
+      - name: Build auxiliary image and export to docker
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
+        with:
+          context: .
+          file: ./Dockerfile.build
+          push: false
+          load: true
+          tags: binaries:local-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}
+          build-args: |
+            TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
+            TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
+          cache-from: type=gha,scope=build-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}
+          cache-to: type=gha,mode=max,scope=build-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}
+
+      - name: Capture binaries
+        env:
+          HOST_OS: ${{ steps.map_arch.outputs.HOST_OS }}
+          HOST_ARCH: ${{ steps.map_arch.outputs.HOST_ARCH }}
+        run: |
+          ./scripts/build-os-arch --image "binaries:local-${HOST_OS}-${HOST_ARCH}" --no-build "${HOST_OS}" "${HOST_ARCH}"
+          tar -czf dist/binaries-${HOST_OS}-${HOST_ARCH}.tar.gz dist/${HOST_OS}-${HOST_ARCH}
+
+      - name: Archive binaries
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: binaries-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}
+          path: dist/binaries-${{ steps.map_arch.outputs.HOST_OS }}-${{ steps.map_arch.outputs.HOST_ARCH }}.tar.gz
+          retention-days: 1
+
+  publish:
+    name: Publish container images
+    runs-on: github-hosted-ubuntu-x64-large
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    needs: build
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Unshallow
+        run: git fetch --prune --unshallow
+
+      - name: Describe the current state
+        run: git describe --tags --always
+
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{raw}}
+            type=sha
+
+      - name: Generate Dockerfile
+        run: |
+          make Dockerfile
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+        # with:
+        #   config: .github/workflows/buildkitd.toml
+
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Retrieve binaries (linux/amd64)
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: binaries-linux-amd64
+
+      - name: Retrieve binaries (linux/arm64)
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: binaries-linux-arm64
+
+      - name: Load binaries
+        run: |
+          find . -type f -print0 | xargs -0r ls -ld
+          tar -xzf binaries-linux-amd64.tar.gz
+          tar -xzf binaries-linux-arm64.tar.gz
+
+      - name: Build local image
+        id: test-build-image
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          platforms: linux/amd64
+          tags: test:local
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha,scope=final
+          cache-to: type=gha,mode=max,scope=final
+
+      - name: Test image
+        run: |
+          docker run --rm test:local image-test
+
+      - name: Build and push image
+        id: push
+        uses: docker/build-push-action@1dc73863535b631f98b2378be8619f83b136f4a0 # v6.17.0
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
+          # push: ${{ github.event_name == 'push' }}
+          push: false
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha,scope=final
+          cache-to: type=gha,mode=max,scope=final
+
+      - name: list docker images
+        run: |
+          docker images --digests --no-trunc
+
+      - name: Write attestations
+        uses: actions/attest-build-provenance@db473fddc028af60658334401dc6fa3ffd8669fd # v2.3.0
+        # Skip this step by asserting something that is never true
+        if: 1 == 2
+        id: attest
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
