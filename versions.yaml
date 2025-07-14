@@ -36,7 +36,7 @@ golangci_lint: v1.64.8
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 golangci_lint_v2: v2.2.2
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
-gomplate: v4.3.2
+gomplate: v4.3.3
 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 gotestsum: v1.12.3
 grizzly: v0.4.3
