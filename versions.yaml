@@ -73,4 +73,4 @@ wire: v0.6.0
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 xk6: v1.1.2
 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
-yq: v4.46.1
+yq: v4.47.1
