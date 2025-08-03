@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.11.0"></a>
+## [v1.11.0] - 2025-07-12
+### Features
+- Optimize image build
+
+
 <a name="v1.10.0"></a>
-## [v1.10.0] - 2025-07-11
+## [v1.10.0] - 2025-07-14
 ### Features
 - Add 7zz to the image
 
@@ -319,7 +325,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.10.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.11.0...HEAD
+[v1.11.0]: https://github.com/grafana/grafana-build-tools/compare/v1.10.0...v1.11.0
 [v1.10.0]: https://github.com/grafana/grafana-build-tools/compare/v1.9.0...v1.10.0
 [v1.9.0]: https://github.com/grafana/grafana-build-tools/compare/v1.8.0...v1.9.0
 [v1.8.0]: https://github.com/grafana/grafana-build-tools/compare/v1.7.3...v1.8.0
