@@ -178,21 +178,20 @@ jobs:
             type=sha
 
       - name: Create manifest list and push
+        id: manifest
         working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf '${{ steps.image_metadata.outputs.IMAGE_NAME }}@sha256:%s ' *)
-
-      - name: Inspect image
-        run: |
-          docker buildx imagetools inspect ${{ steps.image_metadata.outputs.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
+          docker buildx imagetools inspect \
+            --format '{{json .Manifest}}' \
+            "${{ steps.image_metadata.outputs.IMAGE_NAME }}:${{ steps.meta.outputs.version }}" |
+          jq -r 'digest=\(.digest)' >> "$GITHUB_OUTPUT"
 
       - name: Write attestations
         uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2.4.0
-        # Skip this step by asserting something that is never true
-        if: 1 == 2
         id: attest
         with:
           subject-name: ${{ steps.image_metadata.outputs.IMAGE_NAME }}
-          subject-digest: ${{ steps.meta.outputs.digest }}
+          subject-digest: ${{ steps.manifest.outputs.digest }}
           push-to-registry: true
