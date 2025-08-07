@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.12.1"></a>
+## [v1.12.1] - 2025-08-07
+### Bug Fixes
+- Restore provenance attestation
+
+
 <a name="v1.12.0"></a>
-## [v1.12.0] - 2025-08-04
+## [v1.12.0] - 2025-08-03
 
 <a name="v1.11.0"></a>
 ## [v1.11.0] - 2025-08-03
@@ -328,7 +334,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.12.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.12.1...HEAD
+[v1.12.1]: https://github.com/grafana/grafana-build-tools/compare/v1.12.0...v1.12.1
 [v1.12.0]: https://github.com/grafana/grafana-build-tools/compare/v1.11.0...v1.12.0
 [v1.11.0]: https://github.com/grafana/grafana-build-tools/compare/v1.10.0...v1.11.0
 [v1.10.0]: https://github.com/grafana/grafana-build-tools/compare/v1.9.0...v1.10.0
