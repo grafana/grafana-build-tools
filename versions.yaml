@@ -79,7 +79,7 @@ nilaway: v0.0.0-20250722134535-afb472521551
 oapi_codegen: v2.4.1
 
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
-protoc_gen_go: v1.36.6
+protoc_gen_go: v1.36.7
 
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 protoc_gen_go_grpc: v1.5.1
