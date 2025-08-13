@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+set -u
+
+# download Spectral binary for the target OS and architecture
+case "${2}" in
+    "linux")
+        case "${3}" in
+            "amd64")
+                ARCH="x64"
+                ;;
+            "arm64")
+                ARCH="arm64"
+                ;;
+            *)
+                echo "Unsupported architecture: ${3}"
+                exit 1
+                ;;
+        esac
+        ;;
+    "darwin")
+        case "${3}" in
+            "amd64")
+                ARCH="x64"
+                ;;
+            "arm64")
+                ARCH="arm64"
+                ;;
+            *)
+                echo "Unsupported architecture: ${3}"
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo "Unsupported OS: ${2}"
+        exit 1
+        ;;
+esac
+
+# download Spectral binary
+curl -L "https://github.com/stoplightio/spectral/releases/download/${1}/spectral-${2}-${ARCH}" -o /tmp/spectral
+chmod +x /tmp/spectral
+
+mkdir -p /build/bin
+cp /tmp/spectral /build/bin/spectral
