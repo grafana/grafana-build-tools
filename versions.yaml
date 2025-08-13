@@ -99,6 +99,9 @@ skopeo: v1.20.0
 # renovate: datasource=github-releases depName=wire packageName=google/wire
 wire: v0.6.0
 
+# renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
+spectral: v6.15.0
+
 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 xk6: v1.1.2
 

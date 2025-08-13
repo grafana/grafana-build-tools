@@ -122,6 +122,9 @@ skopeo --version
 echo '=== yq'
 yq --version
 
+echo '=== spectral'
+spectral --version
+
 echo '=== get-latest-gbt-version'
 command -v get-latest-gbt-version
 

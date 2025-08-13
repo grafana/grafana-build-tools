@@ -2,7 +2,7 @@ FROM docker.io/library/golang:{{ .data.go }} AS go
 	COPY lib/go.env /usr/local/go/
 	RUN mkdir -p /build/bin
 
-{{- $skip := dict "go" true "k6" true "skopeo" true "shellcheck" true "jq" true -}}
+{{- $skip := dict "go" true "k6" true "skopeo" true "shellcheck" true "jq" true "spectral" true -}}
 
 {{ range $pkg, $info := .data }}
 {{ if not (index $skip $pkg) }}
@@ -55,6 +55,14 @@ FROM scratch AS shellcheck
 
 FROM scratch AS jq
 	COPY --from=ghcr.io/jqlang/jq:1.7.1 /jq /build/bin/
+
+FROM go AS spectral
+	ARG TARGET_GOOS
+	ARG TARGET_GOARCH
+
+	COPY build/spectral /tmp/build
+
+	RUN "/tmp/build" "{{ .data.spectral }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
 
 FROM docker.io/library/debian:stable-slim AS final
     RUN apt-get update && \
