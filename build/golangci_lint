@@ -3,4 +3,7 @@
 set -e
 set -u
 
+apt update
+apt install -y binutils-gold binutils
+
 env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/golangci/golangci-lint/cmd/golangci-lint@${1}"
