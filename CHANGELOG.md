@@ -2,6 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.13.0"></a>
+## [v1.13.0] - 2025-08-14
+### Bug Fixes
+- Publish images only if a tag is pushed
+- Install gold/ld when building golangci-lint
+- Install 7zip-standalone
+
+
 <a name="v1.12.1"></a>
 ## [v1.12.1] - 2025-08-07
 ### Bug Fixes
@@ -334,7 +342,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.12.1...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.13.0...HEAD
+[v1.13.0]: https://github.com/grafana/grafana-build-tools/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/grafana/grafana-build-tools/compare/v1.12.0...v1.12.1
 [v1.12.0]: https://github.com/grafana/grafana-build-tools/compare/v1.11.0...v1.12.0
 [v1.11.0]: https://github.com/grafana/grafana-build-tools/compare/v1.10.0...v1.11.0
