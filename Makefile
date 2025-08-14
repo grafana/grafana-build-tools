@@ -41,6 +41,7 @@ image-$(LOCAL_ARCH) :
 		--platform $(call split,-,1,$(LOCAL_ARCH))/$(call split,-,2,$(LOCAL_ARCH)) \
 		--build-arg TARGET_GOOS=$(call split,-,1,$(LOCAL_ARCH)) \
 		--build-arg TARGET_GOARCH=$(call split,-,2,$(LOCAL_ARCH)) \
+		$(DOCKER_ARGS) \
 		.
 
 .PHONY: image-local
