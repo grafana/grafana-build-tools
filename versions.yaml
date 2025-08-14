@@ -45,7 +45,7 @@ go: 1.24.6 # sha256:2c89c41fb9efc3807029b59af69645867cfe978d2b877d475be0d72f6c6c
 golangci_lint: v1.64.8
 
 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
-golangci_lint_v2: v2.3.1
+golangci_lint_v2: v2.4.0
 
 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 gomplate: v4.3.3
