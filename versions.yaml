@@ -31,7 +31,7 @@ buf: v1.56.0
 dockerfile_json: v1.2.2
 
 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
-enumer: v1.5.11
+enumer: v1.6.0
 
 # renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
 gh: v2.60.1
