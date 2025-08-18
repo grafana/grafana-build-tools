@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.14.0"></a>
+## [v1.14.0] - 2025-08-15
+### Features
+- Add Spectral to the image
+
+
 <a name="v1.13.0"></a>
-## [v1.13.0] - 2025-08-14
+## [v1.13.0] - 2025-08-13
 ### Bug Fixes
 - Publish images only if a tag is pushed
 - Install gold/ld when building golangci-lint
@@ -342,7 +348,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.13.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.14.0...HEAD
+[v1.14.0]: https://github.com/grafana/grafana-build-tools/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/grafana/grafana-build-tools/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/grafana/grafana-build-tools/compare/v1.12.0...v1.12.1
 [v1.12.0]: https://github.com/grafana/grafana-build-tools/compare/v1.11.0...v1.12.0
