@@ -24,9 +24,6 @@ echo '=== k6'
 command -v xk6
 k6 version
 
-echo '=== wire'
-wire help
-
 echo '=== actionlint'
 actionlint --version
 
