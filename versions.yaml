@@ -61,7 +61,7 @@ jq: 1.8.1 # sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6
 go_jsonnet: v0.21.0
 
 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
-k6: v1.2.1
+k6: v1.2.2
 
 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 mage: v1.15.0
