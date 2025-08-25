@@ -2,8 +2,11 @@
 ## [Unreleased]
 
 
+<a name="v1.15.0"></a>
+## [v1.15.0] - 2025-08-25
+
 <a name="v1.14.0"></a>
-## [v1.14.0] - 2025-08-15
+## [v1.14.0] - 2025-08-18
 ### Features
 - Add Spectral to the image
 
@@ -348,7 +351,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.14.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.15.0...HEAD
+[v1.15.0]: https://github.com/grafana/grafana-build-tools/compare/v1.14.0...v1.15.0
 [v1.14.0]: https://github.com/grafana/grafana-build-tools/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/grafana/grafana-build-tools/compare/v1.12.1...v1.13.0
 [v1.12.1]: https://github.com/grafana/grafana-build-tools/compare/v1.12.0...v1.12.1
