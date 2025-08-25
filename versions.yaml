@@ -97,7 +97,7 @@ sqlc: v1.29.0
 skopeo: v1.20.0
 
 # renovate: datasource=github-releases depName=wire packageName=google/wire
-wire: v0.6.0
+wire: v0.7.0
 
 # renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
 spectral: v6.15.0
