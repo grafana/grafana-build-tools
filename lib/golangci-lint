@@ -14,12 +14,16 @@ set -u
 # This command fails with version 2 because it tries to validate the file.
 config_file=$(golangci-lint-v1 config path 2>&1 || true)
 
-if test -z "${config_file}" -o ! -e "${config_file}" ; then
-	echo "E: golangci-lint config file not found. Stop."
-	exit 1
-fi
+# golangci-lint returns an error in stderr. It *also* returns the name of the
+# configuration file in stderr, meaning we might have an error or a filename.
+# Assume we have v2, and if we get an existing file, try to read it and get the
+# actual version in it, if any.
 
-config_file_version=$(yq '.version' "${config_file}")
+config_file_version=2
+
+if test -n "${config_file}" -a -e "${config_file}" ; then
+	config_file_version=$(yq '.version' "${config_file}")
+fi
 
 case "${config_file_version}" in
 	2)
