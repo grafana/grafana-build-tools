@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.16.1"></a>
+## [v1.16.1] - 2025-08-26
+### Bug Fixes
+- Tweak golangci-lint wrapper
+
+
 <a name="v1.16.0"></a>
-## [v1.16.0] - 2025-08-26
+## [v1.16.0] - 2025-08-25
 ### Features
 - Add golangci-lint wrapper
 
@@ -357,7 +363,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.16.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.16.1...HEAD
+[v1.16.1]: https://github.com/grafana/grafana-build-tools/compare/v1.16.0...v1.16.1
 [v1.16.0]: https://github.com/grafana/grafana-build-tools/compare/v1.15.0...v1.16.0
 [v1.15.0]: https://github.com/grafana/grafana-build-tools/compare/v1.14.0...v1.15.0
 [v1.14.0]: https://github.com/grafana/grafana-build-tools/compare/v1.13.0...v1.14.0
