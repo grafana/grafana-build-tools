@@ -74,6 +74,8 @@ FROM docker.io/library/debian:stable-slim AS final
 
     COPY lib/image-test /usr/local/bin
 
+    COPY lib/golangci-lint /usr/local/bin
+
     COPY lib/get-latest-gbt-version /usr/local/bin
 
     COPY --from=go /usr/local/go /usr/local/go

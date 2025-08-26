@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# This is a wrapper around golangci-lint that selects the correct version of
+# golangci-lint based on the version specified in the configuration file.
+#
+# This is needed because the configuration file format changed with version 2,
+# and it's neither forwards- nor backwards-compatible, and they decided to keep
+# the same filename for both versions.
+
+set -e
+set -u
+
+# Assume version 1 of golangci-lint is able to locate the configuration file.
+# This command fails with version 2 because it tries to validate the file.
+config_file=$(golangci-lint-v1 config path 2>&1 || true)
+
+if test -z "${config_file}" -o ! -e "${config_file}" ; then
+	echo "E: golangci-lint config file not found. Stop."
+	exit 1
+fi
+
+config_file_version=$(yq '.version' "${config_file}")
+
+case "${config_file_version}" in
+	2)
+		# We have version 2
+		golangci_lint=golangci-lint-v2
+		;;
+
+	null|1)
+		# We have version 1
+		golangci_lint=golangci-lint-v1
+	;;
+
+	*)
+		echo "E: Found version '${config_file_version}' in configuration file ${config_file}. I don't know how to handle that. Stop."
+		exit 1
+	;;
+esac
+
+exec "${golangci_lint}" "$@"
