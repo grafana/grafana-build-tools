@@ -67,7 +67,7 @@ k6: v1.2.3
 mage: v1.15.0
 
 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
-migrate: v4.18.3
+migrate: v4.19.0
 
 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
 nfpm: v2.43.1
