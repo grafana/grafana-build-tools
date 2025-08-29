@@ -70,7 +70,7 @@ mage: v1.15.0
 migrate: v4.18.3
 
 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
-nfpm: v2.43.0
+nfpm: v2.43.1
 
 # This hasn't been released yet, so pin it to a specific version for reproducibility
 nilaway: v0.0.0-20250722134535-afb472521551
