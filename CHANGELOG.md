@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
+<a name="v1.18.1"></a>
+## [v1.18.1] - 2025-09-03
+### Bug Fixes
+- Update to Go 1.25.1
+
+
 <a name="v1.18.0"></a>
-## [v1.18.0] - 2025-08-19
+## [v1.18.0] - 2025-09-03
 ### Features
 - Update to Go 1.25.0
 
@@ -372,7 +378,8 @@
 <a name="v0.0.0"></a>
 ## v0.0.0 - 2023-11-24
 
-[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.18.0...HEAD
+[Unreleased]: https://github.com/grafana/grafana-build-tools/compare/v1.18.1...HEAD
+[v1.18.1]: https://github.com/grafana/grafana-build-tools/compare/v1.18.0...v1.18.1
 [v1.18.0]: https://github.com/grafana/grafana-build-tools/compare/v1.17.0...v1.18.0
 [v1.17.0]: https://github.com/grafana/grafana-build-tools/compare/v1.16.1...v1.17.0
 [v1.16.1]: https://github.com/grafana/grafana-build-tools/compare/v1.16.0...v1.16.1
