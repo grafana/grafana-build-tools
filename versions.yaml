@@ -40,7 +40,7 @@ gh: v2.60.1
 git_chglog: v0.15.4
 
 # renovate: datasource=docker depName=go packageName=golang
-go: 1.25.0 # sha256:91e2cd436f7adbfad0a0cbb7bf8502fa863ed8461414ceebe36c6304731e0fd9
+go: 1.25.1 # sha256:0802d0e17ff58ee90d2dc9cd5da4f502b3d4d12677096ad73fd9a505f222781b
 
 golangci_lint: v1.64.8
 
