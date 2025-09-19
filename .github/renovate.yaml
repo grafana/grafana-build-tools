@@ -1,0 +1,78 @@
+$schema: https://docs.renovatebot.com/renovate-schema.json
+
+extends:
+  - config:best-practices
+  - :semanticCommitsDisabled
+
+# This repo is public, so prevent the Mend Renovate app from trying to create
+# PRs here by setting enabled to false.
+enabled: false
+dependencyDashboard: false
+
+branchPrefix: grafanarenovatebot/
+commitMessagePrefix: 'chore:'
+platformCommit: enabled
+forkProcessing: enabled
+rebaseWhen: behind-base-branch
+prHourlyLimit: 0
+prConcurrentLimit: 10
+branchConcurrentLimit: 10
+labels:
+  - dependencies
+
+# Automerge settings
+automerge: true
+assignAutomerge: true
+assigneesFromCodeOwners: true
+automergeStrategy: squash
+automergeType: pr
+platformAutomerge: true
+pruneBranchAfterAutomerge: true
+
+enabledManagers:
+  - custom.regex
+  - gomod
+
+gomod:
+  enabled: true
+
+postUpdateOptions:
+  - gomodTidyE
+
+regex:
+  pinDigests: false
+
+packageRules:
+  - matchManagers:
+      - gomod
+    matchUpdateTypes:
+      - digest
+    schedule: before 8am on monday every 2 weeks
+
+  - matchManagers:
+      - gomod
+    matchPackageNames: github.com/prometheus/*
+    groupName: prometheus-go
+
+  - matchCategories:
+      - docker
+    pinDigests: false
+
+customManagers:
+  - customType: regex
+    description: update docker versions found in versions.yaml
+    managerFilePatterns:
+      - /^versions\.yaml$/
+    datasourceTemplate: docker
+    autoReplaceStringTemplate: |
+      # renovate: datasource=docker packageName={{packageName}}{{{versioningStr}}}
+      {{depName}}: {{newValue}} # {{newDigest}}
+    matchStrings:
+      - '# renovate: datasource=docker packageName=(?<packageName>.+?)(?<versioningStr> versioning=(?<versioning>[a-z-]+?))?\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)( # (?<currentDigest>sha256:[a-f0-9]+))?\s'
+
+  - customType: regex
+    description: update versions found in versions.yaml
+    managerFilePatterns:
+      - /^versions\.yaml$/
+    matchStrings:
+      - '# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\s'
