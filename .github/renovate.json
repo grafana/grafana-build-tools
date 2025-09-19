@@ -69,9 +69,9 @@
         "/^versions\\.yaml$/"
       ],
       "datasourceTemplate": "docker",
-      "autoReplaceStringTemplate": "# renovate: datasource=docker packageName={{packageName}}{{{versioningStr}}}\n{{depName}}: {{newValue}} # {{newDigest}}\n",
+      "autoReplaceStringTemplate": "version: {{newValue}} # {{newDigest}}{{{renovateStr}}}",
       "matchStrings": [
-        "# renovate: datasource=docker packageName=(?<packageName>.+?)(?<versioningStr> versioning=(?<versioning>[a-z-]+?))?\\s(?<depName>[-a-zA-Z0-9_]+): (?<currentValue>.+?)( # (?<currentDigest>sha256:[a-f0-9]+))?\\s"
+        "\\bversion: (?<currentValue>.+?) # (?<currentDigest>sha256:[a-f0-9]+)(?<renovateStr> # renovate: datasource=docker(?:[ \\t]+depName=(?<depName>[-_./\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_./\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_./\\w]+?))?)"
       ]
     },
     {
@@ -80,8 +80,9 @@
       "managerFilePatterns": [
         "/^versions\\.yaml$/"
       ],
+      "autoReplaceStringTemplate": "version: {{newValue}}{{{renovateStr}}}",
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>github-releases|github-tags|go) (?:depName=(?<depName>.+?) )?packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[-a-zA-Z0-9_]+:) (?<currentValue>.+?)\\s"
+        "\\bversion: (?<currentValue>.+?)(?<renovateStr> # renovate: datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_./\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_./\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_./\\w]+?))?)"
       ]
     }
   ]

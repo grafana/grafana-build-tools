@@ -1,18 +1,16 @@
-FROM docker.io/library/golang:{{ .data.go }} AS go
+FROM docker.io/library/golang:{{ .data.go.version }} AS go
 	COPY lib/go.env /usr/local/go/
 	RUN mkdir -p /build/bin
 
-{{- $skip := dict "go" true "k6" true "skopeo" true "shellcheck" true "jq" true -}}
-
 {{ range $pkg, $info := .data }}
-{{ if not (index $skip $pkg) }}
+{{ if (not (index $info "custom_build")) }}
 FROM go AS {{ $pkg }}
 	ARG TARGET_GOOS
 	ARG TARGET_GOARCH
 
 	COPY build/{{ $pkg }} /tmp/build
 
-	RUN "/tmp/build" "{{ $info }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
+	RUN "/tmp/build" "{{ $info.version }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
 {{- end }}
 {{- end }}
 
@@ -22,7 +20,7 @@ FROM xk6 AS k6
 
 	COPY build/k6 /tmp/build
 
-	RUN "/tmp/build" "{{ .data.k6 }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
+	RUN "/tmp/build" "{{ .data.k6.version }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
 
 FROM docker.io/library/debian:stable-slim AS skopeo
 	ARG TARGET_GOOS
@@ -45,16 +43,16 @@ FROM docker.io/library/debian:stable-slim AS skopeo
 	# inspect the available versions without pulling the repos.
 	RUN git clone https://github.com/containers/skopeo && \
 	    cd skopeo && \
-	    git checkout "{{ .data.skopeo }}" && \
+	    git checkout "{{ .data.skopeo.version }}" && \
 	    make GOPATH=/build DISABLE_DOCS=1 bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} && \
 	    mkdir -p /build/bin && \
 	    cp bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} /build/bin/skopeo
 
 FROM scratch AS shellcheck
-	COPY --from=docker.io/koalaman/shellcheck:v0.10.0 /bin/shellcheck /build/bin/
+	COPY --from=docker.io/koalaman/shellcheck:{{ .data.shellcheck.version }} /bin/shellcheck /build/bin/
 
 FROM scratch AS jq
-	COPY --from=ghcr.io/jqlang/jq:1.7.1 /jq /build/bin/
+	COPY --from=ghcr.io/jqlang/jq:{{ .data.jq.version }} /jq /build/bin/
 
 FROM docker.io/library/debian:stable-slim AS final
     RUN apt-get update && \
@@ -81,7 +79,9 @@ FROM docker.io/library/debian:stable-slim AS final
     COPY --from=go /usr/local/go /usr/local/go
 
     {{ range $pkg, $info := .data }}
+    {{ if (not (index $info "custom_install")) }}
     COPY --from={{ $pkg }} /build/bin/* /usr/local/bin/
+    {{ end }}
     {{ end }}
 
     ENV PATH="/usr/local/go/bin:${PATH}"

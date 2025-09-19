@@ -12,10 +12,13 @@
 set -e
 
 report_changes() {
-	echo "E: $1 contains changes. Stop."
+	git status --porcelain --untracked-files=no | cut -c4- | while read -r fn ; do
+		echo "W: $fn contains changes."
+	done
+	echo "E: Changes detected. Stop."
 	exit 1
 }
 
-test -n "$(git status --porcelain -- go.sum)" && report_changes go.sum
+test -n "$(git status --porcelain --untracked-files=no)" && report_changes
 
 exit 0
