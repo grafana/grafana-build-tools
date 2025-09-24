@@ -56,3 +56,5 @@ jobs:
           persist-credentials: false
       - name: Self-hosted renovate
         uses: grafana/sm-renovate/actions/renovate-validate@main
+        with:
+          renovate-version: 39.23.0
