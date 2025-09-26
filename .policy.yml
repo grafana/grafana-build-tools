@@ -6,6 +6,8 @@ policy:
     - or:
         - and:
             - Workflow .github/workflows/pr.yml succeeded or skipped
+            - Workflow .github/workflows/validate-policybot-config.yaml succeeded or skipped
+            - Workflow .github/workflows/validate-renovate-config.yaml succeeded or skipped
             - default to approval
 approval_rules:
   - name: Workflow .github/workflows/pr.yml succeeded or skipped
@@ -13,7 +15,6 @@ approval_rules:
       changed_files:
         paths:
           - ^Dockerfile\.tmpl$
-          - ^Dockerfile\.build\.tmpl$
           - ^\.github\/workflows\/(?:(?:[^/]*(?:/|$))*)$
           - ^lib\/(?:(?:[^/]*(?:/|$))*)$
           - ^Makefile$
@@ -29,4 +30,36 @@ approval_rules:
             - success
           workflows:
             - .github/workflows/pr.yml
+  - name: Workflow .github/workflows/validate-policybot-config.yaml succeeded or skipped
+    if:
+      changed_files:
+        paths:
+          - ^\.policy\.yml$
+          - ^\.policy\.yml\.tmpl$
+          - ^\.github\/workflows\/(?:[^/]*)$
+          - ^scripts\/gen-policy-bot-config$
+    requires:
+      conditions:
+        has_workflow_result:
+          conclusions:
+            - skipped
+            - success
+          workflows:
+            - .github/workflows/validate-policybot-config.yaml
+  - name: Workflow .github/workflows/validate-renovate-config.yaml succeeded or skipped
+    if:
+      changed_files:
+        paths:
+          - ^renovate\.(?:[^/]*)$
+          - ^\.renovate\.(?:[^/]*)$
+          - ^\.github\/renovate\.(?:[^/]*)$
+          - ^\.github\/workflows\/renovate(?:[^/]*)$
+    requires:
+      conditions:
+        has_workflow_result:
+          conclusions:
+            - skipped
+            - success
+          workflows:
+            - .github/workflows/validate-renovate-config.yaml
   - name: default to approval

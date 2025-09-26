@@ -1,0 +1,38 @@
+name: Validate policybot config
+on:
+  pull_request:
+    paths:
+      - ".policy.yml"
+      - ".policy.yml.tmpl"
+      - ".github/workflows/*"
+      - "scripts/gen-policy-bot-config"
+
+permissions:
+  contents: none
+
+jobs:
+  enforce-code-generation:
+    name: enforce code generation
+    runs-on:
+      - ubuntu-arm64
+    permissions:
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          fetch-tags: false
+
+      - name: Set up global git config
+        run: |
+          # The directory where the code has been checked out ends up belonging
+          # to a different user, so git complains about permissions. Indicate
+          # that it's safe to ignore.
+          git config --global --add safe.directory '*'
+
+      - name: generate policybot configuration file
+        run: |
+          make .policy.yml
+          scripts/enforce-clean
