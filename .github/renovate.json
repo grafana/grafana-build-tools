@@ -65,8 +65,8 @@
     {
       "customType": "regex",
       "description": "update docker versions found in versions.yaml",
-      "fileMatch": [
-        "^versions\\.yaml$"
+      "managerFilePatterns": [
+        "/^versions\\.yaml$/"
       ],
       "datasourceTemplate": "docker",
       "autoReplaceStringTemplate": "version: {{newValue}} # {{newDigest}}{{{renovateStr}}}",
@@ -77,8 +77,8 @@
     {
       "customType": "regex",
       "description": "update versions found in versions.yaml",
-      "fileMatch": [
-        "^versions\\.yaml$"
+      "managerFilePatterns": [
+        "/^versions\\.yaml$/"
       ],
       "autoReplaceStringTemplate": "version: {{newValue}}{{{renovateStr}}}",
       "matchStrings": [
