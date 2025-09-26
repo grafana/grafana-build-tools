@@ -123,6 +123,10 @@ tag: ## print out the tag
 	@echo "Generating $@..."
 	$(S) yq --output-format j '$<' > '$@'
 
+.policy.yml: $(wildcard .github/workflows/* .policy.yml.tmpl)
+	@echo "Generating $@..."
+	$(S) ./scripts/gen-policy-bot-config
+
 .PHONY: help
 help: ## display this help.
 	$(S) awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
