@@ -63,19 +63,18 @@ customManagers:
     description: update docker versions found in versions.yaml
     fileMatch:
       - ^versions\.yaml$
-    datasourceTemplate: docker
-    autoReplaceStringTemplate: |-
-      version: {{newValue}} # {{newDigest}}{{{renovateStr}}}
+    #autoReplaceStringTemplate: |-
+    #  version: {{newValue}} # {{newDigest}}{{{renovateStr}}}
     matchStrings:
-      # Beware that renovate will include newlines in \s because it uses 'g'.
-      - '\bversion: (?<currentValue>.+?) # (?<currentDigest>sha256:[a-f0-9]+)(?<renovateStr> # renovate: datasource=docker(?:[ \t]+depName=(?<depName>[-_./\w]+))?(?:[ \t]+packageName=(?<packageName>[-_./\w]+))(?:[ \t]+versioning=(?<versioning>[-_./\w]+?))?)'
+      # Beware that renovate will include newlines in \s because it uses 's'.
+      - '[ \t]+version:[ \t]*(?<currentValue>[^ \t]+)[ \t]*#[ \t]*(?<currentDigest>sha256:[a-f0-9]+)[ \t]*#[ \t]*renovate:[ \t]*datasource=(?<datasource>docker)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+?))?'
 
   - customType: regex
     description: update versions found in versions.yaml
     fileMatch:
       - ^versions\.yaml$
-    autoReplaceStringTemplate: |-
-      version: {{newValue}}{{{renovateStr}}}
+    #autoReplaceStringTemplate: |-
+    #  version: {{newValue}}{{{renovateStr}}}
     matchStrings:
-      # Beware that renovate will include newlines in \s because it uses 'g'.
-      - '\bversion: (?<currentValue>.+?)(?<renovateStr> # renovate: datasource=(?<datasource>github-releases|github-tags|go)(?:[ \t]+depName=(?<depName>[-_./\w]+))?(?:[ \t]+packageName=(?<packageName>[-_./\w]+))(?:[ \t]+versioning=(?<versioning>[-_./\w]+?))?)'
+      # Beware that renovate will include newlines in \s because it uses 's'.
+      - '[ \t]+version:[ \t]*(?<currentValue>\S+)[ \t]*#[ \t]*renovate:[ \t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+))?'
