@@ -57,4 +57,4 @@ jobs:
       - name: Self-hosted renovate
         uses: grafana/sm-renovate/actions/renovate-validate@main
         with:
-          renovate-version: 39.23.0
+          renovate-version: 41.131.6

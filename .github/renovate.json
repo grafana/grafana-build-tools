@@ -65,24 +65,21 @@
     {
       "customType": "regex",
       "description": "update docker versions found in versions.yaml",
-      "fileMatch": [
-        "^versions\\.yaml$"
+      "managerFilePatterns": [
+        "/^versions\\.yaml$/"
       ],
-      "datasourceTemplate": "docker",
-      "autoReplaceStringTemplate": "version: {{newValue}} # {{newDigest}}{{{renovateStr}}}",
       "matchStrings": [
-        "\\bversion: (?<currentValue>.+?) # (?<currentDigest>sha256:[a-f0-9]+)(?<renovateStr> # renovate: datasource=docker(?:[ \\t]+depName=(?<depName>[-_./\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_./\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_./\\w]+?))?)"
+        "[ \\t]+version:[ \\t]*(?<currentValue>[^ \\t]+)[ \\t]*#[ \\t]*(?<currentDigest>sha256:[a-f0-9]+)[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>docker)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+?))?"
       ]
     },
     {
       "customType": "regex",
       "description": "update versions found in versions.yaml",
-      "fileMatch": [
-        "^versions\\.yaml$"
+      "managerFilePatterns": [
+        "/^versions\\.yaml$/"
       ],
-      "autoReplaceStringTemplate": "version: {{newValue}}{{{renovateStr}}}",
       "matchStrings": [
-        "\\bversion: (?<currentValue>.+?)(?<renovateStr> # renovate: datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_./\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_./\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_./\\w]+?))?)"
+        "[ \\t]+version:[ \\t]*(?<currentValue>\\S+)[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+))?"
       ]
     }
   ]

@@ -61,8 +61,8 @@ packageRules:
 customManagers:
   - customType: regex
     description: update docker versions found in versions.yaml
-    fileMatch:
-      - ^versions\.yaml$
+    managerFilePatterns:
+      - /^versions\.yaml$/
     #autoReplaceStringTemplate: |-
     #  version: {{newValue}} # {{newDigest}}{{{renovateStr}}}
     matchStrings:
@@ -71,8 +71,8 @@ customManagers:
 
   - customType: regex
     description: update versions found in versions.yaml
-    fileMatch:
-      - ^versions\.yaml$
+    managerFilePatterns:
+      - /^versions\.yaml$/
     #autoReplaceStringTemplate: |-
     #  version: {{newValue}}{{{renovateStr}}}
     matchStrings:
