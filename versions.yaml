@@ -20,7 +20,7 @@ chglog:
   version: v0.7.3 # renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
 
 lefthook:
-  version: v1.13.1 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
+  version: v1.13.4 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
   version: v1.57.2 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
