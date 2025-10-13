@@ -114,4 +114,4 @@ xk6:
   version: v1.1.6 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 
 yq:
-  version: v4.47.2 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
+  version: v4.48.1 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
