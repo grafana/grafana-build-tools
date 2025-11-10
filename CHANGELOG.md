@@ -1,4 +1,24 @@
 <a name="unreleased"></a>
+## [1.23.0](https://github.com/grafana/grafana-build-tools/compare/v1.22.0...v1.23.0) (2025-11-10)
+
+
+### Fixes and patches
+
+* Add release please workflow ([028bc04](https://github.com/grafana/grafana-build-tools/commit/028bc04be0c0930a2f707b6225fbaff28c1bede1))
+* Update release-please configuration ([b1fed09](https://github.com/grafana/grafana-build-tools/commit/b1fed096da3625948152b177e5f33b12057d7ea9))
+* Update renovate config ([753d98f](https://github.com/grafana/grafana-build-tools/commit/753d98f92f6703b36baa47e8abb45720a20fc12d))
+
+
+### Miscellaneous Chores
+
+* release 1.23.0 ([3d1ff70](https://github.com/grafana/grafana-build-tools/commit/3d1ff70e80f6c52c89e5917c207039755af88093))
+* Update dependency bingo to v0.10.0 ([#461](https://github.com/grafana/grafana-build-tools/issues/461)) ([81e7c62](https://github.com/grafana/grafana-build-tools/commit/81e7c62ad0863f9ee456e642dca219f1e68f2e1c))
+* Update dependency golangci-lint to v2.6.1 ([#457](https://github.com/grafana/grafana-build-tools/issues/457)) ([f97359d](https://github.com/grafana/grafana-build-tools/commit/f97359da9f629153d3c0ca44e3573246722651e3))
+* Update dependency k6 to v1.4.0 ([#462](https://github.com/grafana/grafana-build-tools/issues/462)) ([ef02a04](https://github.com/grafana/grafana-build-tools/commit/ef02a0470fe49e755c9dbcd58eb5fc8d74793d92))
+* Update dependency xk6 to v1.2.4 ([#460](https://github.com/grafana/grafana-build-tools/issues/460)) ([7042111](https://github.com/grafana/grafana-build-tools/commit/7042111d1350d1c87f2533400e9374e75e63ab76))
+* Update go Docker tag to v1.25.4 ([#459](https://github.com/grafana/grafana-build-tools/issues/459)) ([396ccb8](https://github.com/grafana/grafana-build-tools/commit/396ccb89b8a0d0ca68f1302f8b18024963e17102))
+* Update go:1.25.3 Docker digest to 0afe9b5 ([#456](https://github.com/grafana/grafana-build-tools/issues/456)) ([d31182d](https://github.com/grafana/grafana-build-tools/commit/d31182dd062471854861f86629af316a62f00227))
+
 ## [Unreleased]
 
 
