@@ -39,6 +39,14 @@
   },
   "packageRules": [
     {
+      "matchUpdateTypes": "patch",
+      "commitMessagePrefix": "fix:"
+    },
+    {
+      "matchUpdateTypes": "minor",
+      "commitMessagePrefix": "feat:"
+    },
+    {
       "matchManagers": [
         "gomod"
       ],
