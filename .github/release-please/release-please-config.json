@@ -1,17 +1,18 @@
 {
   "packages": {
     ".": {
-      "release-type": "go",
+      "release-type": "simple",
       "bump-minor-pre-major": true,
       "include-component-in-tag": false,
       "changelog-sections": [
-        { "type": "feat", "section": "Features" },
-        { "type": "fix", "section": "Fixes" },
+        { "type": "feat", "section": "Features and minor updates" },
+        { "type": "fix", "section": "Fixes and patches" },
         { "type": "chore", "section": "Miscellaneous Chores" }
       ]
     }
   },
   "draft-pull-request": true,
   "pull-request-title-pattern": "chore: release ${version}",
+  "include-v-in-tag": true,
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
