@@ -1,0 +1,17 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "go",
+      "bump-minor-pre-major": true,
+      "include-component-in-tag": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Fixes" },
+        { "type": "chore", "section": "Miscellaneous Chores" }
+      ]
+    }
+  },
+  "draft-pull-request": true,
+  "pull-request-title-pattern": "chore: release ${version}",
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
