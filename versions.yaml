@@ -66,7 +66,7 @@ go_jsonnet:
 
 k6:
   custom_build: true
-  version: v1.3.0 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
+  version: v1.4.0 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 
 mage:
   version: v1.15.0 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
