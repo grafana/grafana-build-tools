@@ -1,4 +1,20 @@
 <a name="unreleased"></a>
+## [1.23.1](https://github.com/grafana/grafana-build-tools/compare/v1.23.0...v1.23.1) (2025-11-19)
+
+
+### Fixes and patches
+
+* Update dependency golangci-lint to v2.6.2 ([#470](https://github.com/grafana/grafana-build-tools/issues/470)) ([0421e04](https://github.com/grafana/grafana-build-tools/commit/0421e0471ade9eb0eebf6a624994ae835c2019bc))
+* Update dependency xk6 to v1.2.6 ([#468](https://github.com/grafana/grafana-build-tools/issues/468)) ([ccaf336](https://github.com/grafana/grafana-build-tools/commit/ccaf336259a251e52e822e80b93b3cb3a1ae2a73))
+* Update dependency yq to v4.48.2 ([#472](https://github.com/grafana/grafana-build-tools/issues/472)) ([91e036b](https://github.com/grafana/grafana-build-tools/commit/91e036b9d9ccae207bb6115f44e2b06862929238))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.4 Docker digest to 3976069 ([#474](https://github.com/grafana/grafana-build-tools/issues/474)) ([816cc06](https://github.com/grafana/grafana-build-tools/commit/816cc06ae43db5ef697e16ed6049bb7ddc402bc7))
+* Update go:1.25.4 Docker digest to e68f6a0 ([#469](https://github.com/grafana/grafana-build-tools/issues/469)) ([5e243a0](https://github.com/grafana/grafana-build-tools/commit/5e243a0785638ab61d0e1e577c0675b9afbbf874))
+* Update go:1.25.4 Docker digest to f60eaa8 ([#475](https://github.com/grafana/grafana-build-tools/issues/475)) ([7d929f7](https://github.com/grafana/grafana-build-tools/commit/7d929f74fd513a2fd0a02a19fd69ea4160c932f2))
+
 ## [1.23.0](https://github.com/grafana/grafana-build-tools/compare/v1.22.0...v1.23.0) (2025-11-10)
 
 
