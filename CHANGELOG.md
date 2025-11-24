@@ -1,4 +1,24 @@
 <a name="unreleased"></a>
+## [1.24.0](https://github.com/grafana/grafana-build-tools/compare/v1.23.1...v1.24.0) (2025-11-24)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.60.0 ([#471](https://github.com/grafana/grafana-build-tools/issues/471)) ([b3b7fc7](https://github.com/grafana/grafana-build-tools/commit/b3b7fc7003181f551f907b6d5073ef85e2a112b9))
+* Update dependency yq to v4.49.1 ([#478](https://github.com/grafana/grafana-build-tools/issues/478)) ([396ad6f](https://github.com/grafana/grafana-build-tools/commit/396ad6f570fccd6c2e03053108e53b67cfbb847f))
+
+
+### Fixes and patches
+
+* Update dependency actionlint to v1.7.9 ([#477](https://github.com/grafana/grafana-build-tools/issues/477)) ([d2e4e0a](https://github.com/grafana/grafana-build-tools/commit/d2e4e0a8209cd6f5f314cccccd1a6fcc83a7b50f))
+* Update dependency k6 to v1.4.1 ([#476](https://github.com/grafana/grafana-build-tools/issues/476)) ([38200e9](https://github.com/grafana/grafana-build-tools/commit/38200e9cede29e80c1aaef7671c6b4e236181886))
+* Update dependency k6 to v1.4.2 ([#481](https://github.com/grafana/grafana-build-tools/issues/481)) ([8748e7e](https://github.com/grafana/grafana-build-tools/commit/8748e7edc43fdf9f8d315df0000859c2b176dd63))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.4 Docker digest to 6981837 ([#479](https://github.com/grafana/grafana-build-tools/issues/479)) ([1d3ccf4](https://github.com/grafana/grafana-build-tools/commit/1d3ccf484777edc538c33fc6372ccb5e770aa791))
+
 ## [1.23.1](https://github.com/grafana/grafana-build-tools/compare/v1.23.0...v1.23.1) (2025-11-19)
 
 
