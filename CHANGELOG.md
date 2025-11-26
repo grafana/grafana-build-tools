@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [1.25.0](https://github.com/grafana/grafana-build-tools/compare/v1.24.0...v1.25.0) (2025-11-26)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.61.0 ([#483](https://github.com/grafana/grafana-build-tools/issues/483)) ([4f127a4](https://github.com/grafana/grafana-build-tools/commit/4f127a46199e76eb13707c1237de2e705e0e93cb))
+
+
+### Fixes and patches
+
+* Update dependency yq to v4.49.2 ([#482](https://github.com/grafana/grafana-build-tools/issues/482)) ([0b1dcf0](https://github.com/grafana/grafana-build-tools/commit/0b1dcf03fd9f339cfbd14b6416b1a9f779362d36))
+
 ## [1.24.0](https://github.com/grafana/grafana-build-tools/compare/v1.23.1...v1.24.0) (2025-11-24)
 
 
