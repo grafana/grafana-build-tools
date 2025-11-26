@@ -23,7 +23,7 @@ lefthook:
   version: v1.13.6 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
-  version: v1.60.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
+  version: v1.61.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 
 dockerfile_json:
   version: v1.2.2 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
