@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.26.0](https://github.com/grafana/grafana-build-tools/compare/v1.25.0...v1.26.0) (2025-12-02)
+
+
+### Features and minor updates
+
+* Update dependency nfpm to v2.44.0 ([#487](https://github.com/grafana/grafana-build-tools/issues/487)) ([e668d0e](https://github.com/grafana/grafana-build-tools/commit/e668d0e2d09982b47e18803116896a8b19d4a455))
+* Update module protoc-gen-go-grpc to v1.6.0 ([#485](https://github.com/grafana/grafana-build-tools/issues/485)) ([4b574bc](https://github.com/grafana/grafana-build-tools/commit/4b574bc5b5134b0e930a154e1fb71c3768b7de70))
+
+
+### Fixes and patches
+
+* Update dependency migrate to v4.19.1 ([#486](https://github.com/grafana/grafana-build-tools/issues/486)) ([b2846c5](https://github.com/grafana/grafana-build-tools/commit/b2846c50351dda7fe434c6283e8e3367a0f0e187))
+
 ## [1.25.0](https://github.com/grafana/grafana-build-tools/compare/v1.24.0...v1.25.0) (2025-11-26)
 
 
