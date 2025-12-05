@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.27.0](https://github.com/grafana/grafana-build-tools/compare/v1.26.0...v1.27.0) (2025-12-05)
+
+
+### Features and minor updates
+
+* Update dependency skopeo to v1.21.0 ([#490](https://github.com/grafana/grafana-build-tools/issues/490)) ([ca4524e](https://github.com/grafana/grafana-build-tools/commit/ca4524e338811c06c07ea039ea0299e7333aec5b))
+* Update dependency xk6 to v1.3.0 ([#491](https://github.com/grafana/grafana-build-tools/issues/491)) ([7cfa9fc](https://github.com/grafana/grafana-build-tools/commit/7cfa9fc430099985641eeeaad8fc24ede25464ba))
+
+
+### Fixes and patches
+
+* Update go Docker tag to v1.25.5 ([#489](https://github.com/grafana/grafana-build-tools/issues/489)) ([19af168](https://github.com/grafana/grafana-build-tools/commit/19af168a03ebbb6803372d5d85a407678ad13c81))
+
 ## [1.26.0](https://github.com/grafana/grafana-build-tools/compare/v1.25.0...v1.26.0) (2025-12-02)
 
 
