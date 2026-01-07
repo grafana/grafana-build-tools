@@ -1,4 +1,20 @@
 <a name="unreleased"></a>
+## [1.27.1](https://github.com/grafana/grafana-build-tools/compare/v1.27.0...v1.27.1) (2026-01-07)
+
+
+### Fixes and patches
+
+* Update dependency actionlint to v1.7.10 ([#501](https://github.com/grafana/grafana-build-tools/issues/501)) ([63784f9](https://github.com/grafana/grafana-build-tools/commit/63784f9b4e817f1be54b65c60a646bb1b5aead93))
+* Update dependency chglog to v0.7.4 ([#498](https://github.com/grafana/grafana-build-tools/issues/498)) ([0f48458](https://github.com/grafana/grafana-build-tools/commit/0f4845883eee550075a711b5e9587ce3e608e46b))
+* Update dependency nfpm to v2.44.1 ([#499](https://github.com/grafana/grafana-build-tools/issues/499)) ([d3d52b8](https://github.com/grafana/grafana-build-tools/commit/d3d52b878e1fe832dce072733e4fefe279da5073))
+* Update dependency xk6 to v1.3.2 ([#495](https://github.com/grafana/grafana-build-tools/issues/495)) ([42b12c2](https://github.com/grafana/grafana-build-tools/commit/42b12c286228bc95d4f22143cce49d5e1f7091e9))
+* Update module protoc-gen-go to v1.36.11 ([#496](https://github.com/grafana/grafana-build-tools/issues/496)) ([257b78f](https://github.com/grafana/grafana-build-tools/commit/257b78fe0698b2367d5a16f01d941e7bcac806cc))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.5 Docker digest to 6cc2338 ([#494](https://github.com/grafana/grafana-build-tools/issues/494)) ([78749e0](https://github.com/grafana/grafana-build-tools/commit/78749e0b7429c3f92d38904e4f5c16971ab6bac5))
+
 ## [1.27.0](https://github.com/grafana/grafana-build-tools/compare/v1.26.0...v1.27.0) (2025-12-05)
 
 
