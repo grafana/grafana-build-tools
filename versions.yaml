@@ -111,7 +111,7 @@ spectral:
   version: v6.15.0 # renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
 
 xk6:
-  version: v1.3.0 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
+  version: v1.3.2 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 
 yq:
   version: v4.49.2 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
