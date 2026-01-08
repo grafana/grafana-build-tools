@@ -1,4 +1,15 @@
 <a name="unreleased"></a>
+## [1.28.0](https://github.com/grafana/grafana-build-tools/compare/v1.27.1...v1.28.0) (2026-01-08)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.63.0 ([#500](https://github.com/grafana/grafana-build-tools/issues/500)) ([6a9c76f](https://github.com/grafana/grafana-build-tools/commit/6a9c76f8c082b1fb29ccb5e9a3b4c8bf9f864cea))
+* Update dependency golangci-lint to v2.7.2 ([#492](https://github.com/grafana/grafana-build-tools/issues/492)) ([bf5bec5](https://github.com/grafana/grafana-build-tools/commit/bf5bec51d4725ec7a3acd3f457b26e54a0da6bcf))
+* Update dependency golangci-lint to v2.8.0 ([#505](https://github.com/grafana/grafana-build-tools/issues/505)) ([aa617b6](https://github.com/grafana/grafana-build-tools/commit/aa617b65356ed891afbd4c10d42034a57ef32dcb))
+* Update dependency k6 to v1.5.0 ([#504](https://github.com/grafana/grafana-build-tools/issues/504)) ([71010ba](https://github.com/grafana/grafana-build-tools/commit/71010bab78ceaee71c39f478748b16c07acff4c3))
+* Update dependency yq to v4.50.1 ([#497](https://github.com/grafana/grafana-build-tools/issues/497)) ([04ecec5](https://github.com/grafana/grafana-build-tools/commit/04ecec5af3c804e2cd0a7193d4281081c631cd76))
+
 ## [1.27.1](https://github.com/grafana/grafana-build-tools/compare/v1.27.0...v1.27.1) (2026-01-07)
 
 
