@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.28.4](https://github.com/grafana/grafana-build-tools/compare/v1.28.3...v1.28.4) (2026-01-20)
+
+
+### Fixes and patches
+
+* Add missing quotes in jq expression ([1fdf194](https://github.com/grafana/grafana-build-tools/commit/1fdf194b383057076638a8854ea49322adbdf486))
+
 ## [1.28.3](https://github.com/grafana/grafana-build-tools/compare/v1.28.2...v1.28.3) (2026-01-20)
 
 
