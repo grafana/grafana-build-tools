@@ -194,7 +194,7 @@ jobs:
           docker buildx imagetools inspect \
             --format '{{json .Manifest}}' \
             "${{ steps.image_metadata.outputs.IMAGE_NAME }}:${{ steps.meta.outputs.version }}" |
-          jq -r 'digest=\(.digest)' >> "$GITHUB_OUTPUT"
+          jq -r '"digest=\(.digest)"' >> "$GITHUB_OUTPUT"
 
       - name: Write attestations
         uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2.4.0
