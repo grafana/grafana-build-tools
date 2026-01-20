@@ -8,7 +8,7 @@ apt install -y binutils-gold binutils
 
 GOPATH=${4:-"/build"}
 
-env GOPATH="${GOPATH}" GOOS="${2}" GOARCH="${3}" go install "github.com/golangci/golangci-lint/cmd/golangci-lint@${1}"
+env GOPATH="${GOPATH}" GOOS="${2}" GOARCH="${3}" go install -trimpath "github.com/golangci/golangci-lint/cmd/golangci-lint@${1}"
 
 # For native builds, the binary is found in build/bin/golangci-lint,
 # but for cross builds, it is found in

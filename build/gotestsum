@@ -3,4 +3,4 @@
 set -e
 set -u
 
-env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "gotest.tools/gotestsum@${1}"
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install -trimpath "gotest.tools/gotestsum@${1}"

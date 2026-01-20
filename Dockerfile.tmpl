@@ -1,6 +1,10 @@
 FROM docker.io/library/golang:{{ .data.go.version }} AS go
 	COPY lib/go.env /usr/local/go/
 	RUN mkdir -p /build/bin
+	ENV GOMODCACHE=/go/pkg/mod
+	ENV GOCACHE=/go/build-cache
+	ARG SOURCE_DATE_EPOCH=0
+	ENV SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH}
 
 {{ range $pkg, $info := .data }}
 {{ if (not (index $info "custom_build")) }}
@@ -10,7 +14,9 @@ FROM go AS {{ $pkg }}
 
 	COPY build/{{ $pkg }} /tmp/build
 
-	RUN "/tmp/build" "{{ $info.version }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
+	RUN --mount=type=cache,target=/go/pkg/mod,id=gomod-${TARGET_GOARCH} \
+	    --mount=type=cache,target=/go/build-cache,id=gobuild-${TARGET_GOARCH} \
+	    "/tmp/build" "{{ $info.version }}" "${TARGET_GOOS}" "${TARGET_GOARCH}"
 {{- end }}
 {{- end }}
 
@@ -29,8 +35,10 @@ FROM docker.io/library/debian:stable-slim AS skopeo
 	COPY --from=go /usr/local/go /usr/local/go
 	
 	ENV PATH="/usr/local/go/bin:${PATH}"
-	
-	RUN apt-get update && \
+
+	RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+	    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+	    apt-get update && \
 	    apt-get install -y \
 	    build-essential \
 	    libgpgme-dev \
@@ -55,7 +63,9 @@ FROM scratch AS jq
 	COPY --from=ghcr.io/jqlang/jq:{{ .data.jq.version }} /jq /build/bin/
 
 FROM docker.io/library/debian:stable-slim AS final
-    RUN apt-get update && \
+    RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+        --mount=type=cache,target=/var/lib/apt,sharing=locked \
+        apt-get update && \
         apt-get install -y \
             build-essential \
             docker.io \
@@ -65,10 +75,7 @@ FROM docker.io/library/debian:stable-slim AS final
             libgpgme11 \
             curl \
             ca-certificates \
-            7zip-standalone \
-            && \
-        rm -rf /var/cache/apt /var/lib/apt && \
-        mkdir -p /var/cache/apt /var/lib/apt
+            7zip-standalone
 
     COPY lib/image-test /usr/local/bin
 

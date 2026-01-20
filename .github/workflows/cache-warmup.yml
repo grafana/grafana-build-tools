@@ -1,0 +1,55 @@
+name: Warm Build Cache
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  warm-cache:
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+    runs-on: github-hosted-ubuntu-${{ matrix.arch }}-large
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Map architecture
+        id: map_arch
+        run: ./lib/map-os-arch linux "${{ matrix.arch }}" HOST >> "$GITHUB_OUTPUT"
+
+      - name: Generate Dockerfile
+        run: make Dockerfile
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
+
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and populate cache
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: ${{ steps.map_arch.outputs.HOST_OS }}/${{ steps.map_arch.outputs.HOST_ARCH }}
+          push: false
+          build-args: |
+            TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
+            TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
+            SOURCE_DATE_EPOCH=${{ github.event.repository.updated_at }}
+          cache-from: |
+            type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }}
+            type=registry,ref=ghcr.io/${{ github.repository }}:main
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }},mode=max

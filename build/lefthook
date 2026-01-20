@@ -3,4 +3,4 @@
 set -e
 set -u
 
-env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install "github.com/evilmartians/lefthook@${1}"
+env GOPATH=/build GOOS="${2}" GOARCH="${3}" go install -trimpath "github.com/evilmartians/lefthook@${1}"
