@@ -89,11 +89,14 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: ${{ steps.image_metadata.outputs.IMAGE_NAME }}
           outputs: type=image,push-by-digest=true,name-canonical=true,push=false
-          cache-from: type=gha,scope=final
-          cache-to: type=gha,mode=min,scope=final
+          cache-from: |
+            type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }}
+            type=registry,ref=ghcr.io/${{ github.repository }}:main
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }},mode=min
           build-args: |
             TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
             TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
+            SOURCE_DATE_EPOCH=${{ github.event.repository.updated_at }}
 
       - name: Test image
         run: |
@@ -111,11 +114,16 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: ${{ steps.image_metadata.outputs.IMAGE_NAME }}
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true
-          cache-from: type=gha,scope=final
-          cache-to: type=gha,mode=min,scope=final
+          cache-from: |
+            type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }}
+            type=registry,ref=ghcr.io/${{ github.repository }}:main
+          cache-to: |
+            type=registry,ref=ghcr.io/${{ github.repository }}:buildcache-${{ steps.map_arch.outputs.HOST_ARCH }},mode=min
+            type=inline
           build-args: |
             TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
             TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
+            SOURCE_DATE_EPOCH=${{ github.event.repository.updated_at }}
 
       - name: Export digest
         id: export-digest
