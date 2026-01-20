@@ -96,7 +96,6 @@ jobs:
           build-args: |
             TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
             TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
-            SOURCE_DATE_EPOCH=${{ github.event.repository.updated_at }}
 
       - name: Test image
         run: |
@@ -123,7 +122,6 @@ jobs:
           build-args: |
             TARGET_GOOS=${{ steps.map_arch.outputs.HOST_OS }}
             TARGET_GOARCH=${{ steps.map_arch.outputs.HOST_ARCH }}
-            SOURCE_DATE_EPOCH=${{ github.event.repository.updated_at }}
 
       - name: Export digest
         id: export-digest
