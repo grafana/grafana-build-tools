@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.28.3](https://github.com/grafana/grafana-build-tools/compare/v1.28.2...v1.28.3) (2026-01-20)
+
+
+### Fixes and patches
+
+* Keep SOURCE_DATE_EPOCH at a fixed value ([7be2fb7](https://github.com/grafana/grafana-build-tools/commit/7be2fb7d15821c762b0cb7dcbd598d833a61c9e5))
+* Make build reproducible to optimize layer caching ([8cbfb2b](https://github.com/grafana/grafana-build-tools/commit/8cbfb2b8cd90040d1f85543f85fdfa623bd0c5be))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.6 Docker digest to ce63a16 ([#514](https://github.com/grafana/grafana-build-tools/issues/514)) ([c8b0c24](https://github.com/grafana/grafana-build-tools/commit/c8b0c245ac94b110c6e6ff3d2fda6a6318e53f5b))
+
 ## [1.28.2](https://github.com/grafana/grafana-build-tools/compare/v1.28.1...v1.28.2) (2026-01-16)
 
 
