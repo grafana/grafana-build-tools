@@ -29,7 +29,7 @@ dockerfile_json:
   version: v1.2.2 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 
 enumer:
-  version: v1.6.1 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
+  version: v1.6.3 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 
 gh:
   version: v2.60.1 # renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
