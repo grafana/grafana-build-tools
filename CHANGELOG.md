@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.29.0](https://github.com/grafana/grafana-build-tools/compare/v1.28.4...v1.29.0) (2026-01-27)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.64.0 ([#512](https://github.com/grafana/grafana-build-tools/issues/512)) ([377900a](https://github.com/grafana/grafana-build-tools/commit/377900af83777f7e4abb31cf1c86879f3cb1b2b3))
+
+
+### Fixes and patches
+
+* Update dependency enumer to v1.6.3 ([#521](https://github.com/grafana/grafana-build-tools/issues/521)) ([4883168](https://github.com/grafana/grafana-build-tools/commit/4883168843addb6cb78e1d3dbeb461608b6f35c3))
+* Update dependency nfpm to v2.44.2 ([#522](https://github.com/grafana/grafana-build-tools/issues/522)) ([2ac6e08](https://github.com/grafana/grafana-build-tools/commit/2ac6e081f7471a1976946b549d94ab97f84a5285))
+
 ## [1.28.4](https://github.com/grafana/grafana-build-tools/compare/v1.28.3...v1.28.4) (2026-01-20)
 
 
