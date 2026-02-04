@@ -75,7 +75,7 @@ migrate:
   version: v4.19.1 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
 
 nfpm:
-  version: v2.44.2 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
+  version: v2.45.0 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
 
 nilaway:
   # This hasn't been released yet, so pin it to a specific version for reproducibility
