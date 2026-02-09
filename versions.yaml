@@ -1,5 +1,5 @@
-# This file is formatted so that renovate can update it. Keep the '# renovate:'
-# comments where they are.
+# This file is formatted so that renovate can update it. Keep the relative
+# order of the version, digest and renovate fields.
 #
 # DO NOT follow the suggestion at
 # https://docs.renovatebot.com/modules/manager/regex/#advanced-capture, which
@@ -11,107 +11,140 @@
 # and rebuild the Dockerfile before rebuilding the image.
 
 actionlint:
-  version: v1.7.10 # renovate: datasource=github-releases depName=actionlint packageName=rhysd/actionlint
+  version: v1.7.10
+  renovate: datasource=github-releases depName=actionlint packageName=rhysd/actionlint
 
 bingo:
-  version: v0.10.0 # renovate: datasource=github-releases depName=bingo packageName=bwplotka/bingo
+  version: v0.10.0
+  renovate: datasource=github-releases depName=bingo packageName=bwplotka/bingo
 
 chglog:
-  version: v0.7.4 # renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
+  version: v0.7.4
+  renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
 
 lefthook:
-  version: v1.13.6 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
+  version: v1.13.6
+  renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
-  version: v1.65.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
+  version: v1.65.0
+  renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
 
 dockerfile_json:
-  version: v1.2.2 # renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
+  version: v1.2.2
+  renovate: datasource=github-releases depName=dockerfile-json packageName=keilerkonzept/dockerfile-json
 
 enumer:
-  version: v1.6.3 # renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
+  version: v1.6.3
+  renovate: datasource=github-tags depName=enumer packageName=dmarkham/enumer
 
 gh:
-  version: v2.60.1 # renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
+  version: v2.60.1
+  renovate: datasource=github-releases depName=gh packageName=github.com/cli/cli
 
 git_chglog:
-  version: v0.15.4 # renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
+  version: v0.15.4
+  renovate: datasource=github-tags depName=git-chglog packageName=git-chglog/git-chglog
 
 go:
   custom_build: true
   custom_install: true
-  version: 1.25.7 # sha256:cc737435e2742bd6da3b7d575623968683609a3d2e0695f9d85bee84071c08e6 # renovate: datasource=docker depName=go packageName=golang
+  version: 1.25.7
+  digest: sha256:cc737435e2742bd6da3b7d575623968683609a3d2e0695f9d85bee84071c08e6
+  renovate: datasource=docker depName=go packageName=golang
 
 golangci_lint:
   version: v1.64.8
 
 golangci_lint_v2:
-  version: v2.8.0 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
+  version: v2.8.0
+  renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 
 gomplate:
-  version: v4.3.3 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
+  version: v4.3.3
+  renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 
 gotestsum:
-  version: v1.13.0 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
+  version: v1.13.0
+  renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
 
 grizzly:
   version: v0.4.3
 
 jq:
   custom_build: true
-  version: 1.8.1 # sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91 # renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
+  version: 1.8.1
+  digest: sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91
+  renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
 
 go_jsonnet:
-  version: v0.21.0 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
+  version: v0.21.0
+  renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 
 k6:
   custom_build: true
-  version: v1.5.0 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
+  version: v1.5.0
+  renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 
 mage:
-  version: v1.15.0 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
+  version: v1.15.0
+  renovate: datasource=github-tags depName=mage packageName=magefile/mage
 
 migrate:
-  version: v4.19.1 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
+  version: v4.19.1
+  renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
 
 nfpm:
-  version: v2.45.0 # renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
+  version: v2.45.0
+  renovate: datasource=github-releases depName=nfpm packageName=goreleaser/nfpm
 
 nilaway:
   # This hasn't been released yet, so pin it to a specific version for reproducibility
   version: v0.0.0-20250722134535-afb472521551
 
 oapi_codegen:
-  version: v2.4.1 # renovate: datasource=github-releases depName=oapi-codegen packageName=github.com/oapi-codegen/oapi-codegen
+  version: v2.4.1
+  renovate: datasource=github-releases depName=oapi-codegen packageName=github.com/oapi-codegen/oapi-codegen
 
 protoc_gen_go:
-  version: v1.36.11 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
+  version: v1.36.11
+  renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf
 
 protoc_gen_go_grpc:
-  version: v1.6.1 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
+  version: v1.6.1
+  renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
 semversort:
-  version: v0.0.6 # renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
+  version: v0.0.6
+  renovate: datasource=github-tags depName=semversort packageName=whereswaldon/semversort
 
 shellcheck:
   custom_build: true
-  version: v0.11.0 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
+  version: v0.11.0
+  digest: sha256:61862eba1fcf09a484ebcc6feea46f1782532571a34ed51fedf90dd25f925a8d
+  renovate: datasource=docker depName=shellcheck packageName=koalaman/shellcheck
 
 sqlc:
-  version: v1.30.0 # renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
+  version: v1.30.0
+  renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
 
 skopeo:
   custom_build: true
-  version: v1.21.0 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
+  version: v1.21.0
+  renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
 
 wire:
-  version: v0.7.0 # renovate: datasource=github-releases depName=wire packageName=google/wire
+  version: v0.7.0
+  renovate: datasource=github-releases depName=wire packageName=google/wire
 
 spectral:
-  version: v6.15.0 # renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
+  version: v6.15.0
+  renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
 
 xk6:
-  version: v1.3.4 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
+  version: v1.3.4
+  renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
 
 yq:
-  version: v4.52.2 # renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
+  version: v4.52.2
+  renovate: datasource=github-tags depName=yq packageName=mikefarah/yq
