@@ -1,4 +1,20 @@
 <a name="unreleased"></a>
+## [1.30.0](https://github.com/grafana/grafana-build-tools/compare/v1.29.0...v1.30.0) (2026-02-09)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.65.0 ([#526](https://github.com/grafana/grafana-build-tools/issues/526)) ([93dde22](https://github.com/grafana/grafana-build-tools/commit/93dde228a016950cb3ff2674ab130501840d0291))
+* Update dependency nfpm to v2.45.0 ([#527](https://github.com/grafana/grafana-build-tools/issues/527)) ([0a4ad01](https://github.com/grafana/grafana-build-tools/commit/0a4ad01ec5c46241682e2765b85ccf37d90a3be7))
+* Update dependency yq to v4.52.2 ([#523](https://github.com/grafana/grafana-build-tools/issues/523)) ([1dcee39](https://github.com/grafana/grafana-build-tools/commit/1dcee39e4f537166fd01e7ad4f02871049bfbc72))
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.3.4 ([#525](https://github.com/grafana/grafana-build-tools/issues/525)) ([0802ce2](https://github.com/grafana/grafana-build-tools/commit/0802ce26fa96d6689663a8e1b29b2753ed65eeab))
+* Update go Docker tag to v1.25.7 ([#529](https://github.com/grafana/grafana-build-tools/issues/529)) ([88950d1](https://github.com/grafana/grafana-build-tools/commit/88950d1a0040d9ebce776d0d783f3e96231aa21f))
+* Update module protoc-gen-go-grpc to v1.6.1 ([#528](https://github.com/grafana/grafana-build-tools/issues/528)) ([86550fa](https://github.com/grafana/grafana-build-tools/commit/86550fa52d5fcf87485c1f4d6bcc1b312e1e8210))
+
 ## [1.29.0](https://github.com/grafana/grafana-build-tools/compare/v1.28.4...v1.29.0) (2026-01-27)
 
 
