@@ -1,4 +1,4 @@
-FROM docker.io/library/golang:{{ .data.go.version }} AS go
+FROM docker.io/library/golang:{{ .data.go.version }}@{{ .data.go.digest }} AS go
 	COPY lib/go.env /usr/local/go/
 	RUN mkdir -p /build/bin
 	ENV GOMODCACHE=/go/pkg/mod
@@ -57,10 +57,10 @@ FROM docker.io/library/debian:stable-slim AS skopeo
 	    cp bin/skopeo.${TARGET_GOOS}.${TARGET_GOARCH} /build/bin/skopeo
 
 FROM scratch AS shellcheck
-	COPY --from=docker.io/koalaman/shellcheck:{{ .data.shellcheck.version }} /bin/shellcheck /build/bin/
+	COPY --from=docker.io/koalaman/shellcheck:{{ .data.shellcheck.version }}@{{ .data.shellcheck.digest }} /bin/shellcheck /build/bin/
 
 FROM scratch AS jq
-	COPY --from=ghcr.io/jqlang/jq:{{ .data.jq.version }} /jq /build/bin/
+	COPY --from=ghcr.io/jqlang/jq:{{ .data.jq.version }}@{{ .data.jq.digest }} /jq /build/bin/
 
 FROM docker.io/library/debian:stable-slim AS final
     RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \

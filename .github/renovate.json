@@ -76,8 +76,9 @@
       "managerFilePatterns": [
         "/^versions\\.yaml$/"
       ],
+      "autoReplaceStringTemplate": "  version: {{newValue}}\n  digest: {{newDigest}}\n  renovate: datasource={{datasource}}{{#if (contains 'depName' currentConfig)}} depName={{depName}}{{/if}}{{#if (contains 'packageName' currentConfig)}} packageName={{packageName}}{{/if}}{{#if (contains 'versioning' currentConfig)}} versioning={{versioning}}{{/if}}\n",
       "matchStrings": [
-        "[ \\t]+version:[ \\t]*(?<currentValue>[^ \\t]+)[ \\t]*#[ \\t]*(?<currentDigest>sha256:[a-f0-9]+)[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>docker)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+?))?"
+        "^[ \\t]+version:[ \\t]*(?<currentValue>[^\\s]+)$\n^[ \\t]+digest:[ \\t]*(?<currentDigest>sha256:[a-f0-9]+)$\n^[ \\t]+renovate:[ \\t]*datasource=(?<datasource>docker)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))?(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+))?$\n"
       ]
     },
     {
@@ -86,8 +87,9 @@
       "managerFilePatterns": [
         "/^versions\\.yaml$/"
       ],
+      "autoReplaceStringTemplate": "  version: {{newValue}}\n  renovate: datasource={{datasource}}{{#if (contains 'depName' currentConfig)}} depName={{depName}}{{/if}}{{#if (contains 'packageName' currentConfig)}} packageName={{packageName}}{{/if}}{{#if (contains 'versioning' currentConfig)}} versioning={{versioning}}{{/if}}\n",
       "matchStrings": [
-        "[ \\t]+version:[ \\t]*(?<currentValue>\\S+)[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+))?"
+        "^[ \\t]+version:[ \\t]*(?<currentValue>\\S+)$\n^[ \\t]+renovate:[ \\t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+))?$\n"
       ]
     }
   ]

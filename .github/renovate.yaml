@@ -69,18 +69,32 @@ customManagers:
     description: update docker versions found in versions.yaml
     managerFilePatterns:
       - /^versions\.yaml$/
-    #autoReplaceStringTemplate: |-
-    #  version: {{newValue}} # {{newDigest}}{{{renovateStr}}}
+    autoReplaceStringTemplate: |2
+        version: {{newValue}}
+        digest: {{newDigest}}
+        renovate: datasource={{datasource}}{{#if (contains 'depName' currentConfig)}} depName={{depName}}{{/if}}{{#if (contains 'packageName' currentConfig)}} packageName={{packageName}}{{/if}}{{#if (contains 'versioning' currentConfig)}} versioning={{versioning}}{{/if}}
     matchStrings:
+      # Match multi-line YAML structure: tool with version and digest fields
+      # Format captures:
+      #   - version: X.Y.Z
+      #   - digest: sha256:...
+      #   - renovate: datasource=docker ...
+      #
       # Beware that renovate will include newlines in \s because it uses 's'.
-      - '[ \t]+version:[ \t]*(?<currentValue>[^ \t]+)[ \t]*#[ \t]*(?<currentDigest>sha256:[a-f0-9]+)[ \t]*#[ \t]*renovate:[ \t]*datasource=(?<datasource>docker)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+?))?'
+      - |
+        ^[ \t]+version:[ \t]*(?<currentValue>[^\s]+)$
+        ^[ \t]+digest:[ \t]*(?<currentDigest>sha256:[a-f0-9]+)$
+        ^[ \t]+renovate:[ \t]*datasource=(?<datasource>docker)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))?(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+))?$
 
   - customType: regex
     description: update versions found in versions.yaml
     managerFilePatterns:
       - /^versions\.yaml$/
-    #autoReplaceStringTemplate: |-
-    #  version: {{newValue}}{{{renovateStr}}}
+    autoReplaceStringTemplate: |2
+        version: {{newValue}}
+        renovate: datasource={{datasource}}{{#if (contains 'depName' currentConfig)}} depName={{depName}}{{/if}}{{#if (contains 'packageName' currentConfig)}} packageName={{packageName}}{{/if}}{{#if (contains 'versioning' currentConfig)}} versioning={{versioning}}{{/if}}
     matchStrings:
       # Beware that renovate will include newlines in \s because it uses 's'.
-      - '[ \t]+version:[ \t]*(?<currentValue>\S+)[ \t]*#[ \t]*renovate:[ \t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+))?'
+      - |
+        ^[ \t]+version:[ \t]*(?<currentValue>\S+)$
+        ^[ \t]+renovate:[ \t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \t]+depName=(?<depName>[-_.\/\w]+))?(?:[ \t]+packageName=(?<packageName>[-_.\/\w]+))(?:[ \t]+versioning=(?<versioning>[-_.\/\w]+))?$
