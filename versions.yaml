@@ -102,7 +102,7 @@ sqlc:
 
 skopeo:
   custom_build: true
-  version: v1.21.0 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
+  version: v1.22.0 # renovate: datasource=github-releases depName=skopeo packageName=containers/skopeo
 
 wire:
   version: v0.7.0 # renovate: datasource=github-releases depName=wire packageName=google/wire
