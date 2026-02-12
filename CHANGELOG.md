@@ -1,4 +1,13 @@
 <a name="unreleased"></a>
+## [1.31.0](https://github.com/grafana/grafana-build-tools/compare/v1.30.0...v1.31.0) (2026-02-12)
+
+
+### Features and minor updates
+
+* Update dependency golangci-lint to v2.9.0 ([#535](https://github.com/grafana/grafana-build-tools/issues/535)) ([e074250](https://github.com/grafana/grafana-build-tools/commit/e074250849fc5886b31a699282483c26ac69143f))
+* Update dependency k6 to v1.6.0 ([#532](https://github.com/grafana/grafana-build-tools/issues/532)) ([bfe5019](https://github.com/grafana/grafana-build-tools/commit/bfe5019c2c81b67936bdaeace42fac1d56514512))
+* Update dependency skopeo to v1.22.0 ([#537](https://github.com/grafana/grafana-build-tools/issues/537)) ([008159c](https://github.com/grafana/grafana-build-tools/commit/008159c42cb753f7ae1bde27e1be88fe42f659b9))
+
 ## [1.30.0](https://github.com/grafana/grafana-build-tools/compare/v1.29.0...v1.30.0) (2026-02-09)
 
 
