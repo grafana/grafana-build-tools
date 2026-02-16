@@ -1,4 +1,13 @@
 <a name="unreleased"></a>
+## [1.31.1](https://github.com/grafana/grafana-build-tools/compare/v1.31.0...v1.31.1) (2026-02-16)
+
+
+### Fixes and patches
+
+* Update dependency actionlint to v1.7.11 ([#539](https://github.com/grafana/grafana-build-tools/issues/539)) ([8665699](https://github.com/grafana/grafana-build-tools/commit/86656998a3833693d756a851d6a95db10d518799))
+* Update dependency k6 to v1.6.1 ([#540](https://github.com/grafana/grafana-build-tools/issues/540)) ([2ed0a6d](https://github.com/grafana/grafana-build-tools/commit/2ed0a6d74554791d419a4315b12ed500e286b74e))
+* Update dependency yq to v4.52.4 ([#538](https://github.com/grafana/grafana-build-tools/issues/538)) ([42037f2](https://github.com/grafana/grafana-build-tools/commit/42037f2b2ea7a3c50c65cade585ee837714537bb))
+
 ## [1.31.0](https://github.com/grafana/grafana-build-tools/compare/v1.30.0...v1.31.0) (2026-02-12)
 
 
