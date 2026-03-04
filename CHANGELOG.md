@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [1.33.0](https://github.com/grafana/grafana-build-tools/compare/v1.32.0...v1.33.0) (2026-03-04)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.66.0 ([#546](https://github.com/grafana/grafana-build-tools/issues/546)) ([a94213c](https://github.com/grafana/grafana-build-tools/commit/a94213cf629ef2be4756a8aafbd3dcea1d42441c))
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.3.5 ([#544](https://github.com/grafana/grafana-build-tools/issues/544)) ([1c180d8](https://github.com/grafana/grafana-build-tools/commit/1c180d8c6cded80e55f712d90140f9ecf469a2c8))
+
 ## [1.32.0](https://github.com/grafana/grafana-build-tools/compare/v1.31.1...v1.32.0) (2026-02-20)
 
 
