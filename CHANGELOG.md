@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.33.1](https://github.com/grafana/grafana-build-tools/compare/v1.33.0...v1.33.1) (2026-03-06)
+
+
+### Fixes and patches
+
+* Update to Go 1.25.8 ([00efc8b](https://github.com/grafana/grafana-build-tools/commit/00efc8b52fdcee1a381c299de88bf085dcb6c1b9))
+
 ## [1.33.0](https://github.com/grafana/grafana-build-tools/compare/v1.32.0...v1.33.0) (2026-03-04)
 
 
