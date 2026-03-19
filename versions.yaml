@@ -69,7 +69,7 @@ k6:
   version: v1.6.1 # renovate: datasource=github-releases depName=k6 packageName=grafana/k6
 
 mage:
-  version: v1.15.0 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
+  version: v1.16.1 # renovate: datasource=github-tags depName=mage packageName=magefile/mage
 
 migrate:
   version: v4.19.1 # renovate: datasource=github-releases depName=migrate packageName=golang-migrate/migrate
