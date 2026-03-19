@@ -1,4 +1,19 @@
 <a name="unreleased"></a>
+## [1.34.0](https://github.com/grafana/grafana-build-tools/compare/v1.33.1...v1.34.0) (2026-03-19)
+
+
+### Features and minor updates
+
+* Update dependency golangci-lint to v2.11.3 ([#550](https://github.com/grafana/grafana-build-tools/issues/550)) ([9fe736f](https://github.com/grafana/grafana-build-tools/commit/9fe736f7af6c0706267a518069f053e50c7421c5))
+* Update dependency mage to v1.16.1 ([#551](https://github.com/grafana/grafana-build-tools/issues/551)) ([b0eeb2d](https://github.com/grafana/grafana-build-tools/commit/b0eeb2d3843b3e47ed105e8a63f4a1cb9942da44))
+
+
+### Fixes and patches
+
+* Update dependency buf to v1.66.1 ([#552](https://github.com/grafana/grafana-build-tools/issues/552)) ([73374bf](https://github.com/grafana/grafana-build-tools/commit/73374bfbd9f044d59e6b8c6ee10500a442ae2622))
+* Update dependency nfpm to v2.45.2 ([#555](https://github.com/grafana/grafana-build-tools/issues/555)) ([dc3aa14](https://github.com/grafana/grafana-build-tools/commit/dc3aa140c6e5603ce823a1f62af9843d78769427))
+* Update dependency xk6 to v1.3.6 ([#554](https://github.com/grafana/grafana-build-tools/issues/554)) ([0ad6569](https://github.com/grafana/grafana-build-tools/commit/0ad6569f9041e40173cb3948635beba3bba22f50))
+
 ## [1.33.1](https://github.com/grafana/grafana-build-tools/compare/v1.33.0...v1.33.1) (2026-03-06)
 
 
