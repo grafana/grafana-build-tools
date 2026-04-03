@@ -1,4 +1,27 @@
 <a name="unreleased"></a>
+## [1.34.0](https://github.com/grafana/grafana-build-tools/compare/v1.33.1...v1.34.0) (2026-04-03)
+
+
+### Features and minor updates
+
+* Update dependency golangci-lint to v2.11.3 ([#550](https://github.com/grafana/grafana-build-tools/issues/550)) ([9fe736f](https://github.com/grafana/grafana-build-tools/commit/9fe736f7af6c0706267a518069f053e50c7421c5))
+* Update dependency mage to v1.16.1 ([#551](https://github.com/grafana/grafana-build-tools/issues/551)) ([b0eeb2d](https://github.com/grafana/grafana-build-tools/commit/b0eeb2d3843b3e47ed105e8a63f4a1cb9942da44))
+
+
+### Fixes and patches
+
+* Update dependency buf to v1.66.1 ([#552](https://github.com/grafana/grafana-build-tools/issues/552)) ([73374bf](https://github.com/grafana/grafana-build-tools/commit/73374bfbd9f044d59e6b8c6ee10500a442ae2622))
+* Update dependency golangci-lint to v2.11.4 ([#557](https://github.com/grafana/grafana-build-tools/issues/557)) ([4b716d4](https://github.com/grafana/grafana-build-tools/commit/4b716d4806b0f860f88e3cbd015fe28db716cfaf))
+* Update dependency nfpm to v2.45.2 ([#555](https://github.com/grafana/grafana-build-tools/issues/555)) ([dc3aa14](https://github.com/grafana/grafana-build-tools/commit/dc3aa140c6e5603ce823a1f62af9843d78769427))
+* Update dependency xk6 to v1.3.6 ([#554](https://github.com/grafana/grafana-build-tools/issues/554)) ([0ad6569](https://github.com/grafana/grafana-build-tools/commit/0ad6569f9041e40173cb3948635beba3bba22f50))
+* Update dependency xk6 to v1.3.7 ([#562](https://github.com/grafana/grafana-build-tools/issues/562)) ([5aeb24c](https://github.com/grafana/grafana-build-tools/commit/5aeb24ccd62f605c35a3e6d135f39540cf361a6f))
+* Update dependency yq to v4.52.5 ([#561](https://github.com/grafana/grafana-build-tools/issues/561)) ([27b0998](https://github.com/grafana/grafana-build-tools/commit/27b0998dc9544ca4d32db7dcbd4860f8a31143f6))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.8 Docker digest to dfae680 ([#553](https://github.com/grafana/grafana-build-tools/issues/553)) ([514bdb4](https://github.com/grafana/grafana-build-tools/commit/514bdb4d44825bfbb773ab0d20c9a48b4c45a50f))
+
 ## [1.33.1](https://github.com/grafana/grafana-build-tools/compare/v1.33.0...v1.33.1) (2026-03-06)
 
 
