@@ -62,7 +62,7 @@ jq:
   version: 1.8.1 # sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91 # renovate: datasource=docker depName=jq packageName=ghcr.io/jqlang/jq
 
 go_jsonnet:
-  version: v0.21.0 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
+  version: v0.22.0 # renovate: datasource=github-releases depName=go-jsonnet packageName=google/go-jsonnet
 
 k6:
   custom_build: true
