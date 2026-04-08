@@ -1,4 +1,25 @@
 <a name="unreleased"></a>
+## [1.35.0](https://github.com/grafana/grafana-build-tools/compare/v1.34.0...v1.35.0) (2026-04-08)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.67.0 ([#564](https://github.com/grafana/grafana-build-tools/issues/564)) ([dfad692](https://github.com/grafana/grafana-build-tools/commit/dfad69257647c9f5dab5f03f46a81ce1b0fc8094))
+* Update dependency go-jsonnet to v0.22.0 ([#558](https://github.com/grafana/grafana-build-tools/issues/558)) ([599a57a](https://github.com/grafana/grafana-build-tools/commit/599a57a39f45269a7188b49611719b1cb657028d))
+* Update dependency k6 to v1.7.1 ([#559](https://github.com/grafana/grafana-build-tools/issues/559)) ([8affcae](https://github.com/grafana/grafana-build-tools/commit/8affcae91b76861c39c0f0ca66fd21f56b59b3cd))
+* Update dependency mage to v1.17.1 ([#560](https://github.com/grafana/grafana-build-tools/issues/560)) ([b9dfb56](https://github.com/grafana/grafana-build-tools/commit/b9dfb56ed5d471e05b1c39c015b387cf82216d31))
+* Update dependency nfpm to v2.46.0 ([#565](https://github.com/grafana/grafana-build-tools/issues/565)) ([485fe9e](https://github.com/grafana/grafana-build-tools/commit/485fe9eded7eb49ae8b3023d98628fedc6390f64))
+
+
+### Fixes and patches
+
+* Update dependency actionlint to v1.7.12 ([#563](https://github.com/grafana/grafana-build-tools/issues/563)) ([9d20d4a](https://github.com/grafana/grafana-build-tools/commit/9d20d4a7cb454a409e00becdaa00f28b4ad49450))
+
+
+### Miscellaneous Chores
+
+* Update go:1.25.8 Docker digest to 3ac2864 ([#567](https://github.com/grafana/grafana-build-tools/issues/567)) ([a681037](https://github.com/grafana/grafana-build-tools/commit/a681037d6bb2684ce067f3819d67e67957bb892a))
+
 ## [1.34.0](https://github.com/grafana/grafana-build-tools/compare/v1.33.1...v1.34.0) (2026-04-03)
 
 
