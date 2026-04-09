@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.35.1](https://github.com/grafana/grafana-build-tools/compare/v1.35.0...v1.35.1) (2026-04-09)
+
+
+### Fixes and patches
+
+* Update Go to 1.25.9 ([033127a](https://github.com/grafana/grafana-build-tools/commit/033127a86b2513a2306e67923453fab99555ad4c))
+
 ## [1.35.0](https://github.com/grafana/grafana-build-tools/compare/v1.34.0...v1.35.0) (2026-04-08)
 
 
