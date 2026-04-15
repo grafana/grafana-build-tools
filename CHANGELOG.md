@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.36.0](https://github.com/grafana/grafana-build-tools/compare/v1.35.1...v1.36.0) (2026-04-15)
+
+
+### Features and minor updates
+
+* Update go Docker tag to v1.26.2 ([#536](https://github.com/grafana/grafana-build-tools/issues/536)) ([57b8492](https://github.com/grafana/grafana-build-tools/commit/57b8492e996ee0f4fc40ebbaf665d37cba9b827b))
+
 ## [1.35.1](https://github.com/grafana/grafana-build-tools/compare/v1.35.0...v1.35.1) (2026-04-09)
 
 
