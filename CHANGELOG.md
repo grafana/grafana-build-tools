@@ -1,4 +1,23 @@
 <a name="unreleased"></a>
+## [1.37.0](https://github.com/grafana/grafana-build-tools/compare/v1.36.0...v1.37.0) (2026-04-23)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.68.2 ([#573](https://github.com/grafana/grafana-build-tools/issues/573)) ([142544c](https://github.com/grafana/grafana-build-tools/commit/142544c43b3f60265c3e27cb7054d4be09058775))
+* Update dependency yq to v4.53.2 ([#576](https://github.com/grafana/grafana-build-tools/issues/576)) ([27e8454](https://github.com/grafana/grafana-build-tools/commit/27e845459f537fb3058c390262c856f482f65215))
+
+
+### Fixes and patches
+
+* Update dependency nfpm to v2.46.3 ([#572](https://github.com/grafana/grafana-build-tools/issues/572)) ([872ae1f](https://github.com/grafana/grafana-build-tools/commit/872ae1f5c7780733bf3cab95034a8febb2596e70))
+* Update dependency skopeo to v1.22.2 ([#570](https://github.com/grafana/grafana-build-tools/issues/570)) ([649f51f](https://github.com/grafana/grafana-build-tools/commit/649f51f8e7b46c988c21234e964908573c1a7443))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.2 Docker digest to 5f3787b ([#575](https://github.com/grafana/grafana-build-tools/issues/575)) ([de47a55](https://github.com/grafana/grafana-build-tools/commit/de47a5561f75d546efd43f5afe17ee1d92cde200))
+
 ## [1.36.0](https://github.com/grafana/grafana-build-tools/compare/v1.35.1...v1.36.0) (2026-04-15)
 
 
