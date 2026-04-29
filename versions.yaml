@@ -98,7 +98,7 @@ shellcheck:
   version: v0.11.0 # renovate: datasource=github-releases depName=shellcheck packageName=koalaman/shellcheck
 
 sqlc:
-  version: v1.30.0 # renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
+  version: v1.31.0 # renovate: datasource=github-releases depName=sqlc packageName=sqlc-dev/sqlc
 
 skopeo:
   custom_build: true
