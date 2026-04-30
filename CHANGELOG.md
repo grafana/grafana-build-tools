@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.37.1](https://github.com/grafana/grafana-build-tools/compare/v1.37.0...v1.37.1) (2026-04-29)
+
+
+### Miscellaneous Chores
+
+* **deps:** Update dependency xk6 to v1.4.0 ([20cb0d4](https://github.com/grafana/grafana-build-tools/commit/20cb0d48bab14cf49a5065c9fbc832b8daadcce6))
+
 ## [1.37.0](https://github.com/grafana/grafana-build-tools/compare/v1.36.0...v1.37.0) (2026-04-23)
 
 
