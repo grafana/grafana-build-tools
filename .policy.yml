@@ -20,6 +20,9 @@ approval_rules:
           - ^Makefile$
           - ^scripts\/(?:(?:[^/]*(?:/|$))*)$
           - ^versions\.yaml$
+      file_not_deleted:
+        paths:
+          - ^\.github\/workflows\/pr\.yml$
       targets_branch:
         pattern: (^main$)
     requires:
@@ -38,6 +41,9 @@ approval_rules:
           - ^\.policy\.yml\.tmpl$
           - ^\.github\/workflows\/(?:[^/]*)$
           - ^scripts\/gen-policy-bot-config$
+      file_not_deleted:
+        paths:
+          - ^\.github\/workflows\/validate-policybot-config\.yaml$
     requires:
       conditions:
         has_workflow_result:
@@ -53,7 +59,12 @@ approval_rules:
           - ^renovate\.(?:[^/]*)$
           - ^\.renovate\.(?:[^/]*)$
           - ^\.github\/renovate\.(?:[^/]*)$
-          - ^\.github\/workflows\/renovate(?:[^/]*)$
+          - ^scripts\/check-renovate-config$
+          - ^scripts\/generate-renovate-config$
+          - ^\.github\/workflows\/validate-renovate-config\.yaml$
+      file_not_deleted:
+        paths:
+          - ^\.github\/workflows\/validate-renovate-config\.yaml$
     requires:
       conditions:
         has_workflow_result:
