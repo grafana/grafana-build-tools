@@ -1,4 +1,25 @@
 <a name="unreleased"></a>
+## [1.38.0](https://github.com/grafana/grafana-build-tools/compare/v1.37.1...v1.38.0) (2026-05-08)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.69.0 ([#587](https://github.com/grafana/grafana-build-tools/issues/587)) ([8125721](https://github.com/grafana/grafana-build-tools/commit/8125721b94973d7c98406753cf8944cadcd2d420))
+* Update dependency golangci-lint to v2.12.1 ([#588](https://github.com/grafana/grafana-build-tools/issues/588)) ([5566984](https://github.com/grafana/grafana-build-tools/commit/556698476c914b2dfeac7255abc44d589080ab38))
+
+
+### Fixes and patches
+
+* Reenable Renovate ([ef8b408](https://github.com/grafana/grafana-build-tools/commit/ef8b40812c320463dfc555c3da160cc97fd3ffc7))
+* Sync renovate workflows with other repos ([7db727c](https://github.com/grafana/grafana-build-tools/commit/7db727cc0dfebcac4504bf93234c5b4c147657c7))
+* Update dependency mage to v1.17.2 ([#585](https://github.com/grafana/grafana-build-tools/issues/585)) ([9c9b433](https://github.com/grafana/grafana-build-tools/commit/9c9b4331829efcda8479cc1ea1788846ef1a01d8))
+* Update dependency xk6 to v1.4.1 ([#586](https://github.com/grafana/grafana-build-tools/issues/586)) ([26de2da](https://github.com/grafana/grafana-build-tools/commit/26de2da09c8241779993e10ee4624d5f5c4dd5a9))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.2 Docker digest to b54cbf5 ([#584](https://github.com/grafana/grafana-build-tools/issues/584)) ([9811b0a](https://github.com/grafana/grafana-build-tools/commit/9811b0a54e96d670fcc042ca138d16959ceaa8c4))
+
 ## [1.37.1](https://github.com/grafana/grafana-build-tools/compare/v1.37.0...v1.37.1) (2026-04-29)
 
 
