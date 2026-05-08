@@ -4,10 +4,8 @@ extends:
   - config:best-practices
   - :semanticCommitsDisabled
 
-# This repo is public, so prevent the Mend Renovate app from trying to create
-# PRs here by setting enabled to false.
-enabled: false
-dependencyDashboard: false
+enabled: true
+dependencyDashboard: true
 
 branchPrefix: grafanarenovatebot/
 commitMessagePrefix: 'chore:'
