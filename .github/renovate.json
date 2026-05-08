@@ -4,8 +4,8 @@
     "config:best-practices",
     ":semanticCommitsDisabled"
   ],
-  "enabled": false,
-  "dependencyDashboard": false,
+  "enabled": true,
+  "dependencyDashboard": true,
   "branchPrefix": "grafanarenovatebot/",
   "commitMessagePrefix": "chore:",
   "platformCommit": "enabled",
