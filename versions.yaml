@@ -40,7 +40,7 @@ git_chglog:
 go:
   custom_build: true
   custom_install: true
-  version: 1.26.2 # sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716 # renovate: datasource=docker depName=go packageName=golang
+  version: 1.26.3 # sha256:13605dbaf3aff39741644cc3a6ec74cac494f955d1401ffee49b55032fa8a626 # renovate: datasource=docker depName=go packageName=golang
 
 golangci_lint:
   version: v1.64.8
