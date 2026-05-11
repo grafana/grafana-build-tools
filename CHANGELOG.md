@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.38.1](https://github.com/grafana/grafana-build-tools/compare/v1.38.0...v1.38.1) (2026-05-11)
+
+
+### Fixes and patches
+
+* Update dependency golangci-lint to v2.12.2 ([#590](https://github.com/grafana/grafana-build-tools/issues/590)) ([9845b91](https://github.com/grafana/grafana-build-tools/commit/9845b91b7f606bfa9f85b35128602b8a2f14d579))
+* Update go Docker tag to v1.26.3 ([905d46d](https://github.com/grafana/grafana-build-tools/commit/905d46df9ff84629e786dcf0f39cca412a88afc5))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.3 Docker digest to 2981696 ([#593](https://github.com/grafana/grafana-build-tools/issues/593)) ([2d03b0c](https://github.com/grafana/grafana-build-tools/commit/2d03b0c039b56ee83016a0fb3c17757664dee6c0))
+
 ## [1.38.0](https://github.com/grafana/grafana-build-tools/compare/v1.37.1...v1.38.0) (2026-05-08)
 
 
