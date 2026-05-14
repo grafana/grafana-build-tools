@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [1.38.2](https://github.com/grafana/grafana-build-tools/compare/v1.38.1...v1.38.2) (2026-05-14)
+
+
+### Fixes and patches
+
+* Update module protoc-gen-go-grpc to v1.6.2 ([f0cfe2e](https://github.com/grafana/grafana-build-tools/commit/f0cfe2ef068f63d1b2b7aba117616906ae161e93))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.3 Docker digest to 313faae ([#595](https://github.com/grafana/grafana-build-tools/issues/595)) ([836a8e1](https://github.com/grafana/grafana-build-tools/commit/836a8e17cf599548cac1540093e6b326fdb8957c))
+
 ## [1.38.1](https://github.com/grafana/grafana-build-tools/compare/v1.38.0...v1.38.1) (2026-05-11)
 
 
