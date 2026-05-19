@@ -1,4 +1,13 @@
 <a name="unreleased"></a>
+## [1.38.3](https://github.com/grafana/grafana-build-tools/compare/v1.38.2...v1.38.3) (2026-05-19)
+
+
+### Fixes and patches
+
+* Add id-token: write for create-github-app-token ([#601](https://github.com/grafana/grafana-build-tools/issues/601)) ([ee3cdf6](https://github.com/grafana/grafana-build-tools/commit/ee3cdf6f63effe0639d6c32a86fc4d9cd32faa1b))
+* Migrate workflows to NOT use get-vault-secrets ([f77f22d](https://github.com/grafana/grafana-build-tools/commit/f77f22d0c3b94665593afb40c43945683bc906a4))
+* Point release please at .github/release-please/release-please-manifest.json ([693543d](https://github.com/grafana/grafana-build-tools/commit/693543d610034ad5f96a5ba8d452b53732a894b4))
+
 ## [1.38.2](https://github.com/grafana/grafana-build-tools/compare/v1.38.1...v1.38.2) (2026-05-14)
 
 
