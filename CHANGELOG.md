@@ -1,4 +1,21 @@
 <a name="unreleased"></a>
+## [1.39.0](https://github.com/grafana/grafana-build-tools/compare/v1.38.3...v1.39.0) (2026-05-27)
+
+
+### Features and minor updates
+
+* Update dependency sqlc to v1.31.1 ([#607](https://github.com/grafana/grafana-build-tools/issues/607)) ([6b5a5db](https://github.com/grafana/grafana-build-tools/commit/6b5a5db4b970cec96d12d0d44a4638573929a8f9))
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.4.3 ([#606](https://github.com/grafana/grafana-build-tools/issues/606)) ([ceaf25a](https://github.com/grafana/grafana-build-tools/commit/ceaf25a5de77ecf606fd7ec13f147aaef94d2c42))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.3 Docker digest to 2d6c802 ([#605](https://github.com/grafana/grafana-build-tools/issues/605)) ([f472f2e](https://github.com/grafana/grafana-build-tools/commit/f472f2eef109c9c1261acf30236aa70ca950f3a4))
+
 ## [1.38.3](https://github.com/grafana/grafana-build-tools/compare/v1.38.2...v1.38.3) (2026-05-19)
 
 
