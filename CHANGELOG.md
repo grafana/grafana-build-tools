@@ -1,4 +1,12 @@
 <a name="unreleased"></a>
+## [1.40.0](https://github.com/grafana/grafana-build-tools/compare/v1.39.0...v1.40.0) (2026-06-02)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.70.0 ([#612](https://github.com/grafana/grafana-build-tools/issues/612)) ([b74cfc1](https://github.com/grafana/grafana-build-tools/commit/b74cfc1e3bd1f66a20f9753b936ed006ebaad2b5))
+* Update dependency skopeo to v1.23.0 ([#614](https://github.com/grafana/grafana-build-tools/issues/614)) ([2a7a0ed](https://github.com/grafana/grafana-build-tools/commit/2a7a0ed4126047f87de5f9278efed4b8b35078e8))
+
 ## [1.39.0](https://github.com/grafana/grafana-build-tools/compare/v1.38.3...v1.39.0) (2026-05-27)
 
 
