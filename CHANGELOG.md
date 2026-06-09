@@ -1,4 +1,12 @@
 <a name="unreleased"></a>
+## [1.40.1](https://github.com/grafana/grafana-build-tools/compare/v1.40.0...v1.40.1) (2026-06-09)
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.4.5 ([#616](https://github.com/grafana/grafana-build-tools/issues/616)) ([ee9180b](https://github.com/grafana/grafana-build-tools/commit/ee9180b649c89908837dd1f6a4305dac73b7a160))
+* Update go Docker tag to v1.26.4 ([#615](https://github.com/grafana/grafana-build-tools/issues/615)) ([c4e68ed](https://github.com/grafana/grafana-build-tools/commit/c4e68edd48aa8e25c9b2d4dd4c5efebdd939adff))
+
 ## [1.40.0](https://github.com/grafana/grafana-build-tools/compare/v1.39.0...v1.40.0) (2026-06-02)
 
 
