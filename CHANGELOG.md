@@ -1,4 +1,21 @@
 <a name="unreleased"></a>
+## [1.41.0](https://github.com/grafana/grafana-build-tools/compare/v1.40.1...v1.41.0) (2026-06-11)
+
+
+### Features and minor updates
+
+* Update dependency k6 to v1.8.0 ([#622](https://github.com/grafana/grafana-build-tools/issues/622)) ([893847d](https://github.com/grafana/grafana-build-tools/commit/893847d9c6cf2e3f3b31a2f35bdc71f7a671a54c))
+
+
+### Fixes and patches
+
+* Update dependency yq to v4.53.3 ([#618](https://github.com/grafana/grafana-build-tools/issues/618)) ([b288fd6](https://github.com/grafana/grafana-build-tools/commit/b288fd645589198eb3bdd742c6202cfbfcdd5008))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.4 Docker digest to 11fd8f7 ([#619](https://github.com/grafana/grafana-build-tools/issues/619)) ([cc6b0d3](https://github.com/grafana/grafana-build-tools/commit/cc6b0d32e4e562069373fde20741f9b75fb17311))
+
 ## [1.40.1](https://github.com/grafana/grafana-build-tools/compare/v1.40.0...v1.40.1) (2026-06-09)
 
 
