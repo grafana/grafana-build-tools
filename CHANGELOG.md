@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [1.41.1](https://github.com/grafana/grafana-build-tools/compare/v1.41.0...v1.41.1) (2026-06-17)
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.4.6 ([#623](https://github.com/grafana/grafana-build-tools/issues/623)) ([f51117e](https://github.com/grafana/grafana-build-tools/commit/f51117e8098edc0696c2646798a7ef069a7fb7c6))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.4 Docker digest to d47ca13 ([#621](https://github.com/grafana/grafana-build-tools/issues/621)) ([56f7b1f](https://github.com/grafana/grafana-build-tools/commit/56f7b1f163982c30ed3a72757b67e75978dabef2))
+
 ## [1.41.0](https://github.com/grafana/grafana-build-tools/compare/v1.40.1...v1.41.0) (2026-06-11)
 
 
