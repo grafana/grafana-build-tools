@@ -1,4 +1,18 @@
 <a name="unreleased"></a>
+## [1.42.0](https://github.com/grafana/grafana-build-tools/compare/v1.41.1...v1.42.0) (2026-06-25)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.71.0 ([#625](https://github.com/grafana/grafana-build-tools/issues/625)) ([0f5b151](https://github.com/grafana/grafana-build-tools/commit/0f5b151c44bfd3e3cd5dade899ce351a54db89e4))
+* Update dependency nfpm to v2.47.0 ([#627](https://github.com/grafana/grafana-build-tools/issues/627)) ([20b045e](https://github.com/grafana/grafana-build-tools/commit/20b045ed81222d62e59a87cfc87301a75e822566))
+
+
+### Miscellaneous Chores
+
+* Update dependency k6 to v2 ([#609](https://github.com/grafana/grafana-build-tools/issues/609)) ([7361910](https://github.com/grafana/grafana-build-tools/commit/7361910eb5aefee4fd4924afe659df3a4a9dc2cb))
+* Update go:1.26.4 Docker digest to 8c5d338 ([#628](https://github.com/grafana/grafana-build-tools/issues/628)) ([027bde3](https://github.com/grafana/grafana-build-tools/commit/027bde3a2e8247a687ad3e49d9fcba8e9bfd1eb9))
+
 ## [1.41.1](https://github.com/grafana/grafana-build-tools/compare/v1.41.0...v1.41.1) (2026-06-17)
 
 
