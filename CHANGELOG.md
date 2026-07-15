@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.43.1](https://github.com/grafana/grafana-build-tools/compare/v1.43.0...v1.43.1) (2026-07-14)
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.5 Docker digest to d52df9c ([#635](https://github.com/grafana/grafana-build-tools/issues/635)) ([f3b0e40](https://github.com/grafana/grafana-build-tools/commit/f3b0e40e119eb78552fface4bf37c6386d8be347))
+
 ## [1.43.0](https://github.com/grafana/grafana-build-tools/compare/v1.42.0...v1.43.0) (2026-07-14)
 
 
