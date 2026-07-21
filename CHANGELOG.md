@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [1.44.0](https://github.com/grafana/grafana-build-tools/compare/v1.43.1...v1.44.0) (2026-07-21)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.72.0 ([#639](https://github.com/grafana/grafana-build-tools/issues/639)) ([6574b9c](https://github.com/grafana/grafana-build-tools/commit/6574b9c700779bd99f815e9d270167bd47870f4e))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.5 Docker digest to ae5a231 ([#638](https://github.com/grafana/grafana-build-tools/issues/638)) ([c9365fd](https://github.com/grafana/grafana-build-tools/commit/c9365fd0d92d0c6f26c69ec3a5e6fd037f7f12d5))
+
 ## [1.43.1](https://github.com/grafana/grafana-build-tools/compare/v1.43.0...v1.43.1) (2026-07-14)
 
 
