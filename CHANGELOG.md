@@ -1,4 +1,23 @@
 <a name="unreleased"></a>
+## [1.45.0](https://github.com/grafana/grafana-build-tools/compare/v1.44.0...v1.45.0) (2026-08-11)
+
+
+### Features and minor updates
+
+* Update dependency skopeo to v1.24.0 ([#641](https://github.com/grafana/grafana-build-tools/issues/641)) ([39d14ec](https://github.com/grafana/grafana-build-tools/commit/39d14ec8959111a2e978dcd863f1ebde69437df9))
+
+
+### Fixes and patches
+
+* Update dependency spectral to v6.16.3 ([#646](https://github.com/grafana/grafana-build-tools/issues/646)) ([78cf943](https://github.com/grafana/grafana-build-tools/commit/78cf9438fe1e245492baf88d64f20efb4050c42f))
+* Update dependency xk6 to v1.4.8 ([#642](https://github.com/grafana/grafana-build-tools/issues/642)) ([63f28a7](https://github.com/grafana/grafana-build-tools/commit/63f28a7dcd6aa572a8bad23dcc47c87faa81ecd0))
+* Update dependency xk6 to v1.4.9 ([#645](https://github.com/grafana/grafana-build-tools/issues/645)) ([fa4c258](https://github.com/grafana/grafana-build-tools/commit/fa4c2589d3f0eab2919404fc3d7f2438dfada0b1))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.5 Docker digest to b004b9c ([#644](https://github.com/grafana/grafana-build-tools/issues/644)) ([90436ec](https://github.com/grafana/grafana-build-tools/commit/90436ece6aae2aa9a39e18c75d82c26b2bb8148c))
+
 ## [1.44.0](https://github.com/grafana/grafana-build-tools/compare/v1.43.1...v1.44.0) (2026-07-25)
 
 
