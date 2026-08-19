@@ -1,4 +1,26 @@
 <a name="unreleased"></a>
+## [1.46.0](https://github.com/grafana/grafana-build-tools/compare/v1.45.0...v1.46.0) (2026-08-19)
+
+
+### Features and minor updates
+
+* Update dependency k6 to v2.2.0 ([#649](https://github.com/grafana/grafana-build-tools/issues/649)) ([ca3a841](https://github.com/grafana/grafana-build-tools/commit/ca3a8414666471e6b378252e5377b62a7cc2a1c1))
+
+
+### Fixes and patches
+
+* Pin create-github-app-token to v0.3.1 ([#654](https://github.com/grafana/grafana-build-tools/issues/654)) ([486a3df](https://github.com/grafana/grafana-build-tools/commit/486a3dfd10db3eff8111cb118ba664cab873f205))
+* Update dependency xk6 to v1.4.11 ([#650](https://github.com/grafana/grafana-build-tools/issues/650)) ([0e13249](https://github.com/grafana/grafana-build-tools/commit/0e13249657594a15a04b8587d39fa749e0eb3719))
+* Update dependency yq to v4.53.4 ([#651](https://github.com/grafana/grafana-build-tools/issues/651)) ([28f511a](https://github.com/grafana/grafana-build-tools/commit/28f511a30001beb46722acf2b8d98c5cb4778d04))
+* Update go Docker tag to v1.26.6 ([#652](https://github.com/grafana/grafana-build-tools/issues/652)) ([a5ee847](https://github.com/grafana/grafana-build-tools/commit/a5ee847fafa284870375cdbf3058c0fd89aeb6ce))
+* Update jq Docker tag to v1.8.2 ([#653](https://github.com/grafana/grafana-build-tools/issues/653)) ([6f517e3](https://github.com/grafana/grafana-build-tools/commit/6f517e3781cb6b243cbedbea3971a4a7c7acb52f))
+* Update module protoc-gen-go to v1.36.12 ([#648](https://github.com/grafana/grafana-build-tools/issues/648)) ([281a039](https://github.com/grafana/grafana-build-tools/commit/281a039ee700f289193e589864f33f0bc0f7a6a9))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.5 Docker digest to 5822931 ([#647](https://github.com/grafana/grafana-build-tools/issues/647)) ([0da5429](https://github.com/grafana/grafana-build-tools/commit/0da5429933ea1ab54bb12df29f698d5bb96866f5))
+
 ## [1.45.0](https://github.com/grafana/grafana-build-tools/compare/v1.44.0...v1.45.0) (2026-08-11)
 
 
