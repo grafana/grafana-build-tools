@@ -1,4 +1,11 @@
 <a name="unreleased"></a>
+## [1.46.1](https://github.com/grafana/grafana-build-tools/compare/v1.46.0...v1.46.1) (2026-08-20)
+
+
+### Fixes and patches
+
+* Bump Go to 1.26.7 ([#657](https://github.com/grafana/grafana-build-tools/issues/657)) ([33ee07e](https://github.com/grafana/grafana-build-tools/commit/33ee07e7796dcdad64c0f3064535030b6584d728))
+
 ## [1.46.0](https://github.com/grafana/grafana-build-tools/compare/v1.45.0...v1.46.0) (2026-08-19)
 
 
