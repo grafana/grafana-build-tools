@@ -1,4 +1,17 @@
 <a name="unreleased"></a>
+## [1.47.0](https://github.com/grafana/grafana-build-tools/compare/v1.46.0...v1.47.0) (2026-08-24)
+
+
+### Features and minor updates
+
+* Update dependency golangci-lint to v2.13.0 ([#658](https://github.com/grafana/grafana-build-tools/issues/658)) ([9e8d2d5](https://github.com/grafana/grafana-build-tools/commit/9e8d2d55cfbb6cebbbd281b2e43431565762eff3))
+
+
+### Fixes and patches
+
+* Bump Go to 1.26.7 ([#657](https://github.com/grafana/grafana-build-tools/issues/657)) ([33ee07e](https://github.com/grafana/grafana-build-tools/commit/33ee07e7796dcdad64c0f3064535030b6584d728))
+* Update dependency yq to v4.53.6 ([#659](https://github.com/grafana/grafana-build-tools/issues/659)) ([0118b0d](https://github.com/grafana/grafana-build-tools/commit/0118b0d193352757189ce3d49c319a6b22c31e73))
+
 ## [1.46.0](https://github.com/grafana/grafana-build-tools/compare/v1.45.0...v1.46.0) (2026-08-19)
 
 
