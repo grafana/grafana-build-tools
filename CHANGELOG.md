@@ -1,4 +1,20 @@
 <a name="unreleased"></a>
+## [1.48.0](https://github.com/grafana/grafana-build-tools/compare/v1.47.1...v1.48.0) (2026-09-30)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.73.0 ([#666](https://github.com/grafana/grafana-build-tools/issues/666)) ([c81246a](https://github.com/grafana/grafana-build-tools/commit/c81246a3b57c3db740f4b8a240c3a2a6c04fbd8d))
+* Update dependency golangci-lint to v2.14.0 ([#670](https://github.com/grafana/grafana-build-tools/issues/670)) ([47f1611](https://github.com/grafana/grafana-build-tools/commit/47f1611ad086bac83b1aaf25ab1530220398fd66))
+* Update dependency k6 to v2.3.0 ([#669](https://github.com/grafana/grafana-build-tools/issues/669)) ([f20988b](https://github.com/grafana/grafana-build-tools/commit/f20988b6a9bb248d022757228f74521c7c57c819))
+* Update dependency migrate to v4.20.1 ([#665](https://github.com/grafana/grafana-build-tools/issues/665)) ([f78a9e8](https://github.com/grafana/grafana-build-tools/commit/f78a9e83fee578478a1897cdb364fdcaa525c83b))
+
+
+### Fixes and patches
+
+* Update dependency skopeo to v1.24.1 ([#668](https://github.com/grafana/grafana-build-tools/issues/668)) ([3bd606c](https://github.com/grafana/grafana-build-tools/commit/3bd606cd12a62b0e84ff49a860ec3798ea94829f))
+* Update dependency xk6 to v1.4.13 ([#667](https://github.com/grafana/grafana-build-tools/issues/667)) ([923667c](https://github.com/grafana/grafana-build-tools/commit/923667cdcd26ec7f16d7e7f44052c59325d31cfa))
+
 ## [1.47.1](https://github.com/grafana/grafana-build-tools/compare/v1.47.0...v1.47.1) (2026-09-09)
 
 
