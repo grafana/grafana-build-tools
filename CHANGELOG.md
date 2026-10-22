@@ -1,4 +1,21 @@
 <a name="unreleased"></a>
+## [1.49.0](https://github.com/grafana/grafana-build-tools/compare/v1.48.1...v1.49.0) (2026-10-22)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.74.0 ([#676](https://github.com/grafana/grafana-build-tools/issues/676)) ([b7135c4](https://github.com/grafana/grafana-build-tools/commit/b7135c400738ba7cd4adf6c385a6765892127419))
+* Update dependency enumer to v1.7.2 ([#674](https://github.com/grafana/grafana-build-tools/issues/674)) ([6b8a797](https://github.com/grafana/grafana-build-tools/commit/6b8a797b0a6f8e798fce4e6012c21ed61daf48c7))
+* Update dependency golangci-lint to v2.15.0 ([#677](https://github.com/grafana/grafana-build-tools/issues/677)) ([cec10a3](https://github.com/grafana/grafana-build-tools/commit/cec10a3b11b35ab8c45572e740591350fdfa9c96))
+* Update dependency nfpm to v2.48.0 ([#675](https://github.com/grafana/grafana-build-tools/issues/675)) ([c51dae4](https://github.com/grafana/grafana-build-tools/commit/c51dae4007de72850c06a31d5839aca89e4f2c8f))
+* Update dependency spectral to v6.17.0 ([#673](https://github.com/grafana/grafana-build-tools/issues/673)) ([54db5cb](https://github.com/grafana/grafana-build-tools/commit/54db5cb15188ef3f655c36a6f44c478cd71a0a2e))
+* Update dependency yq to v4.54.1 ([#672](https://github.com/grafana/grafana-build-tools/issues/672)) ([16d3931](https://github.com/grafana/grafana-build-tools/commit/16d393157652977a834dabbf47bdca5b9fc98894))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.10 Docker digest to 672c944 [SECURITY] ([#680](https://github.com/grafana/grafana-build-tools/issues/680)) ([2cb1900](https://github.com/grafana/grafana-build-tools/commit/2cb1900a62a72e6b6d319bbf52147f3614c6055c))
+
 ## [1.48.1](https://github.com/grafana/grafana-build-tools/compare/v1.48.0...v1.48.1) (2026-10-20)
 
 
