@@ -1,4 +1,22 @@
 <a name="unreleased"></a>
+## [1.50.0](https://github.com/grafana/grafana-build-tools/compare/v1.49.0...v1.50.0) (2026-10-28)
+
+
+### Features and minor updates
+
+* Update dependency buf to v1.75.0 ([#682](https://github.com/grafana/grafana-build-tools/issues/682)) ([75af16d](https://github.com/grafana/grafana-build-tools/commit/75af16d576d0228f21218d78cf98b356bea3b889))
+
+
+### Fixes and patches
+
+* Update dependency xk6 to v1.4.15 ([#683](https://github.com/grafana/grafana-build-tools/issues/683)) ([6cd25ad](https://github.com/grafana/grafana-build-tools/commit/6cd25ada12222fe0bc4e728a29ddb8e89c840b93))
+
+
+### Miscellaneous Chores
+
+* Update go:1.26.10 Docker digest to 670bb5a [SECURITY] ([#686](https://github.com/grafana/grafana-build-tools/issues/686)) ([ff71e81](https://github.com/grafana/grafana-build-tools/commit/ff71e81fb4eb43091fa9bd4e2d1c711efbd53b2f))
+* Update go:1.26.10 Docker digest to 75bb407 [SECURITY] ([#685](https://github.com/grafana/grafana-build-tools/issues/685)) ([4ef8139](https://github.com/grafana/grafana-build-tools/commit/4ef81392025796d3f787f9b631eeb9878383ebf4))
+
 ## [1.49.0](https://github.com/grafana/grafana-build-tools/compare/v1.48.1...v1.49.0) (2026-10-22)
 
 
