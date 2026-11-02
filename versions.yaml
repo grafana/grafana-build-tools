@@ -20,7 +20,7 @@ chglog:
   version: v0.7.4 # renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
 
 lefthook:
-  version: v1.13.6 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
+  version: v2.1.10 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
   version: v1.75.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
@@ -40,7 +40,7 @@ git_chglog:
 go:
   custom_build: true
   custom_install: true
-  version: 1.26.10 # sha256:670bb5aa5349ae03b8516764718486f4f16399134bdc9acd0c46a23f043ab05c # renovate: datasource=docker depName=go packageName=golang
+  version: 1.27.3 # sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b # renovate: datasource=docker depName=go packageName=golang
 
 golangci_lint:
   version: v1.64.8
@@ -49,7 +49,7 @@ golangci_lint_v2:
   version: v2.15.0 # renovate: datasource=github-releases depName=golangci-lint packageName=golangci/golangci-lint
 
 gomplate:
-  version: v4.3.3 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
+  version: v5.2.0 # renovate: datasource=github-releases depName=gomplate packageName=hairyhenderson/gomplate
 
 gotestsum:
   version: v1.13.0 # renovate: datasource=github-releases depName=gotest.tools/gotestsum packageName=gotestyourself/gotestsum
