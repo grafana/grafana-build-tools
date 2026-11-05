@@ -20,7 +20,7 @@ chglog:
   version: v0.7.4 # renovate: datasource=github-releases depName=chglog packageName=goreleaser/chglog
 
 lefthook:
-  version: v2.1.10 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
+  version: v2.2.2 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
   version: v1.75.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
@@ -40,7 +40,7 @@ git_chglog:
 go:
   custom_build: true
   custom_install: true
-  version: 1.27.3 # sha256:c292963ad0e5f51e843c726edc204a4e4c26a859ba1e4d736d91028aa3633048 # renovate: datasource=docker depName=go packageName=golang
+  version: 1.27.3 # sha256:a386c44c1c90025ad5bc66feea3fef23052bef3bace3609f7e3e10e1f9314f45 # renovate: datasource=docker depName=go packageName=golang
 
 golangci_lint:
   version: v1.64.8
