@@ -108,7 +108,7 @@ wire:
   version: v0.7.0 # renovate: datasource=github-releases depName=wire packageName=google/wire
 
 spectral:
-  version: v6.17.0 # renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
+  version: v6.17.1 # renovate: datasource=github-releases depName=spectral packageName=stoplightio/spectral
 
 xk6:
   version: v1.4.15 # renovate: datasource=github-tags depName=xk6 packageName=grafana/xk6
