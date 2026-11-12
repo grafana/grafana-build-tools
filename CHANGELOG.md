@@ -1,4 +1,24 @@
 <a name="unreleased"></a>
+## [2.0.1](https://github.com/grafana/grafana-build-tools/compare/v2.0.0...v2.0.1) (2026-11-12)
+
+
+### Fixes and patches
+
+* rework build scripts to deal with &gt;= v1 ([#691](https://github.com/grafana/grafana-build-tools/issues/691)) ([a06ac4f](https://github.com/grafana/grafana-build-tools/commit/a06ac4fbef3f9a96054c30d26a5a486046ce0976))
+* Update dependency spectral to v6.17.1 ([#695](https://github.com/grafana/grafana-build-tools/issues/695)) ([4a952cc](https://github.com/grafana/grafana-build-tools/commit/4a952cc9f886697e28ef97a583ca124727e96f1d))
+* Update dependency yq to v4.54.2 ([#694](https://github.com/grafana/grafana-build-tools/issues/694)) ([51702b5](https://github.com/grafana/grafana-build-tools/commit/51702b54052b1b70a13d298bd0b078babe9b8ab0))
+* Update dependency yq to v4.54.3 ([#698](https://github.com/grafana/grafana-build-tools/issues/698)) ([6f5edee](https://github.com/grafana/grafana-build-tools/commit/6f5edee556eaa374634452665039fe0f59ff32bd))
+* Update go Docker tag to v1.27.4 [SECURITY] ([#696](https://github.com/grafana/grafana-build-tools/issues/696)) ([2fba261](https://github.com/grafana/grafana-build-tools/commit/2fba261e668b1b600972f37b29980c367e0cafa3))
+
+
+### Miscellaneous Chores
+
+* Update go:1.27.3 Docker digest to 0c050fe [SECURITY] ([#692](https://github.com/grafana/grafana-build-tools/issues/692)) ([8c6a378](https://github.com/grafana/grafana-build-tools/commit/8c6a3783f8d7c34e0b1c4384e86f6049e17a8393))
+* Update go:1.27.3 Docker digest to a386c44 [SECURITY] ([#690](https://github.com/grafana/grafana-build-tools/issues/690)) ([19e1543](https://github.com/grafana/grafana-build-tools/commit/19e1543fb1e15d875092c70291c0c9864cae773a))
+* Update go:1.27.3 Docker digest to c292963 [SECURITY] ([#688](https://github.com/grafana/grafana-build-tools/issues/688)) ([21aac97](https://github.com/grafana/grafana-build-tools/commit/21aac97855504fbae0151f4652869e4a1e245b03))
+* Update go:1.27.3 Docker digest to e519d3b [SECURITY] ([#693](https://github.com/grafana/grafana-build-tools/issues/693)) ([5199d27](https://github.com/grafana/grafana-build-tools/commit/5199d275d6b433fdf8b4aa0fefd13cf633ee59ca))
+* Update go:1.27.4 Docker digest to 5e8afd4 [SECURITY] ([#697](https://github.com/grafana/grafana-build-tools/issues/697)) ([f522c7a](https://github.com/grafana/grafana-build-tools/commit/f522c7a9d6a62f6e666d71a10102992ff21864df))
+
 ## [2.0.0](https://github.com/grafana/grafana-build-tools/compare/v1.49.0...v2.0.0) (2026-11-02)
 
 
