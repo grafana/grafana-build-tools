@@ -1,4 +1,12 @@
 <a name="unreleased"></a>
+## [2.0.2](https://github.com/grafana/grafana-build-tools/compare/v2.0.1...v2.0.2) (2026-11-17)
+
+
+### Miscellaneous Chores
+
+* Update go:1.27.4 Docker digest to 205c763 [SECURITY] ([#705](https://github.com/grafana/grafana-build-tools/issues/705)) ([42da804](https://github.com/grafana/grafana-build-tools/commit/42da804905b655b24c275b3394b6adb332553e27))
+* Update go:1.27.4 Docker digest to fe517ac [SECURITY] ([#703](https://github.com/grafana/grafana-build-tools/issues/703)) ([82d89ff](https://github.com/grafana/grafana-build-tools/commit/82d89ff1fb69eb078539b7c8a037996807c656ba))
+
 ## [2.0.1](https://github.com/grafana/grafana-build-tools/compare/v2.0.0...v2.0.1) (2026-11-12)
 
 
