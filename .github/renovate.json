@@ -5,7 +5,9 @@
     ":semanticCommitsDisabled"
   ],
   "enabled": true,
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "branchPrefix": "grafanarenovatebot/",
   "commitMessagePrefix": "chore:",
   "platformCommit": "enabled",
