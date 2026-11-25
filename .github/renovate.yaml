@@ -30,6 +30,7 @@ pruneBranchAfterAutomerge: true
 
 enabledManagers:
   - custom.regex
+  - github-actions
   - gomod
 
 gomod:
@@ -62,6 +63,30 @@ packageRules:
   - matchCategories:
       - docker
     pinDigests: false
+
+  # Only keep the grafana/shared-workflows actions up to date. Other GitHub
+  # actions are not managed by renovate.
+  - matchManagers:
+      - github-actions
+    matchPackageNames:
+      - '!grafana/shared-workflows'
+    enabled: false
+
+  # grafana/shared-workflows is a monorepo and tags are named
+  # <action name>/v<version>, so renovate needs some help to understand them.
+  # See https://github.com/grafana/shared-workflows#custom-renovate-config
+  #
+  # Use the chore: prefix to avoid triggering a release of the image.
+  - matchManagers:
+      - github-actions
+    matchPackageNames:
+      - grafana/shared-workflows
+    versioning: 'regex:^(?<compatibility>.*)[-/]v?(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)?$'
+    additionalBranchPrefix: '{{ lookup (split newVersion "/") 0 }}-'
+    commitMessagePrefix: 'chore:'
+    commitMessageAction: update
+    commitMessageTopic: '{{depName}}/{{ lookup (split newVersion "/") 0 }} action'
+    commitMessageExtra: 'to {{ lookup (split newVersion "/") 1 }}'
 
 customManagers:
   - customType: regex

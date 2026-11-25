@@ -28,6 +28,7 @@
   "pruneBranchAfterAutomerge": true,
   "enabledManagers": [
     "custom.regex",
+    "github-actions",
     "gomod"
   ],
   "gomod": {
@@ -69,6 +70,29 @@
         "docker"
       ],
       "pinDigests": false
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchPackageNames": [
+        "!grafana/shared-workflows"
+      ],
+      "enabled": false
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchPackageNames": [
+        "grafana/shared-workflows"
+      ],
+      "versioning": "regex:^(?<compatibility>.*)[-/]v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$",
+      "additionalBranchPrefix": "{{ lookup (split newVersion \"/\") 0 }}-",
+      "commitMessagePrefix": "chore:",
+      "commitMessageAction": "update",
+      "commitMessageTopic": "{{depName}}/{{ lookup (split newVersion \"/\") 0 }} action",
+      "commitMessageExtra": "to {{ lookup (split newVersion \"/\") 1 }}"
     }
   ],
   "customManagers": [
