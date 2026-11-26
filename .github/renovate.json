@@ -67,6 +67,13 @@
         "docker"
       ],
       "pinDigests": false
+    },
+    {
+      "matchDepNames": [
+        "checklocks"
+      ],
+      "schedule": "before 8am on monday",
+      "commitMessagePrefix": "fix:"
     }
   ],
   "customManagers": [
@@ -88,6 +95,16 @@
       ],
       "matchStrings": [
         "[ \\t]+version:[ \\t]*(?<currentValue>\\S+)[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>github-releases|github-tags|go)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?(?:[ \\t]+packageName=(?<packageName>[-_.\\/\\w]+))(?:[ \\t]+versioning=(?<versioning>[-_.\\/\\w]+))?"
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "update commits tracked by branch found in versions.yaml",
+      "managerFilePatterns": [
+        "/^versions\\.yaml$/"
+      ],
+      "matchStrings": [
+        "[ \\t]+version:[ \\t]*(?<currentDigest>[a-f0-9]{40})[ \\t]*#[ \\t]*renovate:[ \\t]*datasource=(?<datasource>git-refs)(?:[ \\t]+depName=(?<depName>[-_.\\/\\w]+))?[ \\t]+packageName=(?<packageName>\\S+)[ \\t]+currentValue=(?<currentValue>\\S+)"
       ]
     }
   ]

@@ -66,6 +66,9 @@ nfpm --version
 echo '=== nilaway'
 nilaway -help
 
+echo '=== checklocks'
+checklocks -help
+
 echo '=== oapi-codegen'
 oapi-codegen --version
 
