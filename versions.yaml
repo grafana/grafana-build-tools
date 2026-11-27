@@ -24,7 +24,7 @@ checklocks:
   version: 55b646c2d2299710d2d17da055c4b3bc90e2c30d # renovate: datasource=git-refs depName=checklocks packageName=https://github.com/google/gvisor currentValue=master
 
 lefthook:
-  version: v2.2.2 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
+  version: v2.2.3 # renovate: datasource=github-releases depName=lefthook packageName=evilmartians/lefthook
 
 buf:
   version: v1.75.0 # renovate: datasource=github-releases depName=buf packageName=bufbuild/buf
