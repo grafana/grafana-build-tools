@@ -1,4 +1,16 @@
 <a name="unreleased"></a>
+## [2.2.0](https://github.com/grafana/grafana-build-tools/compare/v2.1.0...v2.2.0) (2026-11-27)
+
+
+### Features and minor updates
+
+* Add checklocks ([#712](https://github.com/grafana/grafana-build-tools/issues/712)) ([b56bc3e](https://github.com/grafana/grafana-build-tools/commit/b56bc3e8bf0512a334a164aa2000a10acaff6611))
+
+
+### Fixes and patches
+
+* Update dependency lefthook to v2.2.3 ([#714](https://github.com/grafana/grafana-build-tools/issues/714)) ([595c61a](https://github.com/grafana/grafana-build-tools/commit/595c61a56be0ecf7f7414987fd7d808d890d1d34))
+
 ## [2.1.0](https://github.com/grafana/grafana-build-tools/compare/v2.0.1...v2.1.0) (2026-11-25)
 
 
